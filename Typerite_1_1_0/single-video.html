@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="es">
+
+<head>
+
+    <!-- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Paradigma intermodal de preferencia de mirada - Cognitiva</title>
+    <meta name="description" content="Descripción, aplicaciones, limitaciones y recursos sobre el paradigma intermodal de preferencia de mirada.">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+
+.header__social {
+        display: flex;
+        gap: 15px;
+    }
+
+/* ==================================================
+   LÍNEA SEPARADORA
+   ================================================== */
+
+.linea-separadora {
+    width: 100%;
+    height: 1px;
+    background: #898989;
+    margin: 40px 0;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE LAS PUBLICACIONES DEL MENÚ
+   ================================================== */
+
+.header__nav .sub-menu li {
+    margin-bottom: 8px;
+}
+
+.header__nav .sub-menu li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   ESPACIO INTERNO DE CADA PUBLICACIÓN
+   ================================================== */
+
+.header__nav .sub-menu li a {
+    display: block;
+    padding: 8px 0;
+    line-height: 1.4;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE NÚMERO Y TEXTO
+   ================================================== */
+
+.header__nav .sub-menu li a.publicacion-link {
+    display: flex !important;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+/* Número */
+
+.numero-publicacion {
+    display: block;
+    flex: 0 0 35px;
+    width: 35px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+
+/* Texto */
+
+.texto-publicacion {
+    display: block;
+    flex: 1;
+}
+
+
+        /* =================================
+   ESPACIADO ENTRE SECCIONES
+   ================================= */
+
+.section-heading {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #898989;
+}
+
+.section-heading h2 {
+    margin: 0;
+}
+
+/* Espacio para los subtítulos */
+.entry__content h3 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+        }
+
+        .section-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            color: #339989;
+        }
+
+        .section-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* IMÁGENES DE LAS SECCIONES */
+        .section-image {
+            width: 100%;
+            margin: 1.5rem 0 2rem;
+            text-align: center;
+        }
+
+        .section-image img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+        /* VIDEO */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0 2rem;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* CONTENEDOR DEL JUEGO */
+        .game-container {
+            background: #222;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .game-container .qg-root {
+            margin: 0;
+        }
+
+        /* Adaptación del juego dentro del contenedor oscuro */
+        .game-container .qg-progress {
+            color: #ddd;
+        }
+
+        .game-container .qg-option-btn {
+            background: #fff;
+            color: #222;
+        }
+
+        .game-container .qg-explanation {
+            background: #fff;
+            color: #444;
+        }
+
+        .game-container .qg-question {
+            color: #fff;
+        }
+
+    </style>
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+
+                <div class="header__logo">
+
+                    <a class="site-logo" href="index.html">
+                        <img src="images/logo.svg" alt="Homepage">
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- end header__top -->
+
+
+            <!-- ==================================================
+                 MENÚ DE NAVEGACIÓN
+                 Contiene los enlaces principales del sitio.
+                 ================================================== -->
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+
+                    <!-- Enlace a la página principal -->
+                    <li class="current">
+                        <a href="inicio.html" title="">Inicio</a>
+                    </li>
+
+
+                    
+
+
+                    <!-- ==================================================
+                         MENÚ DE PUBLICACIONES
+                         Contiene los diferentes tipos de artículos
+                         que puede mostrar el sitio.
+                         ================================================== -->
+                    <li class="has-children">
+
+                        <a href="#0" title="">Publicaciones</a>
+
+                        <ul class="sub-menu">
+
+                            <li>
+                                <a href="metodo_de_succion.html" class="publicacion-link">
+                                    <span class="numero-publicacion">1.</span>
+                                    <span class="texto-publicacion">Procedimiento de succión de amplitud elevada</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Mediciones_cardiacas.html" class="publicacion-link">
+                                    <span class="numero-publicacion">2.</span>
+                                    <span class="texto-publicacion">Mediciones del ritmo cardíaco</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Preferencia_Giro_Cabeza.html" class="publicacion-link">
+                                    <span class="numero-publicacion">3.</span>
+                                    <span class="texto-publicacion">Procedimiento de preferencia de giro de cabeza</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Procedimientos_Reforzamiento_Diferencia.html" class="publicacion-link">
+                                    <span class="numero-publicacion">4.</span>
+                                    <span class="texto-publicacion">Procedimientos basados en el reforzamiento diferencial</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="single-video.html" class="publicacion-link">
+                                    <span class="numero-publicacion">5.</span>
+                                    <span class="texto-publicacion">Paradigma intermodal de preferencia de mirada</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Enlace hacia la página "Nosotros" -->
+                    <li>
+                        <a href="page-about.html" title="">Nosotras</a>
+                    </li>
+
+                </ul>
+                <!-- Fin del menú de navegación -->
+
+
+
+                <!-- end header__nav -->
+
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Facebook
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Twitter
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-instagram">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Instagram
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <!-- end header__nav-wrap -->
+
+
+            <!-- menu toggle -->
+            <a href="#0" class="header__menu-toggle">
+                <span>Menu</span>
+            </a>
+
+        </header>
+
+        <!-- end s-header -->
+
+
+        <!-- search
+        ================================================== -->
+
+        <div class="s-search">
+
+            <div class="search-block">
+
+                <form role="search" method="get" class="search-form" action="#">
+
+                    <label>
+
+                        <span class="hide-content">Buscar:</span>
+
+                        <input
+                            type="search"
+                            class="search-field"
+                            placeholder="Escribe una palabra clave"
+                            value=""
+                            name="s"
+                            title="Buscar:"
+                            autocomplete="off">
+
+                    </label>
+
+                    <input
+                        type="submit"
+                        class="search-submit"
+                        value="Buscar">
+
+                </form>
+
+                <a href="#0" title="Cerrar búsqueda" class="search-close">
+                    Cerrar
+                </a>
+
+            </div>
+
+            <!-- end search-block -->
+
+
+            <!-- search modal trigger -->
+
+            <a href="#0" class="search-trigger">
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+
+                    <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z">
+                    </path>
+
+                </svg>
+
+                <span>Buscar</span>
+
+            </a>
+
+            <span class="search-line"></span>
+
+        </div>
+
+        <!-- end s-search -->
+
+
+        <!-- site content
+        ================================================== -->
+
+        <div class="s-content content">
+
+            <main class="row content__page">
+
+                <article class="column large-full entry format-video">
+
+
+                    <!-- TÍTULO -->
+
+                    <div class="content__page-header entry__header">
+
+                        <h1 class="display-1 entry__title">
+                            Paradigma intermodal de preferencia de mirada
+                        </h1>
+
+                        <ul class="entry__header-meta">
+
+                            <li class="author">
+
+                                Por
+                                <a href="#0">
+                                    Cognitiva
+                                </a>
+
+                            </li>
+
+                            <li class="date">
+                                2026
+                            </li>
+
+                            <li class="cat-links">
+
+                                <a href="#0">
+                                    Métodos experimentales
+                                </a>
+
+                                <a href="#0">
+                                    Cognición temprana
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- end entry__header -->
+
+
+                    <div class="entry__content">
+
+
+                        <!-- INTRODUCCIÓN -->
+
+                        <p class="lead drop-cap">
+
+                            El paradigma intermodal de preferencia de mirada sirve para evaluar si un bebé o un niño pequeño comprende lo que escucha en relación con lo que ve. Esto consiste en mostrarle dos imágenes o videos, uno al lado del otro, mientras se nombra solo uno de ellos, y medir cuánto tiempo mira cada uno, aprovechando que bebés y niños pueden emparejar lo que oyen con lo que ven. Se ha usado desde los 4 meses y medio de edad y, en los experimentos de comprensión del lenguaje, con niños de 18 meses a 3 años.
+
+                        </p>
+
+
+                        <!-- CÓMO SE APLICA -->
+
+                        <div class="section-heading">
+
+                            
+
+                            <h2>¿Cómo se aplica?</h2>
+
+                        </div>
+
+
+                        <!-- ESPACIO PARA IMAGEN -->
+
+                        <div class="section-image">
+
+                            <img
+                                src="images/preferencia_de_mirada/preferential.jpeg"
+                                alt="Aplicación del paradigma intermodal de preferencia de mirada">
+
+                        </div>
+
+
+                        <ul>
+
+                            <li>
+                                El bebé se sienta en el regazo de un adulto y ve dos imágenes o videos, uno al lado del otro, mientras se nombra uno de ellos (Barón Birchenall et al., 2014, p. 84).
+                            </li>
+
+                            <li>
+                                Primero aparece un estímulo (un rostro o una luz centelleante) en el centro de la pantalla, para atraer la atención del bebé.
+                            </li>
+
+                            <li>
+                                Luego hay una prueba silenciosa, para comprobar que las dos imágenes le llaman la atención por igual (p. 84).
+                            </li>
+
+                            <li>
+                                Después se superpone el estímulo auditivo que corresponde a una de las imágenes, y se mide el tiempo que el bebé fija la mirada en cada una (p. 84).
+                            </li>
+
+                            <li>
+                                Muchos experimentos tienen fases de identificación de personajes, aprendizaje, línea base y prueba (Mariscal et al., 2012, p. 281).
+                            </li>
+
+                            <li>
+                                La línea base usa un mensaje neutro, como "Mira ahora", para comprobar que el niño no prefiere una imagen por sí sola (p. 281).
+                            </li>
+
+                            <li>
+                                Las cámaras suelen estar ocultas y solo se ven las pantallas (Mariscal et al., 2012, p. 280).
+                            </li>
+
+                            <li>
+                                Se puede usar un rastreador ocular para registrar hacia dónde mira (Barón Birchenall et al., 2014, p. 85).
+                            </li>
+
+                        </ul>
+
+
+                        <p>
+
+                            Las pautas para estudiar el aprendizaje de palabras: primero hay ensayos de entrenamiento en los que una imagen se acompaña de una palabra, luego en la prueba aparecen dos imágenes y se dice una palabra. Este uso tiene limitaciones: en este caso puede sobreestimar lo que el niño sabe, porque a veces elige la imagen por descarte.
+
+                        </p>
+
+
+                        <blockquote>
+
+                            <p>
+
+                                Variación para aprender palabras: primero hay ensayos de entrenamiento, en los que una sola imagen se acompaña de una etiqueta. Luego, en la prueba, aparecen dos imágenes y se dice una palabra.
+
+                            </p>
+
+                            Barón Birchenall et al., 2014, pp. 84-85
+
+                        </blockquote>
+
+
+
+                        <!-- LIMITACIONES -->
+
+                        <div class="section-heading">
+
+                            
+
+                            <h2>Limitaciones</h2>
+
+                        </div>
+
+
+                        <ul>
+
+                            <li>
+                                Puede pasar por alto lo que el niño sabe, porque si el niño mira una imagen no siempre es porque reconoció la palabra: a veces descarta la imagen que no corresponde y se queda con la otra. También es difícil usarlo para saber si el niño entiende conceptos que no se pueden mostrar en una imagen; por eso conviene combinarlo con otras técnicas.
+                            </li>
+
+                            <li>
+                                Exige mucho del niño en muy poco tiempo: al ser una situación nueva, con imágenes, sonidos y objetos desconocidos, el experimento completo rara vez pasa de cuatro minutos, y la fase de prueba es solo una parte pequeña que suele quedar al final, cuando el niño ya está perdiendo el interés.
+                            </li>
+
+                            <li>
+                                Se pierden muchos participantes: algunos niños se van del experimento, se distraen o miran hacia otro lado. Si no pasan un mínimo de tiempo mirando las pantallas, se descartan del análisis, y por eso las muestras casi nunca superan los 40 niños.
+                            </li>
+
+                            <li>
+                                Los efectos son pequeños y a veces no aparecen: las diferencias en el tiempo de mirada suelen ser pequeñas, y hay intentos de replicar estudios que no encontraron ningún efecto.
+                            </li>
+
+                            <li>
+                                La interpretación es limitada: un experimento típico no explica la comprensión del lenguaje de forma completa, solo detecta si el niño relaciona lo que oye con lo que ve.
+                            </li>
+
+                        </ul>
+
+
+
+                        <!-- QUÉ MIDE -->
+
+                        <div class="section-heading">
+
+                            
+
+                            <h2>¿Qué mide o permite estudiar?</h2>
+
+                        </div>
+
+
+                        <!-- ESPACIO PARA IMAGEN -->
+
+                        <div class="section-image">
+
+                            <img
+                                src="images/preferencia_de_mirada/rastreador ocular.jpg"
+                                alt="Rastreador ocular utilizado para estudiar la mirada">
+
+                        </div>
+
+
+                        <p>
+
+                            Este paradigma permite evaluar la detección de la correspondencia entre un mensaje verbal y una de las imágenes (Mariscal et al., 2012, p. 280). También sirve para medir el conocimiento floreciente en fonología, semántica, sintaxis y morfología en niños que aún no hablan (Barón Birchenall et al., 2014, p. 84).
+
+                        </p>
+
+
+                        <h3>Qué mide exactamente</h3>
+
+
+                        <ul>
+
+                            <li>
+                                El tiempo que el niño mira cada imagen: la medida más frecuente es la proporción de tiempo que dedica a la pantalla que coincide con el mensaje que oye, llamada "pantalla correcta" (Mariscal et al., 2012, p. 284).
+                            </li>
+
+                            <li>
+                                Cómo se interpreta: cuando el niño mira más tiempo la pantalla correcta que la incorrecta, se asume que comprendió el mensaje (Mariscal et al., 2012, p. 280). Esa preferencia debe aparecer en la prueba y no en la línea base (p. 284). También pueden usarse el tiempo máximo que mantiene la mirada fija en la pantalla correcta y el número de veces que cambia de pantalla (Mariscal et al., 2012, pp. 289-290).
+                            </li>
+
+                        </ul>
+
+
+                        <h3>Qué permite estudiar</h3>
+
+
+                        <ul>
+
+                            <li>
+                                La comprensión de palabras, porque se ve si el niño relaciona una palabra con lo que ella nombra (Barón Birchenall et al., 2014, p. 85).
+                            </li>
+
+                            <li>
+                                La comprensión de estructuras gramaticales, por ejemplo si distingue verbos transitivos e intransitivos (Mariscal et al., 2012, p. 281).
+                            </li>
+
+                            <li>
+                                La relación entre lo que se ve y lo que se oye: los bebés de 18 a 20 semanas miran más el rostro que pronuncia la vocal que escuchan (Barón Birchenall et al., 2014, p. 85).
+                            </li>
+
+                            <li>
+                                Hacia dónde dirigen la atención al escuchar hablar: se han hecho estudios sobre si los bebés miran más la boca o los ojos de quien habla (Barón Birchenall et al., 2014, p. 85).
+                            </li>
+
+                        </ul>
+
+
+
+                        <!-- VIDEO -->
+
+                        <div class="section-heading">
+
+                            
+
+                            <h2>Video o recurso audiovisual</h2>
+
+                        </div>
+
+
+                        <p>
+
+                            Video de la revista JoVE sobre el paradigma intermodal de preferencia de mirada con niños pequeños. Muestra paso a paso cómo se aplica el paradigma: cómo se preparan los videos, cómo se presentan al niño y cómo se analiza después hacia dónde mira.
+
+                        </p>
+
+
+                        <!-- VIDEO DE YOUTUBE -->
+
+                        <div class="video-container">
+                            <iframe
+                                src="https://www.youtube.com/embed/4S7xh3yJ7-s"
+                                title="Paradigma intermodal de preferencia de mirada"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                            </iframe>
+                        </div>
+
+
+                        <p>
+                            ●	Este video muestra cómo se aplica la técnica de eye-tracking que es el seguimiento ocular en bebés dentro del (Infant Action Lab de la Universidad de Nueva York (NYU). Se observa cómo los bebés llevan puesto un rastreador ocular portátil, una cámara pequeña sujeta a la cabeza que registra al mismo tiempo hacia dónde dirigen la mirada y el movimiento de sus propios ojos mientras interactúan libremente con su madre y con objetos. Sirve para ver de forma visual cómo esta tecnología permite estudiar la atención visual del bebé en situaciones naturales, no solo frente a una pantalla.
+                        Ejemplo: Cuándo mira el rostro de la madre, cuándo sigue el movimiento de sus manos o cómo usa la mirada para guiar el gateo o la marcha sobre distintas superficies.
+                        </p>
+
+
+
+                        <!-- LECTURAS -->
+
+                        
+
+                            <h2>Lecturas recomendadas</h2>
+
+                        </div>
+
+
+                        <h3>En español</h3>
+
+
+                        <p>
+
+                            González Aguirre, O. A., Laguna Navarro, I., &amp; Alva Canto, E. A. (2020). Generalización de palabras en infantes hispanohablantes: El sesgo hacia la forma. <em>Acta de investigación psicológica, 10</em>(2), 5-16. Texto completo (PDF):
+
+                            <a
+                                href="https://www.redalyc.org/journal/3589/358971691001/358971691001.pdf"
+                                target="_blank"
+                                rel="noopener">
+
+                                redalyc.org
+
+                            </a>.
+
+                        </p>
+
+
+                        <p>
+
+                            Este estudio compara la capacidad de dos grupos de infantes hispanohablantes de 24 meses para formar nuevas categorías a partir de la forma y del color, usando el paradigma intermodal. Los resultados mostraron que los infantes formaron categorías a partir de la forma, pero no del color. Es una muestra de cómo se usa el método en una investigación real con niños que aprenden español.
+
+                        </p>
+
+
+                        <h3>En inglés</h3>
+
+
+                        <p>
+
+                            Golinkoff, R. M., Ma, W., Song, L., &amp; Hirsh-Pasek, K. (2013). Twenty-five years using the intermodal preferential looking paradigm to study language acquisition: What have we learned? <em>Perspectives on Psychological Science, 8</em>(3), 316-339. Página de la revista, con el resumen:
+
+                            <a
+                                href="https://www.psychologicalscience.org/journals/perspectives/1745691613484936/"
+                                target="_blank"
+                                rel="noopener">
+
+                                psychologicalscience.org
+
+                            </a>.
+
+                        </p>
+
+
+                        <p>
+
+                            Este artículo de revisión trata sobre 25 años de uso del paradigma intermodal de preferencia de mirada para estudiar la adquisición del lenguaje. Según los autores, el paradigma mide la comprensión del lenguaje a partir del tiempo que el niño mira dos imágenes presentadas lado a lado, cuando solo una coincide con lo que escucha. Permite explorar el conocimiento en fonología, semántica, sintaxis y morfología en bebés que aún no hablan, y ver cómo identifican la relación entre las palabras y lo que nombran. Además, hoy se estudia su posible valor clínico y diagnóstico.
+
+                        </p>
+
+
+
+                        <!-- PÁGINA WEB -->
+
+                        <div class="section-heading">
+
+                            
+
+                            <h2>Página web recomendada</h2>
+
+                        </div>
+
+
+                        <p>
+
+                            Babylab de la Universidad de Plymouth (Reino Unido):
+
+                            <a
+                                href="https://www.psy.plymouth.ac.uk/babylab/Projects"
+                                target="_blank"
+                                rel="noopener">
+
+                                psy.plymouth.ac.uk/babylab/Projects
+
+                            </a>.
+
+                            Esta página es de un laboratorio que estudia cómo aprenden lenguaje los bebés. Explica la técnica con un ejemplo sencillo: se muestran la imagen de un perro y la de un gato mientras suena la frase "mira al perro", y se espera que desde los 12 meses el bebé mire más tiempo el objeto nombrado. Sirve para entender la idea del método con un caso concreto y en pocas líneas. También cuenta cómo son los estudios: duran entre 10 y 30 minutos. Además describe el procedimiento de preferencia de giro de cabeza.
+
+                        </p>
+
+
+
+                        <!-- ACTIVIDAD -->
+
+                        <div class="section-heading">
+
+
+                            <h2>Actividad lúdica: empareja lo que oyes con lo que ves</h2>
+
+                        </div>
+
+
+                        <!-- CONTENEDOR NEGRO DEL JUEGO -->
+
+                        <div class="game-container">
+
+                            <div id="qg-root" class="qg-root">
+
+                                <div class="qg-progress">
+
+                                    <span id="qg-progress-text">
+                                        Pregunta 1 de 3
+                                    </span>
+
+                                    <span id="qg-score">
+                                        Puntaje: 0
+                                    </span>
+
+                                </div>
+
+                                <div id="qg-question-box"></div>
+
+                                <div id="qg-result-box" class="qg-hidden"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <style>
+
+    /* ================================
+       CONTENEDOR GENERAL DEL JUEGO
+       ================================ */
+
+    .game-container {
+        background: #222;
+        padding: 2rem;
+        margin: 2rem 0;
+        border-radius: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+
+    /* ================================
+       CONTENIDO DEL JUEGO
+       ================================ */
+
+    .game-container .qg-root {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 1.5rem;
+        box-sizing: border-box;
+        border: 1px solid #444;
+        border-radius: 10px;
+        background: #222;
+        overflow: hidden;
+    }
+
+
+    /* ================================
+       PROGRESO
+       ================================ */
+
+    .game-container .qg-progress {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.4;
+
+        color: #fff;
+        margin-bottom: 1.5rem;
+
+        flex-wrap: wrap;
+    }
+
+
+    /* ================================
+       PREGUNTA
+       ================================ */
+
+    .game-container .qg-question {
+        width: 100%;
+        box-sizing: border-box;
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1.6;
+
+        color: #fff;
+
+        margin-bottom: 1.5rem;
+
+        /* Evita que palabras demasiado largas se salgan */
+        overflow-wrap: anywhere;
+        word-break: normal;
+        white-space: normal;
+    }
+
+
+    /* ================================
+       LISTA DE RESPUESTAS
+       ================================ */
+
+    .game-container .qg-options {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+
+    .game-container .qg-options li {
+        width: 100%;
+        margin-bottom: .8rem;
+    }
+
+
+    /* ================================
+       BOTONES DE RESPUESTA
+       ================================ */
+
+    .game-container .qg-option-btn {
+
+        width: 100%;
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        display: block;
+
+        text-align: left;
+
+        padding: 1rem 1.1rem;
+
+        border: 1px solid #ccc;
+        border-radius: 8px;
+
+        background: #fff;
+        color: #222;
+
+        cursor: pointer;
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5;
+
+        white-space: normal;
+
+        /* ESTA PARTE EVITA EL DESBORDE */
+        overflow-wrap: anywhere;
+        word-break: normal;
+
+        height: auto;
+        min-height: 55px;
+
+        transition:
+            background .15s,
+            border-color .15s,
+            transform .15s;
+    }
+
+
+    .game-container .qg-option-btn:hover:not(:disabled) {
+
+        border-color: #999;
+
+        transform: translateY(-1px);
+
+    }
+
+
+    .game-container .qg-option-btn:disabled {
+
+        cursor: default;
+
+    }
+
+
+    /* ================================
+       RESPUESTA CORRECTA
+       ================================ */
+
+    .game-container .qg-option-btn.qg-correct {
+
+        background: #e3f6e5;
+
+        border-color: #4caf50;
+
+        color: #173b1c;
+
+        font-weight: 700;
+
+    }
+
+
+    /* ================================
+       RESPUESTA INCORRECTA
+       ================================ */
+
+    .game-container .qg-option-btn.qg-incorrect {
+
+        background: #fdeaea;
+
+        border-color: #e53935;
+
+        color: #5a1515;
+
+        font-weight: 700;
+
+    }
+
+
+    /* ================================
+       RETROALIMENTACIÓN
+       ================================ */
+
+    .game-container .qg-explanation {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        margin-top: 1.5rem;
+
+        padding: 1.25rem 1.4rem;
+
+        background: #fff;
+
+        color: #222;
+
+        border-left: 5px solid #339989;
+
+        border-radius: 6px;
+
+        font-family: Arial, Helvetica, sans-serif;
+
+        font-size: 1.05rem;
+
+        font-weight: 400;
+
+        line-height: 1.7;
+
+        text-align: left;
+
+        overflow-wrap: anywhere;
+
+        word-break: normal;
+
+        white-space: normal;
+    }
+
+
+    /* ================================
+       BOTÓN SIGUIENTE
+       ================================ */
+
+    .game-container .qg-next-btn,
+    .game-container .qg-restart-btn {
+
+        margin-top: 1.25rem;
+
+        padding: .8rem 1.4rem;
+
+        border: none;
+
+        border-radius: 8px;
+
+        background: #000;
+
+        color: #fff;
+
+        cursor: pointer;
+
+        font-family: Arial, Helvetica, sans-serif;
+
+        font-size: 1rem;
+
+        font-weight: 600;
+
+        line-height: 1.4;
+
+        max-width: 100%;
+
+    }
+
+
+    .game-container .qg-next-btn:hover,
+    .game-container .qg-restart-btn:hover {
+
+        background: #111;
+
+    }
+
+
+    /* ================================
+       RESULTADO FINAL
+       ================================ */
+
+    .game-container .qg-result {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+
+        color: #fff;
+
+        padding: 1rem;
+    }
+
+
+    .game-container .qg-result h3 {
+
+        color: #fff;
+
+        font-family: Arial, Helvetica, sans-serif;
+
+        font-size: 1.5rem;
+
+        line-height: 1.4;
+
+        margin-bottom: .8rem;
+
+    }
+
+
+    .game-container .qg-result p {
+
+        color: #fff;
+
+        font-family: Arial, Helvetica, sans-serif;
+
+        font-size: 1.1rem;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* ================================
+       OCULTAR ELEMENTOS
+       ================================ */
+
+    .game-container .qg-hidden {
+
+        display: none;
+
+    }
+
+
+    /* ================================
+       CELULARES
+       ================================ */
+
+    @media screen and (max-width: 600px) {
+
+        .game-container {
+
+            padding: 1rem;
+
+        }
+
+        .game-container .qg-root {
+
+            padding: 1rem;
+
+        }
+
+        .game-container .qg-progress {
+
+            font-size: .9rem;
+
+        }
+
+        .game-container .qg-question {
+
+            font-size: 1.05rem;
+
+            line-height: 1.55;
+
+        }
+
+        .game-container .qg-option-btn {
+
+            font-size: .95rem;
+
+            line-height: 1.5;
+
+            padding: .9rem;
+
+        }
+
+        .game-container .qg-explanation {
+
+            font-size: 1rem;
+
+            line-height: 1.65;
+
+            padding: 1rem;
+
+        }
+
+    }
+
+</style>
+
+
+                        <script>
+
+                            (function(){
+
+                                var qgQuestions = [
+
+                                    {
+                                        question: "1. ¿Para qué sirve la línea base en el paradigma intermodal de preferencia de mirada?",
+
+                                        options: [
+                                            "Para enseñarle al niño las palabras nuevas.",
+                                            "Para comprobar que el niño no prefiere una imagen por sí sola.",
+                                            "Para medir cuánto dura el sonido."
+                                        ],
+
+                                        correctIndex: 1,
+
+                                        explanation: "La línea base muestra dos imágenes con un mensaje neutro, como \"¡Mira ahora!\". Si el niño ya prefiere una imagen desde ahí, su preferencia en la prueba no se puede atribuir a que entendió el mensaje (Mariscal et al., 2012, p. 281)."
+                                    },
+
+
+                                    {
+                                        question: "2. En la fase de prueba, un bebé mira más tiempo la imagen que coincide con la frase que escucha. ¿Cómo se interpreta?",
+
+                                        options: [
+                                            "Que le gustan más los colores de esa imagen.",
+                                            "Que relaciona lo que oyó con lo que vio, lo que se toma como comprensión.",
+                                            "Que se aburrió de la otra imagen."
+                                        ],
+
+                                        correctIndex: 1,
+
+                                        explanation: "Se asume que un mayor tiempo de mirada a la pantalla correcta implica comprensión lingüística (Mariscal et al., 2012, p. 280). Por eso la línea base es importante: descarta que ya prefiriera esa imagen."
+                                    },
+
+
+                                    {
+                                        question: "3. ¿Cuál es una limitación de este método?",
+
+                                        options: [
+                                            "No se puede usar con niños que aún no hablan.",
+                                            "Puede sobreestimar lo que el niño sabe, porque a veces elige la imagen por descarte.",
+                                            "Solo funciona con adultos."
+                                        ],
+
+                                        correctIndex: 1,
+
+                                        explanation: "El método sirve justamente para niños que aún no hablan. Su limitación es que el niño puede reconocer cuál imagen no corresponde y elegir la otra, sin conocer la palabra (Barón Birchenall et al., 2014, p. 85)."
+                                    }
+
+                                ];
+
+
+                                var qgCurrent = 0;
+                                var qgScore = 0;
+
+                                var qgProgressText =
+                                    document.getElementById('qg-progress-text');
+
+                                var qgScoreLabel =
+                                    document.getElementById('qg-score');
+
+                                var qgQuestionBox =
+                                    document.getElementById('qg-question-box');
+
+                                var qgResultBox =
+                                    document.getElementById('qg-result-box');
+
+
+                                function qgRenderQuestion(){
+
+                                    var q = qgQuestions[qgCurrent];
+
+                                    qgProgressText.textContent =
+                                        'Pregunta ' +
+                                        (qgCurrent + 1) +
+                                        ' de ' +
+                                        qgQuestions.length;
+
+                                    qgScoreLabel.textContent =
+                                        'Puntaje: ' +
+                                        qgScore;
+
+
+                                    var html =
+                                        '<div class="qg-question">' +
+                                        q.question +
+                                        '</div>';
+
+                                    html +=
+                                        '<ul class="qg-options">';
+
+
+                                    for (
+                                        var i = 0;
+                                        i < q.options.length;
+                                        i++
+                                    ){
+
+                                        html +=
+                                            '<li>' +
+                                            '<button class="qg-option-btn" data-index="' +
+                                            i +
+                                            '">' +
+                                            q.options[i] +
+                                            '</button>' +
+                                            '</li>';
+
+                                    }
+
+
+                                    html += '</ul>';
+
+                                    html +=
+                                        '<div id="qg-explanation-slot"></div>';
+
+                                    qgQuestionBox.innerHTML = html;
+
+
+                                    var buttons =
+                                        qgQuestionBox.querySelectorAll(
+                                            '.qg-option-btn'
+                                        );
+
+
+                                    buttons.forEach(function(btn){
+
+                                        btn.addEventListener(
+                                            'click',
+                                            function(){
+
+                                                qgAnswer(
+                                                    parseInt(
+                                                        btn.getAttribute(
+                                                            'data-index'
+                                                        ),
+                                                        10
+                                                    ),
+                                                    buttons,
+                                                    q
+                                                );
+
+                                            }
+                                        );
+
+                                    });
+
+                                }
+
+
+                                function qgAnswer(
+                                    selectedIndex,
+                                    buttons,
+                                    q
+                                ){
+
+                                    buttons.forEach(function(btn, i){
+
+                                        btn.disabled = true;
+
+                                        if (
+                                            i === q.correctIndex
+                                        ){
+
+                                            btn.classList.add(
+                                                'qg-correct'
+                                            );
+
+                                        }
+
+                                        else if (
+                                            i === selectedIndex
+                                        ){
+
+                                            btn.classList.add(
+                                                'qg-incorrect'
+                                            );
+
+                                        }
+
+                                    });
+
+
+                                    if (
+                                        selectedIndex ===
+                                        q.correctIndex
+                                    ){
+
+                                        qgScore++;
+
+                                        qgScoreLabel.textContent =
+                                            'Puntaje: ' +
+                                            qgScore;
+
+                                    }
+
+
+                                    var slot =
+                                        document.getElementById(
+                                            'qg-explanation-slot'
+                                        );
+
+
+                                    var isLast =
+                                        qgCurrent ===
+                                        qgQuestions.length - 1;
+
+
+                                    slot.innerHTML =
+
+                                        '<div class="qg-explanation">' +
+                                        q.explanation +
+                                        '</div>' +
+
+                                        '<button class="qg-next-btn" id="qg-next-btn">' +
+                                        (
+                                            isLast
+                                                ? 'Ver resultado'
+                                                : 'Siguiente pregunta'
+                                        ) +
+                                        '</button>';
+
+
+                                    document
+                                        .getElementById('qg-next-btn')
+                                        .addEventListener(
+                                            'click',
+                                            function(){
+
+                                                if (isLast){
+
+                                                    qgShowResult();
+
+                                                }
+
+                                                else {
+
+                                                    qgCurrent++;
+
+                                                    qgRenderQuestion();
+
+                                                }
+
+                                            }
+                                        );
+
+                                }
+
+
+                                function qgShowResult(){
+
+                                    qgQuestionBox
+                                        .classList
+                                        .add('qg-hidden');
+
+                                    document
+                                        .querySelector('.qg-progress')
+                                        .classList
+                                        .add('qg-hidden');
+
+                                    qgResultBox
+                                        .classList
+                                        .remove('qg-hidden');
+
+
+                                    qgResultBox.innerHTML =
+
+                                        '<div class="qg-result">' +
+
+                                        '<h3>¡Actividad terminada!</h3>' +
+
+                                        '<p>Obtuviste ' +
+                                        qgScore +
+                                        ' de ' +
+                                        qgQuestions.length +
+                                        ' respuestas correctas.</p>' +
+
+                                        '<button class="qg-restart-btn" id="qg-restart-btn">' +
+                                        'Volver a intentar' +
+                                        '</button>' +
+
+                                        '</div>';
+
+
+                                    document
+                                        .getElementById(
+                                            'qg-restart-btn'
+                                        )
+                                        .addEventListener(
+                                            'click',
+                                            function(){
+
+                                                qgCurrent = 0;
+                                                qgScore = 0;
+
+                                                qgQuestionBox
+                                                    .classList
+                                                    .remove('qg-hidden');
+
+                                                document
+                                                    .querySelector(
+                                                        '.qg-progress'
+                                                    )
+                                                    .classList
+                                                    .remove('qg-hidden');
+
+                                                qgResultBox
+                                                    .classList
+                                                    .add('qg-hidden');
+
+                                                qgRenderQuestion();
+
+                                            }
+                                        );
+
+                                }
+
+
+                                qgRenderQuestion();
+
+                            })();
+
+                        </script>
+
+
+
+                        <!-- DATO LLAMATIVO -->
+
+                        <div class="section-heading">
+
+
+                            <h2>Dato llamativo</h2>
+
+                        </div>
+
+
+                        <!-- ESPACIO PARA IMAGEN -->
+
+                        <div class="section-image">
+
+                            <img
+                                src="images/preferencia_de_mirada/bebe observando.jpeg"
+                                alt="Bebé observando estímulos visuales">
+
+                        </div>
+
+
+                        <p>
+
+                            Entre los 4 y los 8 meses, al oír frases, los bebés miran cada vez más la boca de quien habla, tanto en su idioma como en uno extranjero. Hacia los 12 meses, solo con su idioma nativo vuelven a mirar más los ojos que la boca. Con el idioma extranjero, en cambio, los bebés de 12 meses no dirigen su atención a los ojos.
+
+                        </p>
+
+
+                        <p>
+
+                            Los autores interpretan estos dos cambios así: mirar la boca podría ayudar al bebé a acceder a información audiovisual del habla, es decir, ver cómo se mueve la boca mientras oye los sonidos, lo que le permitiría aprender las formas del lenguaje. Volver a mirar los ojos reflejaba que ya tiene más experiencia con su idioma nativo, y eso le permite prestar atención a señales sociales. Con un idioma que no conoce, el bebé seguiría necesitando esa información de la boca para procesarlo.
+
+                        </p>
+
+
+                        <p>
+
+                            Este hallazgo se logró con el paradigma intermodal de preferencia de mirada, usando un rastreador ocular: una cámara que registra hacia dónde mira el bebé en la pantalla. Es un ejemplo de lo que el método permite: saber no solo si el niño entiende, sino también cómo distribuye su atención mientras escucha hablar (Lewkowicz &amp; Hansen-Tift, 2012, citado en Barón Birchenall et al., 2014, p. 85).
+
+                        </p>
+
+
+                    </div>
+
+                    <!-- end entry content -->
+
+                </article>
+
+            </main>
+
+        </div>
+
+        <!-- end s-content -->
+
+
+        <!-- footer
+        ================================================== -->
+
+        <footer class="s-footer footer">
+
+            
+
+
+            <!-- FLECHA PARA VOLVER ARRIBA -->
+
+            <div class="go-top">
+
+                <a
+                    class="smoothscroll"
+                    title="Back to Top"
+                    href="#top">
+                </a>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+    <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

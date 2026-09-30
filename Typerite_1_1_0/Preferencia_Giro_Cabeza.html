@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="es">
+
+<head>
+
+    <!-- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Procedimiento de Preferencia de Giro de Cabeza - Cognitiva</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+
+    <!-- ==================================================
+         ESTILOS DEL QUIZ Y FUENTES
+         ================================================== -->
+    <style>
+
+        .header__social {
+        display: flex;
+        gap: 15px;
+    }
+
+/* ==================================================
+   LÍNEA SEPARADORA
+   ================================================== */
+
+.linea-separadora {
+    width: 100%;
+    height: 1px;
+    background: #898989;
+    margin: 40px 0;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE LAS PUBLICACIONES DEL MENÚ
+   ================================================== */
+
+.header__nav .sub-menu li {
+    margin-bottom: 8px;
+}
+
+.header__nav .sub-menu li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   ESPACIO INTERNO DE CADA PUBLICACIÓN
+   ================================================== */
+
+.header__nav .sub-menu li a {
+    display: block;
+    padding: 8px 0;
+    line-height: 1.4;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE NÚMERO Y TEXTO
+   ================================================== */
+
+.header__nav .sub-menu li a.publicacion-link {
+    display: flex !important;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+/* Número */
+
+.numero-publicacion {
+    display: block;
+    flex: 0 0 35px;
+    width: 35px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+
+/* Texto */
+
+.texto-publicacion {
+    display: block;
+    flex: 1;
+}
+
+        /* IMÁGENES DE LAS SECCIONES */
+        .section-image {
+            width: 100%;
+            margin: 1.5rem 0 2rem;
+            text-align: center;
+        }
+
+        .section-image img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+
+        /* ==================================================
+           QUIZ
+           ================================================== */
+
+        .cardio-quiz {
+            background: #000;
+            color: #fff;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .cardio-quiz *,
+        .cardio-quiz *::before,
+        .cardio-quiz *::after {
+            box-sizing: border-box;
+        }
+
+        .cardio-quiz h2,
+        .cardio-quiz h3,
+        .cardio-quiz p {
+            color: #fff;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .quiz-step {
+            display: none;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-options {
+            margin-top: 25px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            text-align: left;
+            background: #111;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1.5;
+            transition: all 0.2s ease;
+
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: normal;
+            overflow: hidden;
+        }
+
+        .quiz-option:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .quiz-option.correct {
+            background: #198754 !important;
+            color: #fff !important;
+            border-color: #198754 !important;
+        }
+
+        .quiz-option.incorrect {
+            background: #dc3545 !important;
+            color: #fff !important;
+            border-color: #dc3545 !important;
+        }
+
+        .quiz-option:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .quiz-feedback {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-left: 3px solid #fff;
+            background: #111;
+            width: 100%;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .quiz-feedback.visible {
+            display: block;
+        }
+
+        .quiz-next {
+            display: none;
+            margin-top: 25px;
+            background: #fff;
+            color: #000;
+            border: 1px solid #fff;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            max-width: 100%;
+            white-space: normal;
+        }
+
+        .quiz-next:hover {
+            background: #ddd;
+        }
+
+        .quiz-open-answer {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            min-height: 150px;
+            background: #111;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 15px;
+            margin-top: 20px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 16px;
+            line-height: 1.5;
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+        }
+
+        .quiz-open-answer::placeholder {
+            color: #bbb;
+        }
+
+        .quiz-submit {
+            margin-top: 15px;
+            background: #fff;
+            color: #000;
+            border: 1px solid #fff;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            max-width: 100%;
+            white-space: normal;
+        }
+
+        .quiz-submit:hover {
+            background: #ddd;
+        }
+
+        .quiz-final {
+            display: none;
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #fff;
+            margin-top: 30px;
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+
+        .quiz-final h3 {
+            margin-bottom: 10px;
+        }
+
+        .quiz-score {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .quiz-open-result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #111;
+            border-left: 3px solid #fff;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+
+        /* ==================================================
+           ENLACES DE LECTURA
+           ================================================== */
+
+        .reading-link {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .reading-link:hover {
+            text-decoration: none;
+        }
+
+
+        /* ==================================================
+           FUENTES CONSULTADAS - NUBE ANIMADA
+           ================================================== */
+
+        .entry__content .source-link {
+            margin: .4rem 0 0;
+        }
+
+        .entry__content .source-link a,
+        .entry__content .src-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            font-weight: 700;
+            color: #111;
+            text-decoration: none;
+            border-bottom: 2px solid #111;
+            padding-bottom: 1px;
+            transition: opacity .2s;
+        }
+
+        .entry__content .source-link a::before,
+        .entry__content .src-link::before {
+            content: "\2192";
+            display: inline-block;
+            transition: transform .2s;
+        }
+
+        .entry__content .source-link a:hover,
+        .entry__content .src-link:hover {
+            opacity: .65;
+        }
+
+        .src-section {
+            margin: 5rem 0 2rem;
+            text-align: center;
+        }
+
+        .src-toggle {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .5rem;
+            margin: 0;
+            padding: 1rem 2.4rem;
+            height: auto;
+            line-height: 1.2;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            text-transform: none;
+            letter-spacing: 0;
+            background: transparent;
+            border: 0;
+            border-radius: 14px;
+            color: #111;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .src-cloud {
+            display: block;
+            font-size: 5.6rem;
+            line-height: 1;
+            filter: drop-shadow(
+                0 6px 8px rgba(0,0,0,.14)
+            );
+            animation:
+                src-float 5s ease-in-out infinite;
+        }
+
+        .src-label {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            transition: opacity .2s;
+        }
+
+        .src-chevron {
+            display: block;
+            font-size: 1.3rem;
+            line-height: 1;
+            transition:
+                transform .4s ease;
+        }
+
+        .src-toggle:hover .src-label {
+            opacity: .65;
+        }
+
+        .src-toggle[aria-expanded="true"]
+        .src-chevron {
+            transform: rotate(180deg);
+        }
+
+        .src-toggle:focus-visible {
+            outline: 3px solid #111;
+            outline-offset: 3px;
+        }
+
+        @keyframes src-float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .src-panel {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            visibility: hidden;
+            text-align: left;
+            transition:
+                grid-template-rows .55s ease,
+                opacity .4s ease,
+                visibility 0s linear .55s;
+        }
+
+        .src-panel.open {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            visibility: visible;
+            transition:
+                grid-template-rows .55s ease,
+                opacity .45s ease .05s,
+                visibility 0s;
+        }
+
+        .src-inner {
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        html.no-js .src-panel {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .src-box {
+            max-width: 900px;
+            margin: 2rem auto 0;
+            padding: 2.6rem;
+            background: #fff;
+            border: 1px solid #e2e2e2;
+            border-radius: 12px;
+            box-shadow:
+                0 8px 25px rgba(0,0,0,.12);
+        }
+
+        .entry__content .src-box h3 {
+            margin: 0 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #111;
+            font-size: 2rem;
+            color: #111;
+        }
+
+        .entry__content .src-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .entry__content .src-item {
+            margin: 0;
+            padding: 1.5rem 1.8rem;
+            background: #f7f7f7;
+            border-left: 4px solid #111;
+            border-radius:
+                0 8px 8px 0;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .entry__content .src-item + .src-item {
+            margin-top: 1.4rem;
+        }
+
+        .entry__content .src-ref {
+            margin: 0 0 .9rem;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: #333;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .entry__content .src-item
+        .src-ref:last-child {
+            margin-bottom: 0;
+        }
+
+        .src-panel.open .src-item {
+            animation:
+                src-in .5s ease both;
+        }
+
+        .src-panel.open
+        .src-item:nth-child(2) {
+            animation-delay: .08s;
+        }
+
+        .src-panel.open
+        .src-item:nth-child(3) {
+            animation-delay: .16s;
+        }
+
+        @keyframes src-in {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+           ================================================== */
+
+        @media (max-width: 600px) {
+
+            .cardio-quiz {
+                padding: 25px 18px;
+            }
+
+            .quiz-option {
+                padding: 14px 15px;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .src-box {
+                padding: 1.6rem;
+            }
+
+            .entry__content .src-item {
+                padding: 1.2rem 1.3rem;
+            }
+
+            .src-cloud {
+                font-size: 4.5rem;
+            }
+
+            .src-label {
+                font-size: 1.1rem;
+                letter-spacing: .12em;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .src-cloud,
+            .src-panel.open .src-item {
+                animation: none;
+            }
+
+            .src-panel,
+            .src-panel.open,
+            .src-chevron {
+                transition: none;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+
+        <div id="loader" class="dots-fade">
+
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </div>
+
+    </div>
+
+
+    <div id="top" class="s-wrap site-wrapper">
+
+
+        <!-- site header
+        ================================================== -->
+
+        <header class="s-header header">
+
+            <div class="header__top">
+
+                <div class="header__logo">
+
+                    <a
+                        class="site-logo"
+                        href="index.html">
+
+                        <img
+                            src="images/logo.svg"
+                            alt="Homepage">
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- end header__top -->
+
+
+            <!-- ==================================================
+                 MENÚ DE NAVEGACIÓN
+                 Contiene los enlaces principales del sitio.
+                 ================================================== -->
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+
+                    <!-- Enlace a la página principal -->
+                    <li class="current">
+                        <a href="inicio.html" title="">Inicio</a>
+                    </li>
+
+
+                    
+
+
+                    <!-- ==================================================
+                         MENÚ DE PUBLICACIONES
+                         Contiene los diferentes tipos de artículos
+                         que puede mostrar el sitio.
+                         ================================================== -->
+                    <li class="has-children">
+
+                        <a href="#0" title="">Publicaciones</a>
+
+                        <ul class="sub-menu">
+
+                            <li>
+                                <a href="metodo_de_succion.html" class="publicacion-link">
+                                    <span class="numero-publicacion">1.</span>
+                                    <span class="texto-publicacion">Procedimiento de succión de amplitud elevada</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Mediciones_cardiacas.html" class="publicacion-link">
+                                    <span class="numero-publicacion">2.</span>
+                                    <span class="texto-publicacion">Mediciones del ritmo cardíaco</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Preferencia_Giro_Cabeza.html" class="publicacion-link">
+                                    <span class="numero-publicacion">3.</span>
+                                    <span class="texto-publicacion">Procedimiento de preferencia de giro de cabeza</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Procedimientos_Reforzamiento_Diferencia.html" class="publicacion-link">
+                                    <span class="numero-publicacion">4.</span>
+                                    <span class="texto-publicacion">Procedimientos basados en el reforzamiento diferencial</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="single-video.html" class="publicacion-link">
+                                    <span class="numero-publicacion">5.</span>
+                                    <span class="texto-publicacion">Paradigma intermodal de preferencia de mirada</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Enlace hacia la página "Nosotros" -->
+                    <li>
+                        <a href="page-about.html" title="">Nosotras</a>
+                    </li>
+
+                </ul>
+                <!-- Fin del menú de navegación -->
+
+
+
+                <!-- end header__nav -->
+
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Facebook
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Twitter
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-instagram">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Instagram
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+
+            <!-- end header__nav-wrap -->
+
+
+            <!-- menu toggle -->
+
+            <a
+                href="#0"
+                class="header__menu-toggle">
+
+                <span>
+                    Menú
+                </span>
+
+            </a>
+
+        </header>
+
+
+        <!-- end s-header -->
+
+
+        <!-- search
+        ================================================== -->
+
+        <div class="s-search">
+
+            <div class="search-block">
+
+                <form
+                    role="search"
+                    method="get"
+                    class="search-form"
+                    action="#">
+
+                    <label>
+
+                        <span class="hide-content">
+                            Buscar:
+                        </span>
+
+                        <input
+                            type="search"
+                            class="search-field"
+                            placeholder="Buscar"
+                            value=""
+                            name="s"
+                            title="Buscar:"
+                            autocomplete="off">
+
+                    </label>
+
+
+                    <input
+                        type="submit"
+                        class="search-submit"
+                        value="Buscar">
+
+                </form>
+
+
+                <a
+                    href="#0"
+                    title="Cerrar búsqueda"
+                    class="search-close">
+
+                    Cerrar
+
+                </a>
+
+            </div>
+
+
+            <!-- end search-block -->
+
+
+            <!-- search modal trigger -->
+
+            <a
+                href="#0"
+                class="search-trigger">
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24">
+
+                    <path
+                        d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z">
+                    </path>
+
+                </svg>
+
+                <span>
+                    Buscar
+                </span>
+
+            </a>
+
+
+            <span class="search-line"></span>
+
+        </div>
+
+
+        <!-- end s-search -->
+
+
+        <!-- site content
+        ================================================== -->
+
+        <div class="s-content content">
+
+            <main class="row content__page">
+
+                <article class="column large-full entry format-video">
+
+
+                    <!-- HEADER
+                    ================================================== -->
+
+                    <div class="content__page-header entry__header">
+
+                        <h1 class="display-1 entry__title">
+
+                            Procedimiento de Preferencia de Giro de Cabeza
+
+                        </h1>
+
+
+                        <ul class="entry__header-meta">
+
+                            <li class="author">
+
+                                Por
+                                <a href="#0">
+                                    Cognitiva
+                                </a>
+
+                            </li>
+
+                            <li class="date">
+                                2026
+                            </li>
+
+                            <li class="cat-links">
+
+                                <a href="#0">
+                                    Métodos experimentales
+                                </a>
+
+                                <a href="#0">
+                                    Cognición temprana
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- end entry__header -->
+
+
+                    <!-- CONTENIDO
+                    ================================================== -->
+
+                    <div class="entry__content">
+
+
+                        <!-- PUNTO 2
+                        ================================================== -->
+
+                        <h2>
+                            1. ¿En qué consiste y cómo se aplica?
+                        </h2>
+
+                        <p>
+                            El proceso de preferencia de Giro de Cabeza mide cuánto tiempo atiende un bebé a un sonido. El método aprovecha que los bebés tiendan a orientar su mirada hacia una fuente de sonido. Sirve para examinar la percepción de sonidos prolongados, sobre todo para el habla.
+                        </p>
+<blockquote>
+                        <p>
+                            Se aplica en bebés de entre 4 meses y medio y un año, sentados en el regazo de un adulto, generalmente la madre. El adulto escucha música con audífonos para no influir en el bebé.
+                        </p>
+</blockquote>
+                        <p>
+                            El experimento se realiza en una cabina de sonido atenuado con tres paneles. El panel central tiene una bombilla verde y una videocámara. Cada panel lateral tiene una bombilla roja y un altavoz.
+                        </p>
+
+                        <p>
+                            Durante la fase de familiarización, la luz central parpadea para captar la atención del bebé. Luego suena el estímulo de familiarización en los altavoces laterales.
+                        </p>
+
+                        <p>
+                            En la fase de prueba, la luz central parpadea y, cuando el bebé mira, se apaga y empieza a parpadear una luz lateral. Si el bebé gira la cabeza al menos 30 grados hacia ella, suena el estímulo. El sonido continúa mientras el bebé mire esa luz y se detiene cuando aparta la mirada unos 2 segundos.
+                        </p>
+
+                        <p>
+                            El examinador, también con audífonos, controla las luces y registra la dirección y duración de los giros.
+                        </p>
+<blockquote>
+                        <p>
+                            Una limitación del método es que solo puede usarse con bebés mayores de 4 meses, porque antes no localizan bien una fuente de sonido lateral.
+                        </p>
+</blockquote>
+
+                        
+
+                        <!-- IMAGEN PUNTO 2 -->
+
+                        <div class="section-image">
+
+                            <img
+                                src="images/jiro_ de_ cabeza/cabeza_mama_niño.jpg"
+                                alt="Rastreador ocular utilizado para estudiar la mirada">
+
+                        </div>
+
+
+                        <!-- ¿QUÉ MIDE?
+                        ================================================== -->
+
+                        <h2>
+                            2. ¿Qué mide o permite estudiar?
+                        </h2>
+
+                        <p>
+                            Este método permite medir el tiempo de escucha hacia cada estímulo, que es la variable dependiente. Si el bebé escucha significativamente más un tipo de estímulo, eso se toma como evidencia de la capacidad para discriminar entre los dos tipos de estímulos.
+                        </p>
+
+                        <p>
+                            Permite estudiar la discriminación de idiomas y de categorías rítmicas, la segmentación de palabras en el habla fluida y la sensibilidad a patrones del acento y auditivos de la lengua de origen.
+                        </p>
+
+
+                        <h2>3. Video o recurso audiovisual</h2>
+
+<p>
+    Para complementar la explicación del Protocolo de Giro de Cabeza
+    (<em>Head-Turn Preference Procedure, HPP</em>), se presenta el siguiente
+    recurso audiovisual:
+</p>
+
+<div class="video-container">
+    <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/FuvX49q9ASc"
+        title="Head Turn Protocol - English Language Toolkit, University of York"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+    </iframe>
+</div>
+<p style="text-align: center; margin-top: 15px;">
+    <strong>
+        "Head Turn Protocol" — English Language Toolkit, University of York (2020)
+    </strong>
+</p>
+
+    <p>
+        El Protocolo de Giro de Cabeza permite observar la orientación del bebé
+        hacia diferentes estímulos auditivos y utilizar esta respuesta como
+        indicador de atención y preferencia.
+    </p>
+
+
+<p>
+    Este video, producido por el English Language Toolkit de la Universidad de York
+    (2020), muestra en la práctica el Protocolo de Giro de Cabeza
+    (<em>Head-Turn Preference Procedure, HPP</em>), el método experimental descrito
+    en la lectura de Barón Birchenall et al. (2014).
+</p>
+
+<p>
+    El recurso permite observar cómo se sienta al bebé frente al panel con las
+    luces y el altavoz, y cómo su giro de cabeza hacia el estímulo sonoro permite
+    a los investigadores medir cuánto tiempo atiende a cada tipo de sonido.
+</p>
+
+<p>
+    Es un recurso útil porque muestra visualmente lo que la lectura describe de
+    forma técnica: el montaje experimental, la reacción del bebé y la lógica
+    detrás de la medición de la atención auditiva.
+</p>
+
+
+
+
+                        <!-- PUNTO 3
+                        ================================================== -->
+
+                        <h2>
+                            3. Lectura en inglés
+                        </h2>
+
+                        <p>
+                            University of Potsdam, BabyLAB. Headturn Preference Paradigm (HPP).
+                        </p>
+
+                        <p>
+
+                            <a
+                                class="reading-link"
+                                href="https://www.uni-potsdam.de/en/babylab/informations-for-parents/methods/hpp"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Consultar la lectura completa
+
+                            </a>
+
+                        </p>
+
+                        <p>
+                            Fuente: University of Potsdam – HPP. En esta lectura podemos evidenciar cómo el HPP mide cuánto tiempo un bebé, de 4 a 24 meses, mantiene la cabeza girada hacia un sonido, como una palabra o frase, que se reproduce a un lado, como indicador de su atención o preferencia por ese estímulo.
+                        </p>
+
+                        <p>
+                            El niño se sienta en el regazo de su padre o madre en una cabina con luces guía. Cuando mira hacia una luz que parpadea, se reproduce el sonido y se cronometra cuánto tiempo sigue mirando. Es un método clásico, usado hace más de 20 años, para estudiar cómo los bebés procesan y discriminan el lenguaje.
+                        </p>
+
+
+                        <!-- PUNTO 4
+                        ================================================== -->
+
+                        <h2>
+                            4. Lectura en español
+                        </h2>
+
+                        <p>
+                            Barón Birchenall, L. F., Müller, O., &amp; Galindo, O. (2014). Métodos de estudio de la percepción del habla. <em>Revista Colombiana de Psicología</em>, 23(1), 73-94.
+                        </p>
+
+                        <p>
+
+                            <a
+                                class="reading-link"
+                                href="http://www.scielo.org.co/scielo.php?script=sci_arttext&pid=S0121-54692014000100005"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Consultar la lectura completa
+
+                            </a>
+
+                        </p>
+
+                        <p>
+                            El artículo revisa los métodos experimentales usados para estudiar cómo los bebés menores de un año perciben el habla, agrupándolos en tres tipos: los que miden habituación, como el HPP o giro de cabeza, los que miden conducta y los que miden actividad cerebral.
+                        </p>
+
+                        <p>
+                            Con estos métodos se ha descubierto que, incluso antes de hablar, los bebés ya distinguen idiomas, ritmos y patrones del habla.
+                        </p>
+
+
+                        <!-- PÁGINA WEB RECOMENDADA
+                        ================================================== -->
+
+                        <h2>
+                            4. Página web recomendada
+                        </h2>
+
+                        <p>
+                            Universitat Pompeu Fabra (UPF), Center for Brain and Cognition. Estudios con bebés.
+                        </p>
+
+                        <p>
+
+                            <a
+                                class="reading-link"
+                                href="https://www.upf.edu/es/web/cbclab/bebes_estudis"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Página del Center for Brain and Cognition de la UPF
+
+                            </a>
+
+                        </p>
+
+                        <p>
+                            En esta página web se habla del laboratorio de investigación con bebés en Barcelona que estudia cómo perciben el lenguaje, aprenden idiomas y razonan los bebés en sus primeros meses de vida, usando técnicas como seguimiento de mirada y potenciales evocados. Es útil porque muestra en español cómo funciona un laboratorio real de estudios con bebés.
+                        </p>
+
+
+                        
+                        <!-- ACTIVIDAD LÚDICA
+                        ================================================== -->
+
+                        <h2>
+                            5. Actividad Lúdica
+                        </h2>
+
+                        <h3>
+                            ¿Cuánto escucha el bebé?
+                        </h3>
+
+                        <p>
+                            Responde las siguientes preguntas de verdadero o falso para comprobar si comprendiste cómo funciona el Procedimiento de Preferencia de Giro de Cabeza (HPP).
+                        </p>
+
+
+                        <!-- QUIZ
+                        ================================================== -->
+
+                        <div
+                            class="cardio-quiz"
+                            id="cardioQuiz">
+
+
+                            <!-- PREGUNTA 1 -->
+
+                            <div
+                                class="quiz-step active"
+                                id="quizStep1">
+
+                                <h3>
+                                    Pregunta 1
+                                </h3>
+
+                                <p>
+                                    El HPP puede usarse con recién nacidos.
+                                </p>
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 1)">
+
+                                        Verdadero
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 1)">
+
+                                        Falso
+
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback1">
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next1"
+                                    onclick="siguientePregunta(2)">
+
+                                    Siguiente pregunta →
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- PREGUNTA 2 -->
+
+                            <div
+                                class="quiz-step"
+                                id="quizStep2">
+
+                                <h3>
+                                    Pregunta 2
+                                </h3>
+
+                                <p>
+                                    Si el bebé escucha más tiempo un estímulo, se infiere que lo discrimina.
+                                </p>
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 2)">
+
+                                        Verdadero
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 2)">
+
+                                        Falso
+
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback2">
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next2"
+                                    onclick="siguientePregunta(3)">
+
+                                    Siguiente pregunta →
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- PREGUNTA 3 -->
+
+                            <div
+                                class="quiz-step"
+                                id="quizStep3">
+
+                                <h3>
+                                    Pregunta 3
+                                </h3>
+
+                                <p>
+                                    La variable dependiente es el tiempo de giro hacia el lugar del sonido.
+                                </p>
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 3)">
+
+                                        Verdadero
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 3)">
+
+                                        Falso
+
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback3">
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next3"
+                                    onclick="siguientePregunta(4)">
+
+                                    Siguiente pregunta →
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- PREGUNTA 4 -->
+
+                            <div
+                                class="quiz-step"
+                                id="quizStep4">
+
+                                <h3>
+                                    Pregunta 4
+                                </h3>
+
+                                <p>
+                                    La madre escucha el mismo sonido que el bebé para poder guiarlo.
+                                </p>
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 4)">
+
+                                        Verdadero
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 4)">
+
+                                        Falso
+
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback4">
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next4"
+                                    onclick="siguientePregunta(5)">
+
+                                    Siguiente pregunta →
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- PREGUNTA 5 -->
+
+                            <div
+                                class="quiz-step"
+                                id="quizStep5">
+
+                                <h3>
+                                    Pregunta 5
+                                </h3>
+
+                                <p>
+                                    En la fase de familiarización se presentan los estímulos de prueba.
+                                </p>
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 5)">
+
+                                        Verdadero
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 5)">
+
+                                        Falso
+
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback5">
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next5"
+                                    onclick="mostrarResultadoFinal()">
+
+                                    Ver resultado final →
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- RESULTADO FINAL -->
+
+                            <div
+                                class="quiz-final"
+                                id="quizFinal">
+
+                                <h3>
+                                    Actividad completada
+                                </h3>
+
+                                <p>
+                                    Has terminado la actividad sobre el Procedimiento de Preferencia de Giro de Cabeza.
+                                </p>
+
+                                <p
+                                    class="quiz-score"
+                                    id="quizScore">
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="quiz-submit"
+                                    onclick="reiniciarQuiz()">
+
+                                    Reiniciar actividad
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DATO LLAMATIVO
+                        ================================================== -->
+
+                        <h2>
+                            9. Dato llamativo
+                        </h2>
+
+                        <p>
+                            Gracias al HPP se ha podido comprobar que los bebés desarrollan desde muy temprano la capacidad de distinguir diferentes idiomas y sonidos. Por ejemplo, desde los primeros días de vida pueden diferenciar idiomas que pertenecen a distintas categorías rítmicas y alrededor de los 5 meses, también pueden distinguir idiomas con diferentes ritmos, aunque ninguno sea su lengua materna.
+                        </p>
+
+                        <p>
+                            A partir de los 7-8 meses, los bebés comienzan a reconocer patrones de sonido y a identificar palabras dentro del habla continua. Hacia los 9 meses, además, muestran preferencia por palabras que siguen los patrones de acentuación y de sonidos más comunes en su lengua materna.
+                        </p>
+
+                        <p>
+                            Esto demuestra que desde los primeros meses de vida los bebés empiezan a desarrollar sensibilidad hacia las características de su idioma.
+                        </p>
+
+
+                        <!-- IMAGEN DATO LLAMATIVO -->
+
+                        <p>
+
+                            <img
+                                src="images/dato-llamativo.jpg"
+                                alt="Dato llamativo sobre el Procedimiento de Preferencia de Giro de Cabeza">
+
+                        </p>
+
+
+                        <!-- ==================================================
+                             DESDE AQUÍ SOLO QUEDA LA NUBE DE FUENTES
+                             ================================================== -->
+
+                        <section
+                            class="src-section"
+                            id="fuentes">
+
+
+                            <button
+                                type="button"
+                                class="src-toggle"
+                                id="src-toggle"
+                                aria-expanded="false"
+                                aria-controls="src-panel">
+
+
+                                <span
+                                    class="src-cloud"
+                                    aria-hidden="true">
+
+                                    ☁️
+
+                                </span>
+
+
+                                <span class="src-label">
+
+                                    Fuentes consultadas
+
+                                </span>
+
+
+                                <span
+                                    class="src-chevron"
+                                    aria-hidden="true">
+
+                                    ▾
+
+                                </span>
+
+
+                            </button>
+
+
+                            <div
+                                class="src-panel"
+                                id="src-panel">
+
+
+                                <div class="src-inner">
+
+
+                                    <div class="src-box">
+
+
+                                        <h3>
+                                            Fuentes consultadas
+                                        </h3>
+
+
+                                        <ul class="src-list">
+
+
+                                            <!-- FUENTE 1 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    Barón Birchenall, L. F.,
+                                                    Müller, O., &amp; Galindo, O.
+                                                    (2014). Métodos de estudio
+                                                    de la percepción del habla.
+                                                    <em>
+                                                        Revista Colombiana de Psicología
+                                                    </em>,
+                                                    23(1), 73-94.
+
+                                                </p>
+
+                                                <a
+                                                    class="src-link"
+                                                    href="http://www.scielo.org.co/scielo.php?script=sci_arttext&pid=S0121-54692014000100005"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Consultar artículo completo
+
+                                                </a>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 2 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    University of Potsdam,
+                                                    BabyLAB. Headturn Preference
+                                                    Paradigm (HPP).
+
+                                                </p>
+
+                                                <a
+                                                    class="src-link"
+                                                    href="https://www.uni-potsdam.de/en/babylab/informations-for-parents/methods/hpp"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Consultar fuente completa
+
+                                                </a>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 3 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    Universitat Pompeu Fabra
+                                                    (UPF), Center for Brain and
+                                                    Cognition. Estudios con bebés.
+
+                                                </p>
+
+                                                <a
+                                                    class="src-link"
+                                                    href="https://www.upf.edu/es/web/cbclab/bebes_estudis"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Consultar página web
+
+                                                </a>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 4 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    English Language Toolkit,
+                                                    University of York (2020).
+                                                    "Head Turn Protocol".
+
+                                                </p>
+
+                                                <a
+                                                    class="src-link"
+                                                    href="https://www.youtube.com/watch?v=FuvX49q9ASc"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Ver recurso audiovisual
+
+                                                </a>
+
+                                            </li>
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                    </div>
+
+
+                    <!-- end entry content -->
+
+
+                    <!-- navigation
+                    ================================================== -->
+
+                    <div class="entry__pagenav">
+
+                        <div class="entry__nav">
+
+
+                            <div class="entry__prev">
+
+                                <a
+                                    href="#0"
+                                    rel="prev">
+
+                                    <span>
+                                        Entrada anterior
+                                    </span>
+
+                                    Paradigma intermodal
+
+                                </a>
+
+                            </div>
+
+
+                            <div class="entry__next">
+
+                                <a
+                                    href="#0"
+                                    rel="next">
+
+                                    <span>
+                                        Siguiente entrada
+                                    </span>
+
+                                    Desarrollo del lenguaje
+
+                                </a>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- end entry pagenav -->
+
+
+                </article>
+
+
+                <!-- end column large-full entry -->
+
+
+            </main>
+
+        </div>
+
+
+        <!-- end s-content -->
+
+
+    </div>
+
+
+    <!-- end s-wrap -->
+
+
+    <!-- ==================================================
+         QUIZ SCRIPT
+         ================================================== -->
+
+    <script>
+
+        let puntuacion = 0;
+
+
+        /*
+         * Preguntas de verdadero o falso
+         */
+
+        function respuestaQuiz(
+            boton,
+            correcta,
+            numeroPregunta
+        ) {
+
+            const paso =
+                document.getElementById(
+                    "quizStep" + numeroPregunta
+                );
+
+            const botones =
+                paso.querySelectorAll(
+                    ".quiz-option"
+                );
+
+            const feedback =
+                document.getElementById(
+                    "feedback" + numeroPregunta
+                );
+
+            const siguiente =
+                document.getElementById(
+                    "next" + numeroPregunta
+                );
+
+
+            /* Evita responder más de una vez */
+
+            botones.forEach(function (b) {
+
+                b.disabled = true;
+
+            });
+
+
+            /* Colorear la opción seleccionada */
+
+            if (correcta) {
+
+                boton.classList.add("correct");
+
+                puntuacion++;
+
+
+                if (numeroPregunta === 1) {
+
+                    feedback.innerHTML =
+                        "✓ <strong>Correcto.</strong> " +
+                        "El HPP se utiliza con bebés mayores " +
+                        "de 4 meses, ya que antes de esa edad " +
+                        "pueden tener dificultades para localizar " +
+                        "una fuente de sonido lateral.";
+
+                }
+
+                else if (numeroPregunta === 2) {
+
+                    feedback.innerHTML =
+                        "✓ <strong>Correcto.</strong> " +
+                        "Si el bebé escucha significativamente " +
+                        "más un tipo de estímulo, esto puede " +
+                        "tomarse como evidencia de su capacidad " +
+                        "para discriminar entre los estímulos.";
+
+                }
+
+                else if (numeroPregunta === 3) {
+
+                    feedback.innerHTML =
+                        "✓ <strong>Correcto.</strong> " +
+                        "El tiempo de escucha o de giro hacia " +
+                        "el lugar donde se presenta el sonido " +
+                        "es la variable dependiente.";
+
+                }
+
+                else if (numeroPregunta === 4) {
+
+                    feedback.innerHTML =
+                        "✓ <strong>Correcto.</strong> " +
+                        "La madre escucha música con audífonos " +
+                        "para evitar influir en la respuesta " +
+                        "del bebé.";
+
+                }
+
+                else if (numeroPregunta === 5) {
+
+                    feedback.innerHTML =
+                        "✓ <strong>Correcto.</strong> " +
+                        "Durante la familiarización se presenta " +
+                        "primero el estímulo de familiarización. " +
+                        "Los estímulos de prueba corresponden " +
+                        "a la fase posterior.";
+
+                }
+
+            }
+
+            else {
+
+                boton.classList.add("incorrect");
+
+
+                /* Mostrar cuál era la correcta */
+
+                botones.forEach(function (b) {
+
+                    if (
+                        (
+                            numeroPregunta === 1 &&
+                            b.textContent.trim() === "Falso"
+                        )
+                        ||
+                        (
+                            numeroPregunta === 2 &&
+                            b.textContent.trim() === "Verdadero"
+                        )
+                        ||
+                        (
+                            numeroPregunta === 3 &&
+                            b.textContent.trim() === "Verdadero"
+                        )
+                        ||
+                        (
+                            numeroPregunta === 4 &&
+                            b.textContent.trim() === "Falso"
+                        )
+                        ||
+                        (
+                            numeroPregunta === 5 &&
+                            b.textContent.trim() === "Falso"
+                        )
+                    ) {
+
+                        b.classList.add("correct");
+
+                    }
+
+                });
+
+
+                if (numeroPregunta === 1) {
+
+                    feedback.innerHTML =
+                        "✗ <strong>Incorrecto.</strong> " +
+                        "El HPP no se utiliza con recién nacidos. " +
+                        "El método requiere bebés mayores de 4 meses.";
+
+                }
+
+                else if (numeroPregunta === 2) {
+
+                    feedback.innerHTML =
+                        "✗ <strong>Incorrecto.</strong> " +
+                        "Una mayor duración de escucha hacia un " +
+                        "estímulo puede interpretarse como evidencia " +
+                        "de discriminación entre estímulos.";
+
+                }
+
+                else if (numeroPregunta === 3) {
+
+                    feedback.innerHTML =
+                        "✗ <strong>Incorrecto.</strong> " +
+                        "La variable dependiente corresponde al " +
+                        "tiempo de escucha o de giro hacia el lugar " +
+                        "del sonido.";
+
+                }
+
+                else if (numeroPregunta === 4) {
+
+                    feedback.innerHTML =
+                        "✗ <strong>Incorrecto.</strong> " +
+                        "La madre no escucha el mismo sonido para " +
+                        "guiar al bebé. Utiliza audífonos para evitar " +
+                        "influir en su comportamiento.";
+
+                }
+
+                else if (numeroPregunta === 5) {
+
+                    feedback.innerHTML =
+                        "✗ <strong>Incorrecto.</strong> " +
+                        "Durante la familiarización se presenta el " +
+                        "estímulo de familiarización. Los estímulos " +
+                        "de prueba se presentan posteriormente.";
+
+                }
+
+            }
+
+
+            feedback.classList.add("visible");
+
+            siguiente.style.display = "inline-block";
+
+        }
+
+
+        /*
+         * Pasar a la siguiente pregunta
+         */
+
+        function siguientePregunta(numero) {
+
+            document
+                .querySelectorAll(".quiz-step")
+                .forEach(function (step) {
+
+                    step.classList.remove("active");
+
+                });
+
+
+            document
+                .getElementById(
+                    "quizStep" + numero
+                )
+                .classList.add("active");
+
+
+            document
+                .getElementById("cardioQuiz")
+                .scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+        }
+
+
+        /*
+         * Mostrar resultado final
+         */
+
+        function mostrarResultadoFinal() {
+
+            document
+                .querySelectorAll(".quiz-step")
+                .forEach(function (step) {
+
+                    step.classList.remove("active");
+
+                });
+
+
+            document.getElementById(
+                "quizFinal"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "quizScore"
+            ).textContent =
+
+                "Puntuación: " +
+                puntuacion +
+                " / 5";
+
+
+            document
+                .getElementById("cardioQuiz")
+                .scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+        }
+
+
+        /*
+         * Reiniciar actividad
+         */
+
+        function reiniciarQuiz() {
+
+            puntuacion = 0;
+
+
+            document
+                .querySelectorAll(".quiz-step")
+                .forEach(function (step) {
+
+                    step.classList.remove("active");
+
+                });
+
+
+            document
+                .getElementById("quizStep1")
+                .classList.add("active");
+
+
+            document
+                .getElementById("quizFinal")
+                .style.display = "none";
+
+
+            document
+                .querySelectorAll(".quiz-option")
+                .forEach(function (boton) {
+
+                    boton.disabled = false;
+
+                    boton.classList.remove(
+                        "correct"
+                    );
+
+                    boton.classList.remove(
+                        "incorrect"
+                    );
+
+                });
+
+
+            document
+                .querySelectorAll(".quiz-feedback")
+                .forEach(function (feedback) {
+
+                    feedback.classList.remove(
+                        "visible"
+                    );
+
+                    feedback.innerHTML = "";
+
+                });
+
+
+            document
+                .querySelectorAll(".quiz-next")
+                .forEach(function (boton) {
+
+                    boton.style.display = "none";
+
+                });
+
+        }
+
+    </script>
+
+
+    <!-- ==================================================
+         NUBE DE FUENTES
+         ================================================== -->
+
+    <script>
+
+        (function () {
+
+            var btn =
+                document.getElementById(
+                    "src-toggle"
+                );
+
+            var panel =
+                document.getElementById(
+                    "src-panel"
+                );
+
+
+            if (!btn || !panel) return;
+
+
+            btn.addEventListener(
+                "click",
+                function () {
+
+                    var open =
+                        panel.classList.toggle(
+                            "open"
+                        );
+
+
+                    btn.setAttribute(
+                        "aria-expanded",
+                        open ? "true" : "false"
+                    );
+
+                }
+            );
+
+        })();
+
+    </script>
+
+
+    <!-- JavaScript
+    ================================================== -->
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>

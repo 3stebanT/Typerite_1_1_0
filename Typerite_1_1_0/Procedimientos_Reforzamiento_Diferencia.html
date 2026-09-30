@@ -1,0 +1,2256 @@
+```html
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+
+<head>
+
+    <!-- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Procedimientos Basados en el Reforzamiento Diferencial - Cognitiva</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+
+    <!-- ==================================================
+         ESTILOS DEL QUIZ Y FUENTES
+         ================================================== -->
+
+    <style>
+
+        .header__social {
+        display: flex;
+        gap: 15px;
+    }
+
+/* ==================================================
+   LÍNEA SEPARADORA
+   ================================================== */
+
+.linea-separadora {
+    width: 100%;
+    height: 1px;
+    background: #898989;
+    margin: 40px 0;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE LAS PUBLICACIONES DEL MENÚ
+   ================================================== */
+
+.header__nav .sub-menu li {
+    margin-bottom: 8px;
+}
+
+.header__nav .sub-menu li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   ESPACIO INTERNO DE CADA PUBLICACIÓN
+   ================================================== */
+
+.header__nav .sub-menu li a {
+    display: block;
+    padding: 8px 0;
+    line-height: 1.4;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE NÚMERO Y TEXTO
+   ================================================== */
+
+.header__nav .sub-menu li a.publicacion-link {
+    display: flex !important;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+/* Número */
+
+.numero-publicacion {
+    display: block;
+    flex: 0 0 35px;
+    width: 35px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+
+/* Texto */
+
+.texto-publicacion {
+    display: block;
+    flex: 1;
+}
+
+/* ==================================================
+   LINEA
+   ================================================== */
+
+.linea-separadora {
+    width: 100%;
+    height: 1px;
+    background: #898989;
+    margin: 40px 0;
+}
+
+/* ==================================================
+   VIDEO / RECURSO AUDIOVISUAL
+   ================================================== */
+
+.video-intro {
+
+    display: flex;
+
+    align-items: center;
+
+    max-width: 900px;
+
+    margin: 30px auto 15px;
+
+    padding: 30px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.03);
+}
+
+
+/* ==================================================
+   CONTENIDO DEL VIDEO
+   ================================================== */
+
+.video-content {
+    width: 100%;
+}
+
+
+/* ==================================================
+   TÍTULO
+   ================================================== */
+
+.video-content h1 {
+
+    margin: 0 0 15px;
+
+    font-size: 28px;
+
+    text-align: left;
+}
+
+
+/* ==================================================
+   TEXTO INTRODUCTORIO
+   ================================================== */
+
+.video-content p {
+
+    margin: 0 0 25px;
+
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+
+/* ==================================================
+   ICONO DE REPRODUCCIÓN
+   ================================================== */
+
+.video-link {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 100%;
+
+    margin: 25px auto 5px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   IMAGEN DEL ICONO
+   ================================================== */
+
+.play-icon {
+
+    width: 130px;
+
+    height: 130px;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/* ==================================================
+   ANIMACIÓN AL PASAR EL MOUSE
+   ================================================== */
+
+.video-link:hover .play-icon {
+
+    transform: scale(1.15);
+
+    filter: brightness(1.15);
+}
+
+
+/* ==================================================
+   EFECTO AL HACER CLIC
+   ================================================== */
+
+.video-link:active .play-icon {
+
+    transform: scale(1.05);
+}
+
+
+/* ==================================================
+   REFERENCIA DEL VIDEO
+   ================================================== */
+
+.video-reference {
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+        /* ==================================================
+           QUIZ
+           ================================================== */
+
+        .cardio-quiz {
+            background: #000;
+            color: #fff;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 4px;
+
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+
+            overflow: hidden;
+        }
+
+        .cardio-quiz *,
+        .cardio-quiz *::before,
+        .cardio-quiz *::after {
+            box-sizing: border-box;
+        }
+
+        .cardio-quiz h2,
+        .cardio-quiz h3,
+        .cardio-quiz p {
+            color: #fff;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .quiz-step {
+            display: none;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-options {
+            margin-top: 25px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .quiz-option {
+            display: block;
+
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+
+            text-align: left;
+
+            background: #111;
+            color: #fff;
+
+            border: 1px solid #fff;
+
+            padding: 16px 20px;
+            margin-bottom: 12px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+            line-height: 1.5;
+
+            transition: all 0.2s ease;
+
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: normal;
+            overflow: hidden;
+        }
+
+        .quiz-option:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .quiz-option.correct {
+            background: #198754 !important;
+            color: #fff !important;
+            border-color: #198754 !important;
+        }
+
+        .quiz-option.incorrect {
+            background: #dc3545 !important;
+            color: #fff !important;
+            border-color: #dc3545 !important;
+        }
+
+        .quiz-option:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .quiz-feedback {
+            display: none;
+
+            margin-top: 20px;
+            padding: 15px;
+
+            border-left: 3px solid #fff;
+            background: #111;
+
+            width: 100%;
+            max-width: 100%;
+
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .quiz-feedback.visible {
+            display: block;
+        }
+
+        .quiz-next {
+            display: none;
+
+            margin-top: 25px;
+
+            background: #fff;
+            color: #000;
+
+            border: 1px solid #fff;
+
+            padding: 12px 25px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            max-width: 100%;
+
+            white-space: normal;
+        }
+
+        .quiz-next:hover {
+            background: #ddd;
+        }
+
+        .quiz-open-answer {
+            display: block;
+
+            width: 100%;
+            max-width: 100%;
+
+            min-height: 150px;
+
+            background: #111;
+            color: #fff;
+
+            border: 1px solid #fff;
+
+            padding: 15px;
+            margin-top: 20px;
+
+            resize: vertical;
+
+            font-family: inherit;
+            font-size: 16px;
+            line-height: 1.5;
+
+            box-sizing: border-box;
+
+            overflow-wrap: break-word;
+        }
+
+        .quiz-open-answer::placeholder {
+            color: #bbb;
+        }
+
+        .quiz-submit {
+            margin-top: 15px;
+
+            background: #fff;
+            color: #000;
+
+            border: 1px solid #fff;
+
+            padding: 12px 25px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            max-width: 100%;
+
+            white-space: normal;
+        }
+
+        .quiz-submit:hover {
+            background: #ddd;
+        }
+
+        .quiz-final {
+            display: none;
+
+            text-align: center;
+
+            padding: 25px;
+
+            border-top: 1px solid #fff;
+
+            margin-top: 30px;
+
+            max-width: 100%;
+
+            overflow-wrap: break-word;
+        }
+
+        .quiz-final h3 {
+            margin-bottom: 10px;
+        }
+
+        .quiz-score {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .quiz-open-result {
+            display: none;
+
+            margin-top: 20px;
+            padding: 15px;
+
+            background: #111;
+
+            border-left: 3px solid #fff;
+
+            max-width: 100%;
+
+            overflow-wrap: break-word;
+        }
+
+
+        /* ==================================================
+           ENLACES DE LECTURA
+           ================================================== */
+
+        .reading-link {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .reading-link:hover {
+            text-decoration: none;
+        }
+
+
+        /* ==================================================
+           FUENTES CONSULTADAS - NUBE ANIMADA
+           ================================================== */
+
+        .entry__content .source-link {
+            margin: .4rem 0 0;
+        }
+
+        .entry__content .source-link a,
+        .entry__content .src-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+
+            font-weight: 700;
+
+            color: #111;
+
+            text-decoration: none;
+
+            border-bottom: 2px solid #111;
+
+            padding-bottom: 1px;
+
+            transition: opacity .2s;
+        }
+
+        .entry__content .source-link a::before,
+        .entry__content .src-link::before {
+            content: "\2192";
+
+            display: inline-block;
+
+            transition: transform .2s;
+        }
+
+        .entry__content .source-link a:hover,
+        .entry__content .src-link:hover {
+            opacity: .65;
+        }
+
+        .src-section {
+            margin: 5rem 0 2rem;
+
+            text-align: center;
+        }
+
+        .src-toggle {
+            display: inline-flex;
+
+            flex-direction: column;
+            align-items: center;
+
+            gap: .5rem;
+
+            margin: 0;
+
+            padding: 1rem 2.4rem;
+
+            height: auto;
+
+            line-height: 1.2;
+
+            white-space: normal;
+
+            overflow: visible;
+
+            text-overflow: clip;
+
+            text-transform: none;
+
+            letter-spacing: 0;
+
+            background: transparent;
+
+            border: 0;
+
+            border-radius: 14px;
+
+            color: #111;
+
+            font-family: inherit;
+
+            cursor: pointer;
+        }
+
+        .src-cloud {
+            display: block;
+
+            font-size: 5.6rem;
+
+            line-height: 1;
+
+            filter: drop-shadow(
+                0 6px 8px rgba(0,0,0,.14)
+            );
+
+            animation:
+                src-float 5s ease-in-out infinite;
+        }
+
+        .src-label {
+            display: block;
+
+            font-size: 1.4rem;
+
+            font-weight: 700;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+
+            transition: opacity .2s;
+        }
+
+        .src-chevron {
+            display: block;
+
+            font-size: 1.3rem;
+
+            line-height: 1;
+
+            transition:
+                transform .4s ease;
+        }
+
+        .src-toggle:hover .src-label {
+            opacity: .65;
+        }
+
+        .src-toggle[aria-expanded="true"]
+        .src-chevron {
+            transform: rotate(180deg);
+        }
+
+        .src-toggle:focus-visible {
+            outline: 3px solid #111;
+
+            outline-offset: 3px;
+        }
+
+        @keyframes src-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+        .src-panel {
+            display: grid;
+
+            grid-template-rows: 0fr;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            text-align: left;
+
+            transition:
+                grid-template-rows .55s ease,
+                opacity .4s ease,
+                visibility 0s linear .55s;
+        }
+
+        .src-panel.open {
+            grid-template-rows: 1fr;
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transition:
+                grid-template-rows .55s ease,
+                opacity .45s ease .05s,
+                visibility 0s;
+        }
+
+        .src-inner {
+            min-height: 0;
+
+            overflow: hidden;
+        }
+
+        html.no-js .src-panel {
+            grid-template-rows: 1fr;
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+        .src-box {
+            max-width: 900px;
+
+            margin: 2rem auto 0;
+
+            padding: 2.6rem;
+
+            background: #fff;
+
+            border: 1px solid #e2e2e2;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,.12);
+        }
+
+        .entry__content .src-box h3 {
+            margin: 0 0 2rem;
+
+            padding-bottom: 1rem;
+
+            border-bottom: 2px solid #111;
+
+            font-size: 2rem;
+
+            color: #111;
+        }
+
+        .entry__content .src-list {
+            list-style: none;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+        .entry__content .src-item {
+            margin: 0;
+
+            padding: 1.5rem 1.8rem;
+
+            background: #f7f7f7;
+
+            border-left: 4px solid #111;
+
+            border-radius:
+                0 8px 8px 0;
+
+            overflow-wrap: break-word;
+
+            word-wrap: break-word;
+        }
+
+        .entry__content .src-item + .src-item {
+            margin-top: 1.4rem;
+        }
+
+        .entry__content .src-ref {
+            margin: 0 0 .9rem;
+
+            font-size: 1.6rem;
+
+            line-height: 1.6;
+
+            color: #333;
+
+            overflow-wrap: break-word;
+
+            word-wrap: break-word;
+        }
+
+        .entry__content .src-item
+        .src-ref:last-child {
+            margin-bottom: 0;
+        }
+
+        .src-panel.open .src-item {
+            animation:
+                src-in .5s ease both;
+        }
+
+        .src-panel.open
+        .src-item:nth-child(2) {
+            animation-delay: .08s;
+        }
+
+        .src-panel.open
+        .src-item:nth-child(3) {
+            animation-delay: .16s;
+        }
+
+        @keyframes src-in {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform: none;
+            }
+
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+           ================================================== */
+
+        @media (max-width: 600px) {
+
+            .cardio-quiz {
+                padding: 25px 18px;
+            }
+
+            .quiz-option {
+                padding: 14px 15px;
+
+                font-size: 15px;
+
+                line-height: 1.5;
+            }
+
+            .src-box {
+                padding: 1.6rem;
+            }
+
+            .entry__content .src-item {
+                padding: 1.2rem 1.3rem;
+            }
+
+            .src-cloud {
+                font-size: 4.5rem;
+            }
+
+            .src-label {
+                font-size: 1.1rem;
+
+                letter-spacing: .12em;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .src-cloud,
+            .src-panel.open .src-item {
+                animation: none;
+            }
+
+            .src-panel,
+            .src-panel.open,
+            .src-chevron {
+                transition: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+
+    <div id="preloader">
+
+        <div id="loader" class="dots-fade">
+
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </div>
+
+    </div>
+
+
+    <div id="top" class="s-wrap site-wrapper">
+
+
+        <!-- site header
+        ================================================== -->
+
+        <header class="s-header header">
+
+            <div class="header__top">
+
+                <div class="header__logo">
+
+                    <a
+                        class="site-logo"
+                        href="index.html">
+
+                        <img
+                            src="images/logo.svg"
+                            alt="Homepage">
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 MENÚ DE NAVEGACIÓN
+                 Contiene los enlaces principales del sitio.
+                 ================================================== -->
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+
+                    <!-- Enlace a la página principal -->
+                    <li class="current">
+                        <a href="inicio.html" title="">Inicio</a>
+                    </li>
+
+
+                    
+
+
+                    <!-- ==================================================
+                         MENÚ DE PUBLICACIONES
+                         Contiene los diferentes tipos de artículos
+                         que puede mostrar el sitio.
+                         ================================================== -->
+                    <li class="has-children">
+
+                        <a href="#0" title="">Publicaciones</a>
+
+                        <ul class="sub-menu">
+
+                            <li>
+                                <a href="metodo_de_succion.html" class="publicacion-link">
+                                    <span class="numero-publicacion">1.</span>
+                                    <span class="texto-publicacion">Procedimiento de succión de amplitud elevada</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Mediciones_cardiacas.html" class="publicacion-link">
+                                    <span class="numero-publicacion">2.</span>
+                                    <span class="texto-publicacion">Mediciones del ritmo cardíaco</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Preferencia_Giro_Cabeza.html" class="publicacion-link">
+                                    <span class="numero-publicacion">3.</span>
+                                    <span class="texto-publicacion">Procedimiento de preferencia de giro de cabeza</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Procedimientos_Reforzamiento_Diferencia.html" class="publicacion-link">
+                                    <span class="numero-publicacion">4.</span>
+                                    <span class="texto-publicacion">Procedimientos basados en el reforzamiento diferencial</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="single-video.html" class="publicacion-link">
+                                    <span class="numero-publicacion">5.</span>
+                                    <span class="texto-publicacion">Paradigma intermodal de preferencia de mirada</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Enlace hacia la página "Nosotros" -->
+                    <li>
+                        <a href="page-about.html" title="">Nosotras</a>
+                    </li>
+
+                </ul>
+                <!-- Fin del menú de navegación -->
+
+
+
+                <!-- end header__nav -->
+
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Facebook
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Twitter
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-instagram">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Instagram
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <a
+                href="#0"
+                class="header__menu-toggle">
+
+                <span>
+                    Menú
+                </span>
+
+            </a>
+
+        </header>
+
+
+        <!-- search
+        ================================================== -->
+
+        <div class="s-search">
+
+            <div class="search-block">
+
+                <form
+                    role="search"
+                    method="get"
+                    class="search-form"
+                    action="#">
+
+                    <label>
+
+                        <span class="hide-content">
+                            Buscar:
+                        </span>
+
+                        <input
+                            type="search"
+                            class="search-field"
+                            placeholder="Buscar"
+                            value=""
+                            name="s"
+                            title="Buscar:"
+                            autocomplete="off">
+
+                    </label>
+
+
+                    <input
+                        type="submit"
+                        class="search-submit"
+                        value="Buscar">
+
+                </form>
+
+
+                <a
+                    href="#0"
+                    title="Cerrar búsqueda"
+                    class="search-close">
+
+                    Cerrar
+
+                </a>
+
+            </div>
+
+
+            <a
+                href="#0"
+                class="search-trigger">
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24">
+
+                    <path
+                        d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z">
+                    </path>
+
+                </svg>
+
+                <span>
+                    Buscar
+                </span>
+
+            </a>
+
+
+            <span class="search-line"></span>
+
+        </div>
+
+
+        <!-- site content
+        ================================================== -->
+
+        <div class="s-content content">
+
+            <main class="row content__page">
+
+                <article class="column large-full entry format-video">
+
+
+                    <!-- HEADER
+                    ================================================== -->
+
+                    <div class="content__page-header entry__header">
+
+                        <h1 class="display-1 entry__title">
+                            Procedimientos Basados en el Reforzamiento Diferencial
+                        </h1>
+
+                        <ul class="entry__header-meta">
+
+                            <li class="author">
+
+                                Por
+                                <a href="#0">
+                                    Cognitiva
+                                </a>
+
+                            </li>
+
+                            <li class="date">
+                                2026
+                            </li>
+
+                            <li class="cat-links">
+
+                                <a href="#0">
+                                    Métodos experimentales
+                                </a>
+
+                                <a href="#0">
+                                    Cognición temprana
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- CONTENIDO
+                    ================================================== -->
+
+                    <div class="entry__content">
+
+
+                        <!-- DESCRIPCIÓN
+                        ================================================== -->
+
+                        <h2>
+                            ¿En qué consiste y cómo se aplica?
+                        </h2>
+
+                        <p>
+
+                            Este método se fundamenta en modificar y
+                            condicionar la conducta natural de succión no
+                            nutritiva del recién nacido mediante la
+                            presentación contingente de un estímulo auditivo
+                            específico (reforzador). La producción o
+                            modificación de un sonido del habla depende de
+                            que el bebé ajuste la velocidad, ritmo o duración
+                            de sus descansos de succión según un parámetro
+                            predeterminado por el experimentador.
+
+                        </p>
+
+
+                        <p>
+
+                            Se aplica siguiendo fases rigurosas:
+
+                        </p>
+
+
+                        <ol>
+
+                            <li>
+                                <strong>
+                                    Fase de Exposición Preconcepcional o Prenatal:
+                                </strong>
+                                Las madres recitan un estímulo sonoro, como
+                                un cuento infantil, de forma repetida durante
+                                las últimas semanas de gestación para exponer
+                                auditivamente al feto.
+                            </li>
+
+                            <li>
+                                <strong>
+                                    Establecimiento de la Línea de Base:
+                                </strong>
+                                Tras el nacimiento, se le coloca al bebé un
+                                chupete modificado conectado a un transductor
+                                de presión e interconectado a un computador.
+                                Durante unos minutos sin estimulación auditiva,
+                                se registra la tasa habitual de succión y la
+                                duración media de los Intervalos Entre
+                                Estallidos de Succión (IES) para obtener el
+                                Valor Medio (VM).
+                            </li>
+
+                            <li>
+                                <strong>
+                                    Fase de Reforzamiento Diferencial:
+                                </strong>
+                                Se le presentan al recién nacido dos estímulos
+                                auditivos distintos, por ejemplo, una historia
+                                conocida y una historia desconocida. Para que
+                                suene un determinado estímulo, el bebé debe
+                                ajustar su patrón de succión: si el intervalo
+                                IES es igual o mayor al VM se reproduce una
+                                historia, y si es menor se activa la otra.
+                                Se invierte la contingencia para descartar
+                                sesgos fisiológicos.
+                            </li>
+
+                            <li>
+                                <strong>
+                                    Fase de Registro:
+                                </strong>
+                                Se mide la frecuencia relativa con la que el
+                                lactante ajusta voluntariamente la duración
+                                de sus IES para mantener en reproducción el
+                                estímulo auditivo de su preferencia.
+                            </li>
+
+                        </ol>
+
+
+                        <blockquote>
+
+                            <p>
+
+                                "La presentación de uno u otro tipo de historia
+                                dependía de las características de la succión
+                                de un chupete (conectado a un computador
+                                mediante un transductor de presión) por parte
+                                de los bebés [...] La línea de base de la
+                                frecuencia de succión se utilizó entonces para
+                                determinar la distribución y el valor medio
+                                de los IES de todos los bebés (VM) [...] El
+                                procedimiento de reforzamiento diferencial [...]
+                                consistió en presentar a la mitad de los
+                                participantes las historias conocidas, si sus
+                                IES duraban lo mismo o más que el VM, y las
+                                historias desconocidas si sus IES duraban
+                                menos que el VM"
+                                (Barón Birchenall et al., 2014, p. 81).
+
+                            </p>
+
+                        </blockquote>
+
+
+                        <div class="linea-separadora"></div>
+
+
+                        <!-- VIDEO
+                        ================================================== -->
+
+                        <div class="media-wrap entry__media">
+
+                            <div class="video-intro">
+
+                                <div class="video-content">
+
+                                    <h1>
+                                        Recurso audiovisual: reforzamiento
+                                        diferencial y succión infantil
+                                    </h1>
+
+                                    <p>
+
+                                        El siguiente video permite observar
+                                        un procedimiento relacionado con la
+                                        investigación de la percepción
+                                        auditiva prenatal y la respuesta de
+                                        los recién nacidos ante estímulos
+                                        sonoros previamente escuchados durante
+                                        la gestación.
+
+                                    </p>
+
+
+                                    <video
+    class="video-local"
+    controls
+    preload="metadata"
+>
+    <source src="videos/WhatsApp Video 2026-09-29 at 11.33.16 AM.mp4" type="video/mp4">
+    Tu navegador no soporta la reproducción de videos.
+</video>
+                                </div>
+
+                            </div>
+
+
+                            <!-- REFERENCIA -->
+
+                            <p class="video-reference">
+
+                                <strong>
+                                    Video de referencia. Desde el minuto
+                                    3:40.
+                                </strong>
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="linea-separadora"></div>
+
+
+                        <!-- ¿QUÉ MIDE?
+                        ================================================== -->
+
+                        <h2>
+                            ¿Qué mide o qué permite estudiar?
+                        </h2>
+
+
+                        <p>
+
+                            Permite estudiar el aprendizaje prenatal, la
+                            memoria auditiva temprana, el reconocimiento de
+                            la voz materna, la discriminación de características
+                            prosódicas y la preferencia por el habla materna
+                            con entonación natural desde los primeros días y
+                            semanas de vida.
+
+                        </p>
+
+
+                        <blockquote>
+
+                            <p>
+
+                                "Sucedió entonces que la frecuencia relativa de
+                                los IES que generaban la presentación de la
+                                historia conocida aumentó significativamente
+                                en relación con la frecuencia de los IES que
+                                generaban la presentación de la historia
+                                desconocida. Esto se interpretó como indicio de
+                                que la percepción del habla materna por parte
+                                de los fetos (por lo menos en el mes y medio
+                                previo al alumbramiento) influye sobre la
+                                percepción de los sonidos del lenguaje después
+                                del nacimiento [...] Los resultados de este
+                                estudio indican que hacia el primer mes de vida
+                                se prefiere la voz materna a la de un extraño,
+                                siempre y cuando se hable con una entonación
+                                natural"
+                                (Barón Birchenall et al., 2014, p. 81).
+
+                            </p>
+
+                        </blockquote>
+
+
+                        <div class="linea-separadora"></div>
+
+
+                        <!-- LECTURAS RECOMENDADAS
+                        ================================================== -->
+
+                        <h2>
+                            Lecturas recomendadas
+                        </h2>
+
+
+                        <h3>
+                            Español
+                        </h3>
+
+
+                        <h3>
+                            ¿De qué trata la investigación?
+                        </h3>
+
+
+                        <p>
+
+                            Es un estudio cualitativo y descriptivo enfocado
+                            en evaluar cómo la estimulación auditiva durante
+                            la gestación favorece el desarrollo lingüístico
+                            infantil durante los primeros años de vida.
+
+                        </p>
+
+
+                        <p>
+
+                            <a
+                                class="reading-link"
+                                href="https://www.researchgate.net/publication/390361567_La_estimulacion_auditiva_prenatal_en_el_desarrollo_del_lenguaje"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Consultar la investigación completa
+
+                            </a>
+
+                        </p>
+
+
+                        <h3>
+                            Inglés
+                        </h3>
+
+
+                        <h3>
+                            ¿De qué trata la investigación?
+                        </h3>
+
+
+                        <p>
+
+                            El estudio investigó si los fetos en el tercer
+                            trimestre de gestación son capaces de reconocer
+                            patrones del habla materna recurrente, como un
+                            poema o rima específica, a los que han sido
+                            expuestos previamente.
+
+                        </p>
+
+
+                        <p>
+
+                            <a
+                                class="reading-link"
+                                href="https://www.researchgate.net/publication/240474886_Fetal_reaction_to_recurrent_maternal_speech"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Consultar la investigación completa
+
+                            </a>
+
+                        </p>
+
+
+                        <div class="linea-separadora"></div>
+
+
+                        <!-- ACTIVIDAD LÚDICA
+                        ================================================== -->
+
+                        <h2>
+                            Actividad: Resuelve el caso
+                        </h2>
+
+
+                        <h3>
+                            Caso de Aprendizaje Prenatal (DeCasper &amp; Spence, 1986)
+                        </h3>
+
+
+                        <p>
+
+                            Un investigador quiere saber si los recién nacidos
+                            reconocen la voz de su madre tras haberla oído
+                            antes de nacer. Le coloca al bebé un chupete
+                            conectado a un equipo que mide la duración de los
+                            descansos de succión (IES).
+
+                        </p>
+
+
+                        <!-- QUIZ
+                        ================================================== -->
+
+                        <div
+                            class="cardio-quiz"
+                            id="cardioQuiz">
+
+
+                            <!-- PREGUNTA 1 -->
+
+                            <div
+                                class="quiz-step active"
+                                id="quizStep1">
+
+                                <h3>
+                                    Pregunta
+                                </h3>
+
+
+                                <p>
+
+                                    Si el bebé quiere escuchar a su madre
+                                    recitar el cuento que le leía durante el
+                                    embarazo y la regla fija es que solo suena
+                                    si hace pausas largas de succión,
+                                    ¿qué conducta mostrará el recién nacido?
+
+                                </p>
+
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 1)">
+
+                                        A) Dejará de succionar por completo
+                                        porque se cansa.
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 1)">
+
+                                        B) Aumentará la frecuencia de pausas
+                                        largas de succión para hacer sonar
+                                        la voz materna.
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 1)">
+
+                                        C) Succionará lo más rápido y seguido
+                                        posible sin hacer pausas.
+
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback1">
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next1"
+                                    onclick="mostrarResultadoFinal()">
+
+                                    Ver resultado → 
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- RESULTADO FINAL -->
+
+                            <div
+                                class="quiz-final"
+                                id="quizFinal">
+
+                                <h3>
+                                    Actividad completada
+                                </h3>
+
+
+                                <p>
+
+                                    Has terminado el caso de aprendizaje
+                                    prenatal.
+
+                                </p>
+
+
+                                <p
+                                    class="quiz-score"
+                                    id="quizScore">
+                                </p>
+
+
+                                <p>
+
+                                    La respuesta correcta es la opción B:
+                                    el bebé aumenta la frecuencia de pausas
+                                    largas de succión para conseguir que se
+                                    reproduzca el estímulo auditivo de su
+                                    preferencia.
+
+                                </p>
+
+
+                                <button
+                                    type="button"
+                                    class="quiz-submit"
+                                    onclick="reiniciarQuiz()">
+
+                                    Reiniciar actividad
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="linea-separadora"></div>
+
+
+                        <!-- PÁGINA WEB RECOMENDADA
+                        ================================================== -->
+
+                        <h2>
+                            Página web recomendada
+                        </h2>
+
+
+                        <p>
+
+                            Este laboratorio, dirigido por la investigadora
+                            Linda Polka, utiliza paradigmas relacionados con
+                            los descritos en el artículo de Barón Birchenall
+                            et al. (2014) y Mariscal et al. (2012).
+
+                        </p>
+
+
+                        <ul>
+
+                            <li>
+
+                                <strong>
+                                    Estudio del habla preverbal:
+                                </strong>
+
+                                Investigan cómo los bebés perciben las
+                                vocales, los patrones prosódicos y las
+                                consonantes antes de poder hablar.
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    Integración y preferencia:
+                                </strong>
+
+                                Evalúan cómo la exposición temprana a la voz
+                                humana y al entorno auditivo moldea el
+                                aprendizaje del lenguaje en recién nacidos y
+                                lactantes.
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    Laboratorio de Percepción del Habla
+                                    Infantil:
+                                </strong>
+
+                                McGill University.
+
+                            </li>
+
+                        </ul>
+
+
+                        <p>
+
+                            <a
+                                class="reading-link"
+                                href="https://www.psych.mcgill.ca/labs/bebe/english/"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Visitar el laboratorio de percepción del
+                                habla infantil
+
+                            </a>
+
+                        </p>
+
+
+                        <!-- ==================================================
+                             NUBE DE FUENTES
+                             ================================================== -->
+
+                        <section
+                            class="src-section"
+                            id="fuentes">
+
+
+                            <button
+                                type="button"
+                                class="src-toggle"
+                                id="src-toggle"
+                                aria-expanded="false"
+                                aria-controls="src-panel">
+
+
+                                <span
+                                    class="src-cloud"
+                                    aria-hidden="true">
+
+                                    ☁️
+
+                                </span>
+
+
+                                <span class="src-label">
+
+                                    Fuentes consultadas
+
+                                </span>
+
+
+                                <span
+                                    class="src-chevron"
+                                    aria-hidden="true">
+
+                                    ▾
+
+                                </span>
+
+
+                            </button>
+
+
+                            <div
+                                class="src-panel"
+                                id="src-panel">
+
+
+                                <div class="src-inner">
+
+
+                                    <div class="src-box">
+
+
+                                        <h3>
+                                            Fuentes consultadas
+                                        </h3>
+
+
+                                        <ul class="src-list">
+
+
+                                            <!-- FUENTE 1 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    Barón Birchenall et al.
+                                                    (2014).
+
+                                                </p>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 2 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    La estimulación auditiva
+                                                    prenatal en el desarrollo
+                                                    del lenguaje.
+
+                                                </p>
+
+
+                                                <a
+                                                    class="src-link"
+                                                    href="https://www.researchgate.net/publication/390361567_La_estimulacion_auditiva_prenatal_en_el_desarrollo_del_lenguaje"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Consultar investigación
+                                                    completa
+
+                                                </a>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 3 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    DeCasper &amp; Spence
+                                                    (1986). Fetal reaction to
+                                                    recurrent maternal speech.
+
+                                                </p>
+
+
+                                                <a
+                                                    class="src-link"
+                                                    href="https://www.researchgate.net/publication/240474886_Fetal_reaction_to_recurrent_maternal_speech"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Consultar investigación
+                                                    completa
+
+                                                </a>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 4 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    Video de referencia sobre
+                                                    percepción auditiva prenatal.
+                                                    Desde el minuto 3:40.
+
+                                                </p>
+
+
+                                                <a
+                                                    class="src-link"
+                                                    href="https://youtu.be/aCmuVOIPShg?si=VU1QS_zVgYCYqct0"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Ver video
+
+                                                </a>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 5 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    Laboratorio de Percepción
+                                                    del Habla Infantil
+                                                    (McGill University).
+
+                                                </p>
+
+
+                                                <a
+                                                    class="src-link"
+                                                    href="https://www.psych.mcgill.ca/labs/bebe/english/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Visitar página web
+
+                                                </a>
+
+                                            </li>
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                    </div>
+
+
+                    <!-- end entry content -->
+
+
+                    <!-- navigation
+                    ================================================== -->
+
+                    <div class="entry__pagenav">
+
+                        <div class="entry__nav">
+
+
+                            <div class="entry__prev">
+
+                                <a
+                                    href="#0"
+                                    rel="prev">
+
+                                    <span>
+                                        Entrada anterior
+                                    </span>
+
+                                    Paradigma intermodal
+
+                                </a>
+
+                            </div>
+
+
+                            <div class="entry__next">
+
+                                <a
+                                    href="#0"
+                                    rel="next">
+
+                                    <span>
+                                        Siguiente entrada
+                                    </span>
+
+                                    Desarrollo del lenguaje
+
+                                </a>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </article>
+
+
+            </main>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ==================================================
+         QUIZ SCRIPT
+         ================================================== -->
+
+    <script>
+
+        let puntuacion = 0;
+
+
+        /*
+         * Pregunta de selección múltiple
+         */
+
+        function respuestaQuiz(
+            boton,
+            correcta,
+            numeroPregunta
+        ) {
+
+            const paso =
+                document.getElementById(
+                    "quizStep" + numeroPregunta
+                );
+
+            const botones =
+                paso.querySelectorAll(
+                    ".quiz-option"
+                );
+
+            const feedback =
+                document.getElementById(
+                    "feedback" + numeroPregunta
+                );
+
+            const siguiente =
+                document.getElementById(
+                    "next" + numeroPregunta
+                );
+
+
+            /* Evita responder más de una vez */
+
+            botones.forEach(function (b) {
+
+                b.disabled = true;
+
+            });
+
+
+            /* Colorear la opción seleccionada */
+
+            if (correcta) {
+
+                boton.classList.add("correct");
+
+                puntuacion++;
+
+
+                feedback.innerHTML =
+                    "✓ <strong>Correcto.</strong> " +
+                    "El bebé puede modificar voluntariamente " +
+                    "su patrón de succión para conseguir que " +
+                    "se reproduzca el estímulo auditivo que prefiere.";
+
+            }
+
+
+            else {
+
+                boton.classList.add("incorrect");
+
+
+                /* Mostrar la respuesta correcta */
+
+                botones.forEach(function (b) {
+
+                    if (
+                        b.textContent.includes(
+                            "Aumentará la frecuencia"
+                        )
+                    ) {
+
+                        b.classList.add("correct");
+
+                    }
+
+                });
+
+
+                feedback.innerHTML =
+                    "✗ <strong>Incorrecto.</strong> " +
+                    "En este procedimiento, el reforzamiento " +
+                    "permite que el bebé ajuste su patrón de " +
+                    "succión para conseguir la reproducción " +
+                    "del estímulo auditivo asociado.";
+
+            }
+
+
+            feedback.classList.add("visible");
+
+            siguiente.style.display =
+                "inline-block";
+
+        }
+
+
+        /*
+         * Mostrar resultado final
+         */
+
+        function mostrarResultadoFinal() {
+
+            document
+                .querySelectorAll(".quiz-step")
+                .forEach(function (step) {
+
+                    step.classList.remove("active");
+
+                });
+
+
+            document.getElementById(
+                "quizFinal"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "quizScore"
+            ).textContent =
+                "Puntuación: " +
+                puntuacion +
+                " / 1";
+
+
+            document
+                .getElementById("cardioQuiz")
+                .scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+        }
+
+
+        /*
+         * Reiniciar actividad
+         */
+
+        function reiniciarQuiz() {
+
+            puntuacion = 0;
+
+
+            document
+                .querySelectorAll(".quiz-step")
+                .forEach(function (step) {
+
+                    step.classList.remove("active");
+
+                });
+
+
+            document
+                .getElementById("quizStep1")
+                .classList.add("active");
+
+
+            document
+                .getElementById("quizFinal")
+                .style.display = "none";
+
+
+            document
+                .querySelectorAll(".quiz-option")
+                .forEach(function (boton) {
+
+                    boton.disabled = false;
+
+                    boton.classList.remove(
+                        "correct"
+                    );
+
+                    boton.classList.remove(
+                        "incorrect"
+                    );
+
+                });
+
+
+            document
+                .querySelectorAll(".quiz-feedback")
+                .forEach(function (feedback) {
+
+                    feedback.classList.remove(
+                        "visible"
+                    );
+
+                    feedback.innerHTML = "";
+
+                });
+
+
+            document
+                .querySelectorAll(".quiz-next")
+                .forEach(function (boton) {
+
+                    boton.style.display = "none";
+
+                });
+
+        }
+
+    </script>
+
+
+    <!-- ==================================================
+         NUBE DE FUENTES
+         ================================================== -->
+
+    <script>
+
+        (function () {
+
+            var btn =
+                document.getElementById(
+                    "src-toggle"
+                );
+
+            var panel =
+                document.getElementById(
+                    "src-panel"
+                );
+
+
+            if (!btn || !panel) return;
+
+
+            btn.addEventListener(
+                "click",
+                function () {
+
+                    var open =
+                        panel.classList.toggle(
+                            "open"
+                        );
+
+
+                    btn.setAttribute(
+                        "aria-expanded",
+                        open ? "true" : "false"
+                    );
+
+                }
+            );
+
+        })();
+
+    </script>
+
+
+    <!-- JavaScript
+    ================================================== -->
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
+```

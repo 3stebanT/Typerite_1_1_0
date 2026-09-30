@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="es">
+
+<head>
+
+    <!-- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Procedimiento de Succión de Amplitud Elevada (HASP) - Cognitiva</title>
+    <meta name="description" content="Procedimiento de Succión de Amplitud Elevada (HASP): aplicación, medición, recursos y actividad interactiva sobre percepción del habla en bebés.">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>/* ==================================================
+   LECTURAS EN DOS COLUMNAS
+   ================================================== */
+
+.readings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+    width: 100%;
+    margin: 4rem 0;
+}
+
+.reading-card {
+    padding: 2.5rem;
+    background: #f7f7f7;
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.reading-card .section-heading {
+    margin-top: 0;
+}
+
+.reading-card p {
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   ICONO DE LA FUENTE
+   ================================================== */
+
+.source-access {
+    margin: 2rem 0 0;
+}
+
+.source-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    background: #111;
+    color: #fff;
+
+    border-radius: 50%;
+
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.source-icon:hover {
+    transform: translateY(-4px);
+    background: #339989;
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+
+
+/* ==================================================
+   TEXTO AL PASAR EL MOUSE
+   ================================================== */
+
+.source-tooltip {
+    position: absolute;
+
+    bottom: calc(100% + 12px);
+    left: 50%;
+
+    transform: translateX(-50%) translateY(5px);
+
+    background: #111;
+    color: #fff;
+
+    padding: .7rem 1rem;
+
+    border-radius: 6px;
+
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+.source-tooltip::after {
+    content: "";
+
+    position: absolute;
+
+    top: 100%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #111;
+}
+
+.source-icon:hover .source-tooltip {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(-50%) translateY(0);
+}
+
+.source-icon:focus-visible {
+    outline: 3px solid #339989;
+    outline-offset: 4px;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+
+@media (max-width: 700px) {
+
+    .readings-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .reading-card {
+        padding: 2rem;
+    }
+
+}
+
+/* ==================================================
+   LÍNEA SEPARADORA
+   ================================================== */
+
+.linea-separadora {
+    width: 100%;
+    height: 1px;
+    background: #898989;
+    margin: 40px 0;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE LAS PUBLICACIONES DEL MENÚ
+   ================================================== */
+
+.header__nav .sub-menu li {
+    margin-bottom: 8px;
+}
+
+.header__nav .sub-menu li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   ESPACIO INTERNO DE CADA PUBLICACIÓN
+   ================================================== */
+
+.header__nav .sub-menu li a {
+    display: block;
+    padding: 8px 0;
+    line-height: 1.4;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE NÚMERO Y TEXTO
+   ================================================== */
+
+.header__nav .sub-menu li a.publicacion-link {
+    display: flex !important;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+/* Número */
+
+.numero-publicacion {
+    display: block;
+    flex: 0 0 35px;
+    width: 35px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+
+/* Texto */
+
+.texto-publicacion {
+    display: block;
+    flex: 1;
+}
+
+        /* =================================
+   ESPACIADO ENTRE SECCIONES
+   ================================= */
+
+
+
+.section-heading h2 {
+    margin: 0;
+}
+
+/* Espacio para los subtítulos */
+.entry__content h3 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+        }
+
+        .section-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            color: #339989;
+        }
+
+        .section-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* IMÁGENES DE LAS SECCIONES */
+       .section-image {
+    width: 100%;
+    margin: 2rem 0 3rem;
+    text-align: center;
+}
+
+.section-image img {
+    width: auto;
+    max-width: 90%;
+    max-height: 550px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    object-fit: contain;
+}
+
+        /* VIDEO */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0 2rem;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .video-placeholder iframe {
+    width: 100%;
+    max-width: 900px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+        /* CONTENEDOR DEL JUEGO */
+        .game-container {
+            background: #222;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .game-container .qg-root {
+            margin: 0;
+        }
+
+        /* Adaptación del juego dentro del contenedor oscuro */
+        .game-container .qg-progress {
+            color: #ddd;
+        }
+
+        .game-container .qg-option-btn {
+            background: #fff;
+            color: #222;
+        }
+
+        .game-container .qg-explanation {
+            background: #fff;
+            color: #444;
+        }
+
+        .game-container .qg-question {
+            color: #fff;
+        }
+
+    
+        /* ===== HASP: multimedia ===== */
+        .media-placeholder,
+        .video-placeholder {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto 3rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-align: center;
+}
+
+.video-placeholder video {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);}
+
+        .media-placeholder strong,
+        .video-placeholder strong {
+            display: block;
+            font-size: 1.15rem;
+            margin-bottom: .5rem;
+        }
+        .media-placeholder span,
+        .video-placeholder span {
+            display: block;
+            color: #666;
+        }
+        .video-placeholder {
+            min-height: 190px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+        .video-placeholder-icon {
+            width: 58px;
+            height: 58px;
+            line-height: 58px;
+            border-radius: 50%;
+            background: #339989;
+            color: #fff;
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+        }
+        .video-placeholder code,
+        .media-placeholder code {
+            background: #e8e8e8;
+            padding: .15rem .35rem;
+            border-radius: 4px;
+        }
+
+        /* ===== CRUCIGRAMA HASP (nuevo) ===== */
+.cx{--ink:#111;--paper:#fff;--soft:#efefef;--mid:#d2d2d2;--line:#b5b5b5;--muted:#666;
+    margin:2rem 0;padding:1.6rem;background:var(--paper);border:2px solid var(--ink);border-radius:12px;color:var(--ink);box-sizing:border-box}
+.cx *{box-sizing:border-box}
+
+.cx-top{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.cx-progress{flex:1;height:8px;background:var(--mid);border-radius:99px;overflow:hidden}
+.cx-bar{height:100%;width:0;background:var(--ink);border-radius:99px;transition:width .25s}
+.cx-count{font-size:1.3rem;font-weight:700;white-space:nowrap}
+
+.cx-now{min-height:3.4rem;display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;margin-bottom:1.2rem;
+    background:var(--soft);border-left:6px solid var(--ink);border-radius:6px;font-size:1.6rem;line-height:1.4}
+.cx-now b{white-space:nowrap}
+.cx-now.idle{color:var(--muted);border-left-color:var(--line)}
+
+.cx-layout{display:flex;flex-direction:column;gap:1.8rem}
+
+.cx-board{display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:3px;width:100%;max-width:700px;margin:0 auto}
+.cx-cell{position:relative;aspect-ratio:1;min-width:0}
+.cx-cell input{width:100%;height:100%;padding:0;border:2px solid var(--ink);border-radius:3px;background:var(--paper);
+    color:var(--ink);text-align:center;text-transform:uppercase;font-weight:700;font-size:clamp(.9rem,2.4vw,1.5rem);
+    caret-color:transparent;outline:none;cursor:pointer;transition:background .12s,color .12s}
+.cx-cell.in-word input{background:var(--mid)}
+.cx-cell.active input{background:var(--ink);color:var(--paper)}
+.cx-cell.correct input{background:var(--paper);box-shadow:inset 0 0 0 3px var(--ink)}
+.cx-cell.incorrect input{background:repeating-linear-gradient(45deg,#fff 0 4px,#d9d9d9 4px 6px);border-style:dashed}
+.cx-cell.locked input{background:var(--soft);color:var(--muted);font-style:italic}
+.cx-n{position:absolute;top:2px;left:4px;font:700 clamp(7px,1.4vw,10px)/1 Arial,sans-serif;color:var(--ink);pointer-events:none;z-index:1}
+.cx-cell.active .cx-n{color:var(--paper)}
+
+.cx-side{width:100%}
+.cx-side h4{margin:0 0 .7rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink);font-size:1.5rem}
+.cx-side h4:not(:first-child){margin-top:1.8rem}
+.cx-side ol{list-style:none;margin:0;padding:0}
+.cx-clue{display:flex;gap:.7rem;width:100%;margin:0 0 .4rem;padding:.6rem .8rem;text-align:left;font-size:1.45rem;line-height:1.4;
+    height:auto;min-height:0;white-space:normal;overflow:visible;text-overflow:clip;text-transform:none;letter-spacing:0;font-weight:400;font-family:inherit;
+    color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:6px;cursor:pointer;transition:background .12s,color .12s,border-color .12s}
+.cx-clue .txt{flex:1;min-width:0;overflow-wrap:anywhere}
+.cx-clue:hover{border-color:var(--ink)}
+.cx-clue .num{flex:none;width:1.9rem;height:1.9rem;line-height:1.9rem;text-align:center;border-radius:50%;background:var(--ink);color:var(--paper);font-weight:700;font-size:1.2rem}
+.cx-clue.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.cx-clue.on .num{background:var(--paper);color:var(--ink)}
+.cx-clue.done:not(.on){color:var(--muted);background:var(--soft)}
+.cx-clue.done .txt{text-decoration:line-through}
+
+.cx-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.cx-actions button{margin:0;height:auto;padding:.7rem 1.3rem;line-height:1.2;border-radius:6px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);font-weight:700;cursor:pointer;text-transform:none;letter-spacing:0}
+.cx-actions button.primary{background:var(--ink);color:var(--paper)}
+.cx-actions button:hover{background:var(--mid);border-color:var(--ink);color:var(--ink)}
+.cx-actions button.primary:hover{background:#333;color:var(--paper)}
+.cx-msg{min-height:2rem;margin:1rem 0 0;font-size:1.5rem;font-weight:600}
+.cx-msg.win{padding:.6rem .9rem;background:var(--ink);color:var(--paper);border-radius:6px}
+.cx button:focus-visible,.cx input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.cx-cell.active input:focus-visible{outline-color:#777}
+
+@media (max-width:820px){
+  .cx{padding:1rem}
+  .cx-board{gap:2px}
+  .cx-cell input{border-width:1.5px;border-radius:2px}
+}
+
+
+        /* ===== ENLACES DE FUENTES + SECCIÓN "FUENTES CONSULTADAS" ===== */
+.entry__content .source-link{margin:.4rem 0 0}
+.entry__content .source-link a,.entry__content .src-link{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;color:#111;text-decoration:none;border-bottom:2px solid #111;padding-bottom:1px;transition:opacity .2s}
+.entry__content .source-link a::before,.entry__content .src-link::before{content:"\2192";display:inline-block;transition:transform .2s}
+.entry__content .source-link a:hover,.entry__content .src-link:hover{opacity:.65}
+.entry__content .source-link a:hover::before,.entry__content .src-link:hover::before{transform:translateX(4px)}
+
+.src-section{margin:5rem 0 2rem;text-align:center}
+.src-toggle{display:inline-flex;flex-direction:column;align-items:center;gap:.5rem;margin:0;padding:1rem 2.4rem;height:auto;line-height:1.2;white-space:normal;overflow:visible;text-overflow:clip;text-transform:none;letter-spacing:0;background:transparent;border:0;border-radius:14px;color:#111;font-family:inherit;cursor:pointer}
+.src-cloud{display:block;font-size:5.6rem;line-height:1;filter:drop-shadow(0 6px 8px rgba(0,0,0,.14));animation:src-float 5s ease-in-out infinite}
+.src-label{display:block;font-size:1.4rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:opacity .2s}
+.src-chevron{display:block;font-size:1.3rem;line-height:1;transition:transform .4s ease}
+.src-toggle:hover .src-label{opacity:.65}
+.src-toggle[aria-expanded="true"] .src-chevron{transform:rotate(180deg)}
+.src-toggle:focus-visible{outline:3px solid #111;outline-offset:3px}
+@keyframes src-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.src-panel{display:grid;grid-template-rows:0fr;opacity:0;visibility:hidden;text-align:left;
+    transition:grid-template-rows .55s ease,opacity .4s ease,visibility 0s linear .55s}
+.src-panel.open{grid-template-rows:1fr;opacity:1;visibility:visible;
+    transition:grid-template-rows .55s ease,opacity .45s ease .05s,visibility 0s}
+.src-inner{min-height:0;overflow:hidden}
+html.no-js .src-panel{grid-template-rows:1fr;opacity:1;visibility:visible}
+
+.src-box{max-width:900px;margin:2rem auto 0;padding:2.6rem;background:#fff;border:1px solid #e2e2e2;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,.12)}
+.entry__content .src-box h3{margin:0 0 2rem;padding-bottom:1rem;border-bottom:2px solid #111;font-size:2rem;color:#111}
+.entry__content .src-list{list-style:none;margin:0;padding:0}
+.entry__content .src-item{margin:0;padding:1.5rem 1.8rem;background:#f7f7f7;border-left:4px solid #111;border-radius:0 8px 8px 0}
+.entry__content .src-item + .src-item{margin-top:1.4rem}
+.entry__content .src-ref{margin:0 0 .9rem;font-size:1.6rem;line-height:1.6;color:#333}
+.entry__content .src-item .src-ref:last-child{margin-bottom:0}
+.src-panel.open .src-item{animation:src-in .5s ease both}
+.src-panel.open .src-item:nth-child(2){animation-delay:.08s}
+.src-panel.open .src-item:nth-child(3){animation-delay:.16s}
+.src-panel.open .src-item:nth-child(4){animation-delay:.24s}
+@keyframes src-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+@media (max-width:600px){
+  .src-box{padding:1.6rem}
+  .entry__content .src-item{padding:1.2rem 1.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .src-cloud,.src-panel.open .src-item{animation:none}
+  .src-panel,.src-panel.open,.src-chevron{transition:none}
+}
+
+</style>
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+
+                <div class="header__logo">
+
+                    <a class="site-logo" href="index.html">
+                        <img src="images/logo.svg" alt="Homepage">
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- end header__top -->
+
+
+            <!-- ==================================================
+                 MENÚ DE NAVEGACIÓN
+                 Contiene los enlaces principales del sitio.
+                 ================================================== -->
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+
+                    <!-- Enlace a la página principal -->
+                    <li class="current">
+                        <a href="inicio.html" title="">Inicio</a>
+                    </li>
+
+
+                    
+
+
+                    <!-- ==================================================
+                         MENÚ DE PUBLICACIONES
+                         Contiene los diferentes tipos de artículos
+                         que puede mostrar el sitio.
+                         ================================================== -->
+                    <li class="has-children">
+
+                        <a href="#0" title="">Publicaciones</a>
+
+                        <ul class="sub-menu">
+
+                            <li>
+                                <a href="metodo_de_succion.html" class="publicacion-link">
+                                    <span class="numero-publicacion">1.</span>
+                                    <span class="texto-publicacion">Procedimiento de succión de amplitud elevada</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Mediciones_cardiacas.html" class="publicacion-link">
+                                    <span class="numero-publicacion">2.</span>
+                                    <span class="texto-publicacion">Mediciones del ritmo cardíaco</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Preferencia_Giro_Cabeza.html" class="publicacion-link">
+                                    <span class="numero-publicacion">3.</span>
+                                    <span class="texto-publicacion">Procedimiento de preferencia de giro de cabeza</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Procedimientos_Reforzamiento_Diferencia.html" class="publicacion-link">
+                                    <span class="numero-publicacion">4.</span>
+                                    <span class="texto-publicacion">Procedimientos basados en el reforzamiento diferencial</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="single-video.html" class="publicacion-link">
+                                    <span class="numero-publicacion">5.</span>
+                                    <span class="texto-publicacion">Paradigma intermodal de preferencia de mirada</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Enlace hacia la página "Nosotros" -->
+                    <li>
+                        <a href="page-about.html" title="">Nosotras</a>
+                    </li>
+
+                </ul>
+                <!-- Fin del menú de navegación -->
+
+
+
+                <!-- end header__nav -->
+
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Facebook
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Twitter
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-instagram">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Instagram
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <!-- end header__nav-wrap -->
+
+
+            <!-- menu toggle -->
+            <a href="#0" class="header__menu-toggle">
+                <span>Menu</span>
+            </a>
+
+        </header>
+
+        <!-- end s-header -->
+
+
+        <!-- search
+        ================================================== -->
+
+        <div class="s-search">
+
+            <div class="search-block">
+
+                <form role="search" method="get" class="search-form" action="#">
+
+                    <label>
+
+                        <span class="hide-content">Buscar:</span>
+
+                        <input
+                            type="search"
+                            class="search-field"
+                            placeholder="Escribe una palabra clave"
+                            value=""
+                            name="s"
+                            title="Buscar:"
+                            autocomplete="off">
+
+                    </label>
+
+                    <input
+                        type="submit"
+                        class="search-submit"
+                        value="Buscar">
+
+                </form>
+
+                <a href="#0" title="Cerrar búsqueda" class="search-close">
+                    Cerrar
+                </a>
+
+            </div>
+
+            <!-- end search-block -->
+
+
+            <!-- search modal trigger -->
+
+            <a href="#0" class="search-trigger">
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+
+                    <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z">
+                    </path>
+
+                </svg>
+
+                <span>Buscar</span>
+
+            </a>
+
+            <span class="search-line"></span>
+
+        </div>
+
+        <!-- end s-search -->
+
+
+        <!-- site content
+        ================================================== -->
+
+        <div class="s-content content">
+
+            <main class="row content__page">
+
+                <article class="column large-full entry format-video">
+
+
+                    <!-- TÍTULO -->
+
+                    <div class="content__page-header entry__header">
+
+                        <h1 class="display-1 entry__title">
+                            Procedimiento de Succión de Amplitud Elevada (HASP)
+                        </h1>
+
+                        <ul class="entry__header-meta">
+
+                            <li class="author">
+
+                                Por
+                                <a href="#0">
+                                    Cognitiva
+                                </a>
+
+                            </li>
+
+                            <li class="date">
+                                2026
+                            </li>
+
+                            <li class="cat-links">
+
+                                <a href="#0">
+                                    Métodos experimentales
+                                </a>
+
+                                <a href="#0">
+                                    Cognición temprana
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <!-- end entry__header -->
+
+
+                    
+<div class="entry__content">
+
+    <p class="lead drop-cap">
+        Estudiar a los bebés puede ser difícil porque todavía no pueden expresar con palabras lo que
+        piensan, sienten o comprenden. Por esta razón, la Psicología del Desarrollo utiliza métodos
+        experimentales que permiten estudiar sus capacidades a partir de conductas observables, como la
+        succión, el giro de la cabeza, el tiempo que permanecen mirando un estímulo, etc.
+    </p>
+<blockquote>
+    <p>
+        Los métodos revisados permiten estudiar principalmente la percepción temprana del habla, la
+        atención, la discriminación de estímulos, la comprensión del lenguaje y algunos conocimientos sobre
+        el mundo físico.
+    </p>
+</blockquote>
+    <div class="section-heading">
+        <h2>1. Procedimiento de Succión de Amplitud Elevada (HASP)</h2>
+    </div>
+
+    <h3>¿En qué consiste? ¿Cómo se aplica?</h3>
+
+    <p>
+        Según Barón Birchenall, Müller y Galindo (2014), el Procedimiento de Succión de Amplitud Elevada o
+        conocido como HASP por sus siglas en inglés (<em>High-Amplitude Sucking Procedure</em>), es un
+        método experimental utilizado para estudiar cómo los bebés perciben y discriminan diferentes
+        estímulos auditivos, especialmente sonidos del habla. Se utiliza principalmente con bebés desde
+        el nacimiento hasta los 4 meses para estudiar su capacidad de discriminar pequeños fragmentos de
+        material auditivo.
+    </p>
+
+    <p>
+        Para aplicarlo, el bebé se coloca en una cuna ligeramente inclinada y se le da un chupete conectado
+        a un computador mediante un transductor de presión. El computador registra la frecuencia con la que
+        el bebé succiona y permite controlar los estímulos auditivos que se presentan mediante un altoparlante.
+    </p>
+
+    <p>
+        Primero se establece una línea de base, midiendo la frecuencia de succión sin presentar ningún
+        estímulo. Después comienza la fase de familiarización, en la que se presenta repetidamente un mismo
+        estímulo. A medida que el bebé se habitúa, “la frecuencia de succión comienza a disminuir”. Cuando
+        esta disminución alcanza un criterio determinado, generalmente alrededor de una tercera parte,
+        comienza la fase de prueba.
+    </p>
+<blockquote>
+    <p>
+        En esta fase se presenta un estímulo novedoso al grupo experimental, mientras que al grupo control
+        se le presenta nuevamente el estímulo conocido. Si la frecuencia de succión aumenta ante el estímulo
+        novedoso, se interpreta como evidencia de que el bebé “ha discriminado los estímulos presentados”.
+    </p>
+</blockquote>
+    <div class="section-image">
+      <img src="images/Procedimiento_de_Succión/images (1).jpg" alt="Imagen del procedimiento HASP">
+    </div>
+
+    <div class="linea-separadora"></div>
+    <h3>¿Qué mide o qué permite estudiar?</h3>
+
+    <p>
+        El HASP permite estudiar principalmente la capacidad de los bebés para discriminar estímulos
+        auditivos, especialmente pequeños fragmentos de material auditivo. También permite observar
+        cambios en la respuesta de succión cuando el bebé pasa de un estímulo familiar a uno novedoso.
+    </p>
+<blockquote>
+    <p>
+        En otras palabras, el método permite saber si un bebé percibe una diferencia entre dos estímulos
+        auditivos, aunque todavía no pueda hablar ni expresar verbalmente lo que ha percibido.
+    </p>
+</blockquote>
+    <div class="section-image">
+      <img src="images/Procedimiento_de_Succión/alteraciones-en-la-succion-del-bebe.jpg" alt="Imagen del procedimiento HASP">
+    </div>
+<div class="linea-separadora"></div>
+    <div class="section-heading">
+        <h2>Video o recurso audiovisual</h2>
+    </div>
+
+    <p>
+        Este video muestra de manera práctica cómo se utilizan diferentes procedimientos experimentales
+        para estudiar la percepción del habla en bebés, incluyendo el procedimiento de succión de amplitud
+        elevada (HASP).
+    </p>
+    
+
+    <div class="video-placeholder">
+    <video controls>
+        <source src="videos/metodo de succion.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video.
+    </video>
+    </div>
+<div class="linea-separadora"></div>
+    <div class="readings-grid">
+
+    <!-- LECTURA EN ESPAÑOL -->
+    <div class="reading-card">
+
+        <div class="section-heading">
+            <h2>Lectura en español</h2>
+        </div>
+
+        <p>
+            Este artículo científico presenta diferentes investigaciones sobre la percepción del habla durante
+            el primer año de vida. Entre los métodos mencionados se encuentra el paradigma de succión de
+            elevada amplitud (HASP), utilizado para estudiar la capacidad de los bebés para discriminar
+            diferentes estímulos del habla.
+        </p>
+
+        <p class="source-access">
+            <a
+                class="source-icon"
+                href="https://www.redalyc.org/pdf/805/80532607002.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Presiona para ingresar a la fuente">
+                ↗
+                <span class="source-tooltip">
+                    Presiona para ingresar a la fuente
+                </span>
+            </a>
+        </p>
+
+    </div>
+
+
+    <!-- LECTURA EN INGLÉS -->
+    <div class="reading-card">
+
+        <div class="section-heading">
+            <h2>Lectura en inglés</h2>
+        </div>
+
+        <p>
+            Este artículo estudia cómo los bebés de dos meses procesan los sonidos del habla cuando estos son
+            producidos por diferentes personas. Para realizar el estudio se utilizó una versión modificada del
+            procedimiento de succión de amplitud elevada (HAS), permitiendo analizar la capacidad de los bebés
+            para detectar cambios fonéticos.
+        </p>
+
+        <p class="source-access">
+            <a
+                class="source-icon"
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3071505/pdf/nihms278728.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Presiona para ingresar a la fuente">
+                ↗
+                <span class="source-tooltip">
+                    Presiona para ingresar a la fuente
+                </span>
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+    <div class="section-heading">
+        <h2>Página web recomendada</h2>
+    </div>
+
+    <p>
+        Es una página que reúne diferentes recursos académicos relacionados con la fonética y la percepción
+        del habla. Entre ellos incluye materiales sobre procedimientos experimentales utilizados para estudiar
+        la percepción del habla en bebés, como el HASP.
+    </p>
+
+    <p class="source-access">
+    <a
+        class="source-icon"
+        href="https://www.internationalphoneticassociation.org/content/links-phonetics-resources?utm_source"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Presiona para ingresar a la fuente">
+        ↗
+        <span class="source-tooltip">
+            Presiona para ingresar a la fuente
+        </span>
+    </a>
+</p>
+
+    <div class="linea-separadora"></div>
+
+    <div class="section-heading">
+        <h2>Actividad lúdica: Crucigrama</h2>
+    </div>
+
+    <p>
+        Completa el crucigrama utilizando las pistas relacionadas con el procedimiento de succión de
+        amplitud elevada. Haz clic en una pista para llevar el cursor a la primera casilla de su respuesta.
+    </p>
+
+<div class="cx" id="cx">
+    <div class="cx-top">
+        <div class="cx-progress"><div class="cx-bar" id="cx-bar"></div></div>
+        <span class="cx-count" id="cx-count">0 / 0</span>
+    </div>
+
+    <div class="cx-now idle" id="cx-now" aria-live="polite">Toca una casilla o una pista para empezar.</div>
+
+    <div class="cx-layout">
+        <div class="cx-board" id="cx-board" role="group" aria-label="Crucigrama interactivo"></div>
+
+        <div class="cx-side">
+            <h4>Horizontales</h4>
+            <ol id="cx-across"></ol>
+            <h4>Verticales</h4>
+            <ol id="cx-down"></ol>
+        </div>
+    </div>
+
+    <div class="cx-actions">
+        <button type="button" class="primary" id="cx-check">Comprobar</button>
+        <button type="button" id="cx-hint">Pista (revela una letra)</button>
+        <button type="button" id="cx-reset">Reiniciar</button>
+    </div>
+    <p class="cx-msg" id="cx-msg" aria-live="polite"></p>
+</div>
+
+
+
+    <div class="section-heading">
+        <h2>Dato llamativo</h2>
+    </div>
+
+    <div class="section-image">
+      <img src="images/Procedimiento_de_Succión/images.jpg" alt="Imagen del procedimiento HASP">
+    </div>
+
+    <p>
+        ¡El HASP ha permitido estudiar lo que los bebés pueden reconocer incluso a los pocos días de
+        haber nacido!
+    </p>
+
+    <p>
+        Una de las cosas más sorprendentes de este método es que no es necesario esperar a que el bebé
+        tenga varios meses para utilizarlo. Investigaciones han aplicado el Procedimiento de Succión de
+        Amplitud Elevada con recién nacidos de apenas 3 días de vida. En uno de estos estudios, los bebés
+        franceses escucharon palabras japonesas y, mediante sus cambios en la succión, se pudo estudiar si
+        diferenciaban palabras de dos y tres sílabas, e incluso diferencias relacionadas con las moras,
+        una unidad rítmica utilizada en japonés.
+    </p>
+
+    <p>
+        Lo llamativo es que el bebé todavía no habla ni puede responder verbalmente a los investigadores,
+        pero su patrón de succión permite obtener información sobre cómo responde ante diferentes estímulos
+        del lenguaje. Esto demuestra por qué el HASP ha sido una herramienta tan útil para investigar las
+        capacidades auditivas y lingüísticas durante los primeros días de vida.
+    </p>
+
+    
+
+    <!-- ================= FUENTES CONSULTADAS ================= -->
+    <section class="src-section" id="fuentes">
+
+        <button type="button" class="src-toggle" id="src-toggle" aria-expanded="false" aria-controls="src-panel">
+            <span class="src-cloud" aria-hidden="true">☁️</span>
+            <span class="src-label">Fuentes consultadas</span>
+            <span class="src-chevron" aria-hidden="true">▾</span>
+        </button>
+
+        <div class="src-panel" id="src-panel">
+            <div class="src-inner">
+                <div class="src-box">
+
+                    <h3>Fuentes consultadas</h3>
+
+                    <ul class="src-list">
+
+                        <li class="src-item">
+                            <p class="src-ref">
+                                Barón Birchenall, L., Galindo, Ó., &amp; Müller, O. (2014). La percepción del habla durante el
+                                primer año de vida. <em>Revista Latinoamericana de Psicología, 46</em>(1), 12–23.
+                            </p>
+                            <a class="src-link" href="https://www.redalyc.org/pdf/805/80532607002.pdf" target="_blank" rel="noopener">Consultar artículo completo</a>
+                        </li>
+
+                        <li class="src-item">
+                            <p class="src-ref">
+                                Jusczyk, P. W., Pisoni, D. B., &amp; Mullennix, J. (1992). Some consequences of stimulus variability
+                                on speech processing by 2-month-old infants. <em>Cognition, 43</em>(3), 253–291.
+                            </p>
+                            <a class="src-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3071505/pdf/nihms278728.pdf" target="_blank" rel="noopener">Consultar artículo en inglés</a>
+                        </li>
+
+                        <li class="src-item">
+                            <p class="src-ref">
+                                International Phonetic Association. (s. f.). <em>Links to phonetics resources</em>.
+                            </p>
+                            <a class="src-link" href="https://www.internationalphoneticassociation.org/content/links-phonetics-resources?utm_source" target="_blank" rel="noopener">Consultar página web</a>
+                        </li>
+
+                        <li class="src-item">
+                            <p class="src-ref">
+                                Bertoncini, J., Floccia, C., Nazzi, T., &amp; Mehler, J. (1995). <em>Morae and Syllables:
+                                Rhythmical Basis of Speech Representations in Neonates</em>. <em>Language and Speech, 38</em>(4),
+                                311–329.
+                            </p>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</div>
+
+
+                    <!-- end entry content -->
+
+                </article>
+
+            </main>
+
+        </div>
+
+        <!-- end s-content -->
+
+
+        <!-- footer
+        ================================================== -->
+
+        <footer class="s-footer footer">
+
+            
+
+
+            <!-- FLECHA PARA VOLVER ARRIBA -->
+
+            <div class="go-top">
+
+                <a
+                    class="smoothscroll"
+                    title="Back to Top"
+                    href="#top">
+                </a>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+    <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+
+<script>
+(function () {
+    // r = fila, c = columna (desde 0), d = A (horizontal) o D (vertical)
+    // La distribución está verificada: todas las palabras se cruzan en letras iguales.
+    const WORDS = [
+        { w:"SUCCION",        r:0,  c:5,  d:"D", q:"Respuesta del bebé que se registra durante el procedimiento." },
+        { w:"CHUPETE",        r:1,  c:3,  d:"A", q:"Objeto que el bebé succiona durante el experimento." },
+        { w:"ESTIMULO",       r:1,  c:7,  d:"D", q:"Información presentada al participante durante el experimento." },
+        { w:"AUDITIVO",       r:2,  c:0,  d:"D", q:"Tipo de estímulo que se presenta mediante el altoparlante." },
+        { w:"HASP",           r:2,  c:2,  d:"D", q:"Sigla del procedimiento en inglés." },
+        { w:"NOVEDOSO",       r:3,  c:12, d:"D", q:"Estímulo diferente al presentado durante la familiarización." },
+        { w:"DISCRIMINACION", r:4,  c:0,  d:"A", q:"Capacidad del bebé para distinguir entre diferentes estímulos." },
+        { w:"BEBE",           r:6,  c:9,  d:"A", q:"Participante del procedimiento." },
+        { w:"PRESION",        r:8,  c:2,  d:"A", q:"Variable relacionada con el dispositivo conectado al chupete." },
+        { w:"HABITUACION",    r:10, c:3,  d:"A", q:"Disminución de la respuesta después de presentar repetidamente un estímulo." }
+    ];
+
+    const $ = id => document.getElementById(id);
+    const board = $("cx-board"), now = $("cx-now"), msg = $("cx-msg");
+    const key = (r, c) => r + "-" + c;
+    const cells = {};              // key -> { input, el, ans, words:{A,D} }
+    let cur = { word: null, cell: null }, hintsUsed = 0;
+
+    // Numeración automática por orden de lectura
+    WORDS.sort((a, b) => a.r - b.r || a.c - b.c);
+    let n = 0, last = "";
+    WORDS.forEach(w => { const k = key(w.r, w.c); if (k !== last) n++; last = k; w.n = n; });
+
+    WORDS.forEach((w, i) => {
+        w.keys = [];
+        for (let j = 0; j < w.w.length; j++) {
+            const r = w.r + (w.d === "D" ? j : 0), c = w.c + (w.d === "A" ? j : 0), k = key(r, c);
+            cells[k] = cells[k] || { r, c, ans: w.w[j], words: {}, num: 0 };
+            cells[k].words[w.d] = i;
+            if (j === 0) cells[k].num = w.n;
+            w.keys.push(k);
+        }
+    });
+
+    const rows = Math.max(...Object.values(cells).map(x => x.r)) + 1;
+    const cols = Math.max(...Object.values(cells).map(x => x.c)) + 1;
+    board.style.setProperty("--cols", cols);
+
+    // ---------- Dibujo ----------
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+        const k = key(r, c), cell = document.createElement("div");
+        cell.className = "cx-cell";
+        if (cells[k]) {
+            const inp = document.createElement("input");
+            inp.maxLength = 1; inp.autocomplete = "off"; inp.autocapitalize = "characters";
+            inp.setAttribute("aria-label", "Fila " + (r + 1) + ", columna " + (c + 1));
+            inp.dataset.k = k;
+            cell.appendChild(inp);
+            if (cells[k].num) { const s = document.createElement("span"); s.className = "cx-n"; s.textContent = cells[k].num; cell.appendChild(s); }
+            cells[k].input = inp; cells[k].el = cell;
+        }
+        board.appendChild(cell);
+    }
+
+    // ---------- Lista de pistas (sin respuestas) ----------
+    WORDS.forEach((w, i) => {
+        const li = document.createElement("li"), b = document.createElement("button");
+        b.type = "button"; b.className = "cx-clue"; b.id = "clue-" + i;
+        b.innerHTML = '<span class="num">' + w.n + '</span><span class="txt">' + w.q + ' <small>(' + w.w.length + ' letras)</small></span>';
+        b.addEventListener("click", () => { const k = w.keys[firstEmpty(i)]; selectWord(i, k); now.scrollIntoView({ block: "center", behavior: "smooth" }); });
+        li.appendChild(b);
+        $(w.d === "A" ? "cx-across" : "cx-down").appendChild(li);
+        w.btn = b;
+    });
+
+    // ---------- Selección ----------
+    const firstEmpty = i => { const ks = WORDS[i].keys; const j = ks.findIndex(k => !cells[k].input.value); return j < 0 ? 0 : j; };
+
+    function selectWord(i, k) {
+        cur.word = i; cur.cell = k;
+        Object.values(cells).forEach(c => c.el.classList.remove("in-word", "active"));
+        WORDS.forEach(w => w.btn.classList.remove("on"));
+        WORDS[i].keys.forEach(kk => cells[kk].el.classList.add("in-word"));
+        cells[k].el.classList.add("active");
+        WORDS[i].btn.classList.add("on");
+        now.classList.remove("idle");
+        now.innerHTML = "<b>" + WORDS[i].n + (WORDS[i].d === "A" ? " Horizontal" : " Vertical") + "</b><span>" + WORDS[i].q + "</span>";
+        cells[k].input.focus({ preventScroll: true });
+        cells[k].input.select();
+    }
+
+    function selectCell(k) {
+        const w = cells[k].words;
+        let i = cur.word;
+        if (k === cur.cell && w.A !== undefined && w.D !== undefined) {         // segundo clic: cambia de dirección
+            i = WORDS[cur.word].d === "A" ? w.D : w.A;
+        } else if (i === null || !WORDS[i].keys.includes(k)) {
+            i = w.A !== undefined ? w.A : w.D;
+        }
+        selectWord(i, k);
+    }
+
+    function step(delta) {
+        const ks = WORDS[cur.word].keys, j = ks.indexOf(cur.cell) + delta;
+        if (j >= 0 && j < ks.length) selectWord(cur.word, ks[j]);
+    }
+
+    function jumpWord(delta) {
+        const i = (cur.word + delta + WORDS.length) % WORDS.length;
+        selectWord(i, WORDS[i].keys[firstEmpty(i)]);
+    }
+
+    // ---------- Eventos de casillas ----------
+    Object.entries(cells).forEach(([k, c]) => {
+        c.input.addEventListener("mousedown", e => { e.preventDefault(); selectCell(k); });
+        c.input.addEventListener("focus", () => { if (cur.cell !== k) selectCell(k); });
+        c.input.addEventListener("input", () => {
+            c.input.value = c.input.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Za-z]/g, "").toUpperCase().slice(0, 1);
+            c.el.classList.remove("correct", "incorrect");
+            msg.textContent = ""; msg.classList.remove("win");
+            if (c.input.value) step(1);
+            refresh();
+        });
+        c.input.addEventListener("keydown", e => {
+            const move = { ArrowRight:[0,1], ArrowLeft:[0,-1], ArrowDown:[1,0], ArrowUp:[-1,0] }[e.key];
+            if (move) { e.preventDefault(); const t = cells[key(c.r + move[0], c.c + move[1])]; if (t) selectCell(key(t.r, t.c)); }
+            else if (e.key === "Backspace" && !c.input.value) { e.preventDefault(); step(-1); const p = cells[cur.cell]; p.input.value = ""; p.el.classList.remove("correct","incorrect"); refresh(); }
+            else if (e.key === "Tab") { e.preventDefault(); jumpWord(e.shiftKey ? -1 : 1); }
+        });
+    });
+
+    // ---------- Progreso y estado ----------
+    function refresh() {
+        const all = Object.values(cells), filled = all.filter(c => c.input.value).length;
+        $("cx-bar").style.width = (filled / all.length * 100) + "%";
+        $("cx-count").textContent = WORDS.filter(w => w.keys.every(k => cells[k].input.value === cells[k].ans)).length + " / " + WORDS.length + " palabras";
+        WORDS.forEach(w => w.btn.classList.toggle("done", w.keys.every(k => cells[k].input.value)));
+    }
+
+    function check() {
+        let ok = 0, filled = 0; const all = Object.values(cells);
+        all.forEach(c => {
+            c.el.classList.remove("correct", "incorrect");
+            if (!c.input.value) return;
+            filled++;
+            if (c.input.value === c.ans) { ok++; c.el.classList.add("correct"); } else c.el.classList.add("incorrect");
+        });
+        msg.classList.toggle("win", ok === all.length);
+        msg.textContent = ok === all.length ? "¡Excelente! Completaste todo el crucigrama."
+            : filled === 0 ? "Escribe algunas letras y vuelve a comprobar."
+            : ok + " de " + all.length + " casillas correctas. Revisa las marcadas en rojo.";
+    }
+
+    function hint() {
+        if (cur.word === null) { msg.textContent = "Elige primero una casilla o una pista."; return; }
+        const k = WORDS[cur.word].keys.find(kk => cells[kk].input.value !== cells[kk].ans);
+        if (!k) { msg.textContent = "Esta palabra ya está completa."; return; }
+        cells[k].input.value = cells[k].ans;
+        cells[k].el.classList.remove("incorrect"); cells[k].el.classList.add("locked");
+        hintsUsed++; msg.textContent = "Pistas usadas: " + hintsUsed; msg.classList.remove("win");
+        refresh();
+    }
+
+    function reset() {
+        Object.values(cells).forEach(c => { c.input.value = ""; c.el.classList.remove("correct", "incorrect", "locked", "in-word", "active"); });
+        WORDS.forEach(w => w.btn.classList.remove("on"));
+        cur = { word: null, cell: null }; hintsUsed = 0;
+        now.classList.add("idle"); now.textContent = "Toca una casilla o una pista para empezar.";
+        msg.textContent = ""; msg.classList.remove("win");
+        refresh();
+    }
+
+    $("cx-check").addEventListener("click", check);
+    $("cx-hint").addEventListener("click", hint);
+    $("cx-reset").addEventListener("click", reset);
+    refresh();
+})();
+</script>
+
+<script>
+(function () {
+    var btn = document.getElementById("src-toggle"),
+        panel = document.getElementById("src-panel");
+    if (!btn || !panel) return;
+    btn.addEventListener("click", function () {
+        var open = panel.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+})();
+</script>
+
+
+<script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

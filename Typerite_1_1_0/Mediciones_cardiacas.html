@@ -1,0 +1,2853 @@
+html
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+
+<head>
+
+    <!-- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Mediciones del ritmo cardiaco - Cognitiva</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+
+    <!-- ==================================================
+         ESTILOS DEL QUIZ Y FUENTES
+         ================================================== -->
+
+    <style>
+
+
+
+
+        /* ==================================================
+   ICONO PARA ACCEDER A LA FUENTE
+   ================================================== */
+
+.source-access {
+    margin: 1.5rem 0;
+}
+
+.source-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    background: #111;
+    color: #fff;
+
+    border-radius: 50%;
+
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.source-icon:hover {
+    transform: translateY(-4px);
+    background: #339989;
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+
+
+/* ==================================================
+   TEXTO EMERGENTE
+   ================================================== */
+
+.source-tooltip {
+    position: absolute;
+
+    bottom: calc(100% + 12px);
+    left: 50%;
+
+    transform: translateX(-50%) translateY(5px);
+
+    background: #111;
+    color: #fff;
+
+    padding: .7rem 1rem;
+
+    border-radius: 6px;
+
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+
+/* Pequeña flecha debajo del tooltip */
+
+.source-tooltip::after {
+    content: "";
+
+    position: absolute;
+
+    top: 100%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #111;
+}
+
+
+/* Mostrar tooltip */
+
+.source-icon:hover .source-tooltip {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* Accesibilidad con teclado */
+
+.source-icon:focus-visible {
+    outline: 3px solid #339989;
+    outline-offset: 4px;
+}
+
+        .header__social {
+        display: flex;
+        gap: 15px;
+    }
+
+/* ==================================================
+   LÍNEA SEPARADORA
+   ================================================== */
+
+.linea-separadora {
+    width: 100%;
+    height: 1px;
+    background: #898989;
+    margin: 40px 0;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE LAS PUBLICACIONES DEL MENÚ
+   ================================================== */
+
+.header__nav .sub-menu li {
+    margin-bottom: 8px;
+}
+
+.header__nav .sub-menu li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   ESPACIO INTERNO DE CADA PUBLICACIÓN
+   ================================================== */
+
+.header__nav .sub-menu li a {
+    display: block;
+    padding: 8px 0;
+    line-height: 1.4;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE NÚMERO Y TEXTO
+   ================================================== */
+
+.header__nav .sub-menu li a.publicacion-link {
+    display: flex !important;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+/* Número */
+
+.numero-publicacion {
+    display: block;
+    flex: 0 0 35px;
+    width: 35px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+
+/* Texto */
+
+.texto-publicacion {
+    display: block;
+    flex: 1;
+}
+
+/* ==================================================
+   LINEA
+   ================================================== */
+
+.linea-separadora {
+    width: 100%;
+    height: 1px;
+    background: #898989;
+    margin: 40px 0;
+}
+
+/* ==================================================
+   VIDEO / RECURSO AUDIOVISUAL
+   ================================================== */
+
+
+/*
+    Caja principal que contiene el título,
+    descripción y botón de reproducción.
+*/
+.video-intro {
+
+    /* Permite organizar los elementos internos */
+    display: flex;
+
+    /* Centra verticalmente el contenido */
+    align-items: center;
+
+    /* Ancho máximo de la caja */
+    max-width: 900px;
+
+    /* Centra la caja horizontalmente en la página */
+    margin: 30px auto 15px;
+
+    /* Espacio interno de la caja */
+    padding: 30px 15px;
+
+    /* Borde fino y ligeramente transparente */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    /* Redondea las esquinas */
+    border-radius: 16px;
+
+    /* Fondo ligeramente transparente */
+    background: rgba(255, 255, 255, 0.03);
+}
+
+
+/* ==================================================
+   CONTENIDO DEL VIDEO
+   ================================================== */
+
+
+/*
+    Hace que el contenido ocupe todo el ancho
+    disponible dentro de la caja.
+*/
+.video-content {
+    width: 100%;
+}
+
+
+/* ==================================================
+   TÍTULO
+   ================================================== */
+
+
+/*
+    Configuración del título del recurso.
+*/
+.video-content h1 {
+
+    /* Elimina el margen superior y deja espacio inferior */
+    margin: 0 0 15px;
+
+    /* Tamaño del título */
+    font-size: 28px;
+
+    /* Mantiene el título alineado a la izquierda */
+    text-align: left;
+}
+
+
+/* ==================================================
+   TEXTO INTRODUCTORIO
+   ================================================== */
+
+
+/*
+    Configuración del párrafo que explica
+    de qué trata el video.
+*/
+.video-content p {
+
+    /* Espacio inferior antes del ícono */
+    margin: 0 0 25px;
+
+    /* Aumenta el espacio entre las líneas */
+    line-height: 1.7;
+
+    /* El texto permanece alineado a la izquierda */
+    text-align: left;
+}
+
+
+/* ==================================================
+   ICONO DE REPRODUCCIÓN
+   ================================================== */
+
+
+/*
+    Este enlace funciona como botón.
+    Contiene únicamente la imagen del ícono.
+*/
+.video-link {
+
+    /* Permite utilizar flexbox */
+    display: flex;
+
+    /* Centra horizontalmente el ícono */
+    justify-content: center;
+
+    /* Centra verticalmente el ícono */
+    align-items: center;
+
+    /* Ocupa todo el ancho disponible */
+    width: 100%;
+
+    /* Separa el ícono del texto anterior */
+    margin: 25px auto 5px;
+
+    /* Elimina el subrayado del enlace */
+    text-decoration: none;
+
+    /* Cambia el cursor al pasar sobre el ícono */
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   IMAGEN DEL ICONO
+   ================================================== */
+
+
+/*
+    Tamaño del icono de reproducción.
+*/
+.play-icon {
+
+    /* Ancho del icono */
+    width: 130px;
+
+    /* Alto del icono */
+    height: 130px;
+
+    /*
+        Mantiene las proporciones originales
+        de la imagen.
+    */
+    object-fit: contain;
+
+    /*
+        Permite animar suavemente el tamaño
+        y el brillo del icono.
+    */
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/* ==================================================
+   ANIMACIÓN AL PASAR EL MOUSE
+   ================================================== */
+
+
+/*
+    Cuando el usuario coloca el mouse sobre
+    el icono, este aumenta ligeramente de tamaño.
+*/
+.video-link:hover .play-icon {
+
+    /* Aumenta el icono un 15% */
+    transform: scale(1.15);
+
+    /* Aumenta ligeramente el brillo */
+    filter: brightness(1.15);
+}
+
+
+/* ==================================================
+   EFECTO AL HACER CLIC
+   ================================================== */
+
+
+/*
+    Mientras el usuario mantiene presionado
+    el botón, el icono vuelve ligeramente hacia
+    su tamaño normal.
+*/
+.video-link:active .play-icon {
+
+    /* Reduce el efecto de escala */
+    transform: scale(1.05);
+}
+
+
+/* ==================================================
+   REFERENCIA DEL VIDEO
+   ================================================== */
+
+
+/*
+    Configuración de la referencia bibliográfica
+    que aparece debajo del ícono.
+*/
+.video-reference {
+
+    /* Centra la referencia */
+    text-align: center;
+
+    /* Espacio entre el icono y la referencia */
+    margin-top: 18px;
+
+    /* Tamaño de la letra */
+    font-size: 14px;
+
+    /* Espaciado entre líneas */
+    line-height: 1.6;
+}
+        /* ==================================================
+           QUIZ
+           ================================================== */
+
+        .cardio-quiz {
+            background: #000;
+            color: #fff;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 4px;
+
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+
+            overflow: hidden;
+        }
+
+        .cardio-quiz *,
+        .cardio-quiz *::before,
+        .cardio-quiz *::after {
+            box-sizing: border-box;
+        }
+
+        .cardio-quiz h2,
+        .cardio-quiz h3,
+        .cardio-quiz p {
+            color: #fff;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .quiz-step {
+            display: none;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-options {
+            margin-top: 25px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .quiz-option {
+            display: block;
+
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+
+            text-align: left;
+
+            background: #111;
+            color: #fff;
+
+            border: 1px solid #fff;
+
+            padding: 16px 20px;
+            margin-bottom: 12px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+            line-height: 1.5;
+
+            transition: all 0.2s ease;
+
+            /*
+             * Correcciones para evitar
+             * que el texto se salga
+             * del contenedor.
+             */
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: normal;
+            overflow: hidden;
+        }
+
+        .quiz-option:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .quiz-option.correct {
+            background: #198754 !important;
+            color: #fff !important;
+            border-color: #198754 !important;
+        }
+
+        .quiz-option.incorrect {
+            background: #dc3545 !important;
+            color: #fff !important;
+            border-color: #dc3545 !important;
+        }
+
+        .quiz-option:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .quiz-feedback {
+            display: none;
+
+            margin-top: 20px;
+            padding: 15px;
+
+            border-left: 3px solid #fff;
+            background: #111;
+
+            width: 100%;
+            max-width: 100%;
+
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .quiz-feedback.visible {
+            display: block;
+        }
+
+        .quiz-next {
+            display: none;
+
+            margin-top: 25px;
+
+            background: #fff;
+            color: #000;
+
+            border: 1px solid #fff;
+
+            padding: 12px 25px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            max-width: 100%;
+
+            white-space: normal;
+        }
+
+        .quiz-next:hover {
+            background: #ddd;
+        }
+
+        .quiz-open-answer {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    min-height: 150px;
+
+    background: #111 !important;
+    color: #fff !important;
+
+    border: 1px solid #fff;
+
+    padding: 15px;
+    margin-top: 20px;
+
+    resize: vertical;
+
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+
+    box-sizing: border-box;
+
+    overflow-wrap: break-word;
+
+    caret-color: #fff;
+}
+
+/* Texto que escribe el estudiante */
+.quiz-open-answer:focus {
+    color: #fff !important;
+    background: #111 !important;
+    outline: none;
+    border-color: #fff;
+}
+
+/* Texto de ejemplo */
+.quiz-open-answer::placeholder {
+    color: #bbb !important;
+    opacity: 1;
+}
+
+        .quiz-open-answer::placeholder {
+            color: #bbb;
+        }
+
+        .quiz-submit {
+            margin-top: 15px;
+
+            background: #fff;
+            color: #000;
+
+            border: 1px solid #fff;
+
+            padding: 12px 25px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            max-width: 100%;
+
+            white-space: normal;
+        }
+
+        .quiz-submit:hover {
+            background: #ddd;
+        }
+
+        .quiz-final {
+            display: none;
+
+            text-align: center;
+
+            padding: 25px;
+
+            border-top: 1px solid #fff;
+
+            margin-top: 30px;
+
+            max-width: 100%;
+
+            overflow-wrap: break-word;
+        }
+
+        .quiz-final h3 {
+            margin-bottom: 10px;
+        }
+
+        .quiz-score {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .quiz-open-result {
+            display: none;
+
+            margin-top: 20px;
+            padding: 15px;
+
+            background: #111;
+
+            border-left: 3px solid #fff;
+
+            max-width: 100%;
+
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+
+        /* ==================================================
+           ENLACES DE LECTURA
+           ================================================== */
+
+        .reading-link {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .reading-link:hover {
+            text-decoration: none;
+        }
+
+
+        /* ==================================================
+           FUENTES CONSULTADAS - NUBE ANIMADA
+           ================================================== */
+
+        .entry__content .source-link {
+            margin: .4rem 0 0;
+        }
+
+        .entry__content .source-link a,
+        .entry__content .src-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+
+            font-weight: 700;
+
+            color: #111;
+
+            text-decoration: none;
+
+            border-bottom: 2px solid #111;
+
+            padding-bottom: 1px;
+
+            transition: opacity .2s;
+        }
+
+        .entry__content .source-link a::before,
+        .entry__content .src-link::before {
+            content: "\2192";
+
+            display: inline-block;
+
+            transition: transform .2s;
+        }
+
+        .entry__content .source-link a:hover,
+        .entry__content .src-link:hover {
+            opacity: .65;
+        }
+
+        .src-section {
+            margin: 5rem 0 2rem;
+
+            text-align: center;
+        }
+
+        .src-toggle {
+            display: inline-flex;
+
+            flex-direction: column;
+            align-items: center;
+
+            gap: .5rem;
+
+            margin: 0;
+
+            padding: 1rem 2.4rem;
+
+            height: auto;
+
+            line-height: 1.2;
+
+            white-space: normal;
+
+            overflow: visible;
+
+            text-overflow: clip;
+
+            text-transform: none;
+
+            letter-spacing: 0;
+
+            background: transparent;
+
+            border: 0;
+
+            border-radius: 14px;
+
+            color: #111;
+
+            font-family: inherit;
+
+            cursor: pointer;
+        }
+
+        .src-cloud {
+            display: block;
+
+            font-size: 5.6rem;
+
+            line-height: 1;
+
+            filter: drop-shadow(
+                0 6px 8px rgba(0,0,0,.14)
+            );
+
+            animation:
+                src-float 5s ease-in-out infinite;
+        }
+
+        .src-label {
+            display: block;
+
+            font-size: 1.4rem;
+
+            font-weight: 700;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+
+            transition: opacity .2s;
+        }
+
+        .src-chevron {
+            display: block;
+
+            font-size: 1.3rem;
+
+            line-height: 1;
+
+            transition:
+                transform .4s ease;
+        }
+
+        .src-toggle:hover .src-label {
+            opacity: .65;
+        }
+
+        .src-toggle[aria-expanded="true"]
+        .src-chevron {
+            transform: rotate(180deg);
+        }
+
+        .src-toggle:focus-visible {
+            outline: 3px solid #111;
+
+            outline-offset: 3px;
+        }
+
+        @keyframes src-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+        .src-panel {
+            display: grid;
+
+            grid-template-rows: 0fr;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            text-align: left;
+
+            transition:
+                grid-template-rows .55s ease,
+                opacity .4s ease,
+                visibility 0s linear .55s;
+        }
+
+        .src-panel.open {
+            grid-template-rows: 1fr;
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transition:
+                grid-template-rows .55s ease,
+                opacity .45s ease .05s,
+                visibility 0s;
+        }
+
+        .src-inner {
+            min-height: 0;
+
+            overflow: hidden;
+        }
+
+        html.no-js .src-panel {
+            grid-template-rows: 1fr;
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+        .src-box {
+            max-width: 900px;
+
+            margin: 2rem auto 0;
+
+            padding: 2.6rem;
+
+            background: #fff;
+
+            border: 1px solid #e2e2e2;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,.12);
+        }
+
+        .entry__content .src-box h3 {
+            margin: 0 0 2rem;
+
+            padding-bottom: 1rem;
+
+            border-bottom: 2px solid #111;
+
+            font-size: 2rem;
+
+            color: #111;
+        }
+
+        .entry__content .src-list {
+            list-style: none;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+        .entry__content .src-item {
+            margin: 0;
+
+            padding: 1.5rem 1.8rem;
+
+            background: #f7f7f7;
+
+            border-left: 4px solid #111;
+
+            border-radius:
+                0 8px 8px 0;
+
+            overflow-wrap: break-word;
+
+            word-wrap: break-word;
+        }
+
+        .entry__content .src-item + .src-item {
+            margin-top: 1.4rem;
+        }
+
+        .entry__content .src-ref {
+            margin: 0 0 .9rem;
+
+            font-size: 1.6rem;
+
+            line-height: 1.6;
+
+            color: #333;
+
+            overflow-wrap: break-word;
+
+            word-wrap: break-word;
+        }
+
+        .entry__content .src-item
+        .src-ref:last-child {
+            margin-bottom: 0;
+        }
+
+        .src-panel.open .src-item {
+            animation:
+                src-in .5s ease both;
+        }
+
+        .src-panel.open
+        .src-item:nth-child(2) {
+            animation-delay: .08s;
+        }
+
+        .src-panel.open
+        .src-item:nth-child(3) {
+            animation-delay: .16s;
+        }
+
+        @keyframes src-in {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform: none;
+            }
+
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+           ================================================== */
+
+        @media (max-width: 600px) {
+
+            .cardio-quiz {
+                padding: 25px 18px;
+            }
+
+            .quiz-option {
+                padding: 14px 15px;
+
+                font-size: 15px;
+
+                line-height: 1.5;
+            }
+
+            .src-box {
+                padding: 1.6rem;
+            }
+
+            .entry__content .src-item {
+                padding: 1.2rem 1.3rem;
+            }
+
+            .src-cloud {
+                font-size: 4.5rem;
+            }
+
+            .src-label {
+                font-size: 1.1rem;
+
+                letter-spacing: .12em;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .src-cloud,
+            .src-panel.open .src-item {
+                animation: none;
+            }
+
+            .src-panel,
+            .src-panel.open,
+            .src-chevron {
+                transition: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+
+    <div id="preloader">
+
+        <div id="loader" class="dots-fade">
+
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </div>
+
+    </div>
+
+
+    <div id="top" class="s-wrap site-wrapper">
+
+
+        <!-- site header
+        ================================================== -->
+
+        <header class="s-header header">
+
+            <div class="header__top">
+
+                <div class="header__logo">
+
+                    <a
+                        class="site-logo"
+                        href="index.html">
+
+                        <img
+                            src="images/logo.svg"
+                            alt="Homepage">
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- end header__top -->
+
+
+            <!-- ==================================================
+                 MENÚ DE NAVEGACIÓN
+                 Contiene los enlaces principales del sitio.
+                 ================================================== -->
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+
+                    <!-- Enlace a la página principal -->
+                    <li class="current">
+                        <a href="inicio.html" title="">Inicio</a>
+                    </li>
+
+
+                    
+
+
+                    <!-- ==================================================
+                         MENÚ DE PUBLICACIONES
+                         Contiene los diferentes tipos de artículos
+                         que puede mostrar el sitio.
+                         ================================================== -->
+                    <li class="has-children">
+
+                        <a href="#0" title="">Publicaciones</a>
+
+                        <ul class="sub-menu">
+
+                            <li>
+                                <a href="metodo_de_succion.html" class="publicacion-link">
+                                    <span class="numero-publicacion">1.</span>
+                                    <span class="texto-publicacion">Procedimiento de succión de amplitud elevada</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Mediciones_cardiacas.html" class="publicacion-link">
+                                    <span class="numero-publicacion">2.</span>
+                                    <span class="texto-publicacion">Mediciones del ritmo cardíaco</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Preferencia_Giro_Cabeza.html" class="publicacion-link">
+                                    <span class="numero-publicacion">3.</span>
+                                    <span class="texto-publicacion">Procedimiento de preferencia de giro de cabeza</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Procedimientos_Reforzamiento_Diferencia.html" class="publicacion-link">
+                                    <span class="numero-publicacion">4.</span>
+                                    <span class="texto-publicacion">Procedimientos basados en el reforzamiento diferencial</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="single-video.html" class="publicacion-link">
+                                    <span class="numero-publicacion">5.</span>
+                                    <span class="texto-publicacion">Paradigma intermodal de preferencia de mirada</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Enlace hacia la página "Nosotros" -->
+                    <li>
+                        <a href="page-about.html" title="">Nosotras</a>
+                    </li>
+
+                </ul>
+                <!-- Fin del menú de navegación -->
+
+
+
+                <!-- end header__nav -->
+
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Facebook
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Twitter
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-instagram">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Instagram
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- end header__nav-wrap -->
+            </nav>
+
+
+            <!-- end header__nav-wrap -->
+
+
+            <!-- menu toggle -->
+
+            <a
+                href="#0"
+                class="header__menu-toggle">
+
+                <span>
+                    Menú
+                </span>
+
+            </a>
+
+        </header>
+
+
+        <!-- end s-header -->
+
+
+        <!-- search
+        ================================================== -->
+
+        <div class="s-search">
+
+            <div class="search-block">
+
+                <form
+                    role="search"
+                    method="get"
+                    class="search-form"
+                    action="#">
+
+                    <label>
+
+                        <span class="hide-content">
+                            Buscar:
+                        </span>
+
+                        <input
+                            type="search"
+                            class="search-field"
+                            placeholder="Buscar"
+                            value=""
+                            name="s"
+                            title="Buscar:"
+                            autocomplete="off">
+
+                    </label>
+
+
+                    <input
+                        type="submit"
+                        class="search-submit"
+                        value="Buscar">
+
+                </form>
+
+
+                <a
+                    href="#0"
+                    title="Cerrar búsqueda"
+                    class="search-close">
+
+                    Cerrar
+
+                </a>
+
+            </div>
+
+
+            <!-- end search-block -->
+
+
+            <!-- search modal trigger -->
+
+            <a
+                href="#0"
+                class="search-trigger">
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24">
+
+                    <path
+                        d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z">
+                    </path>
+
+                </svg>
+
+                <span>
+                    Buscar
+                </span>
+
+            </a>
+
+
+            <span class="search-line"></span>
+
+        </div>
+
+
+        <!-- end s-search -->
+
+
+        <!-- site content
+        ================================================== -->
+
+        <div class="s-content content">
+
+            <main class="row content__page">
+
+                <article class="column large-full entry format-video">
+
+
+                    <!-- HEADER
+                    ================================================== -->
+
+                    <div class="content__page-header entry__header">
+
+                        <h1 class="display-1 entry__title">
+                            Mediciones del ritmo cardiaco
+                        </h1>
+
+                        <ul class="entry__header-meta">
+
+                            <li class="author">
+
+                                Por
+                                <a href="#0">
+                                    Cognitiva
+                                </a>
+
+                            </li>
+
+                            <li class="date">
+                                2026
+                            </li>
+
+                            <li class="cat-links">
+
+                                <a href="#0">
+                                    Métodos experimentales
+                                </a>
+
+                                <a href="#0">
+                                    Cognición temprana
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- end entry__header -->
+
+
+                    <!-- CONTENIDO
+                    ================================================== -->
+
+                    <div class="entry__content">
+
+
+                        <!-- PUNTO 2
+                        ================================================== -->
+
+                        <h2>
+                            ¿En qué consiste y cómo se aplica?
+                        </h2>
+
+                        <p>
+
+                            Esta técnica se basa en el registro de la
+                            frecuencia cardíaca del bebé ante la presentación
+                            de estímulos auditivos o visuales. Permite evaluar
+                            las respuestas psicofisiológicas involuntarias
+                            asociadas con procesos de atención y discriminación.
+
+                        </p>
+
+
+                        <blockquote>
+
+                            <p>
+
+                                "Consiste en la medición de la variación de la
+                                frecuencia cardíaca en respuesta a estímulos
+                                sonoros presentados mediante un altavoz. Se
+                                lleva a cabo fijando electrodos en el tórax del
+                                lactante para registrar el electrocardiograma
+                                mientras este escucha los estímulos"
+                                (Barón Birchenall et al., 2014, p. 80).
+
+                            </p>
+
+                        </blockquote>
+
+<div class="linea-separadora"></div>
+                       <!-- ==================================================
+     VIDEO
+     ================================================== -->
+
+<div class="media-wrap entry__media">
+
+    <div class="video-intro">
+
+        <div class="video-content">
+
+            <h1>Recurso audiovisual: método de habituación</h1>
+
+            <p>
+                El siguiente video presenta de manera práctica cómo se utiliza
+                el <strong>paradigma de habituación</strong> para estudiar los
+                procesos de atención, aprendizaje y discriminación de estímulos
+                en bebés. Se explica el procedimiento experimental, la medición
+                del tiempo de mirada y el proceso de habituación y
+                deshabituación ante estímulos familiares y novedosos.
+            </p>
+
+            <!-- ÍCONO DE REPRODUCCIÓN -->
+            <a
+                href="https://www.jove.com/es/v/10068/habituation-studying-infants-before-they-can-talk"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="video-link"
+                aria-label="Abrir video">
+
+                <img
+                    src="images/social_media_youtube_video_play_icon_128997.png"
+                    alt="Reproducir video"
+                    class="play-icon">
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- REFERENCIA -->
+    <p class="video-reference">
+        <strong>
+            JoVE. (s. f.). 
+            <em>Habituation: Studying infants before they can talk</em>.
+        </strong>
+    </p>
+
+</div>
+
+
+
+
+<div class="linea-separadora"></div>
+
+
+
+                        <!-- ¿QUÉ MIDE?
+                        ================================================== -->
+
+                        <h2>
+                            ¿Qué mide o qué permite estudiar?
+                        </h2>
+
+                        <p>
+
+                            El registro de la tasa cardíaca actúa como un
+                            indicador psicofisiológico directo de los estados
+                            de orientación, atención sostenida y habituación
+                            en bebés preverbales.
+
+                        </p>
+
+
+                        <blockquote>
+
+                            <p>
+
+                                "Esta técnica permite estudiar los procesos
+                                atencionales y de discriminación de estímulos
+                                auditivos durante los primeros meses de vida,
+                                donde una desaceleración de la frecuencia
+                                cardíaca suele interpretarse como un indicador
+                                de atención orientada hacia el estímulo"
+                                (Barón Birchenall et al., 2014, p. 80).
+
+                            </p>
+
+                        </blockquote>
+
+
+                        <!-- IMAGEN ¿QUÉ MIDE? -->
+
+                        <p>
+
+                            <img
+                                src="images/Mediciones_del_ritmo_cardiaco/WhatsApp Image 2026-09-28 at 1.59.05 PM.jpeg"
+                                alt="Procesos de atención y discriminación">
+
+                        </p>
+
+
+                        <!-- PUNTO 3
+                        ================================================== -->
+
+                        
+<!-- navigation
+================================================== -->
+<div class="entry__pagenav">
+
+    <div class="entry__nav">
+
+        <!-- ==================================================
+             3. LECTURA EN ESPAÑOL
+             ================================================== -->
+        <div class="entry__prev">
+
+            <h2>
+                Lectura en español
+            </h2>
+<blockquote>
+            <p>
+                Sarmiento-Álvarez, L. O., Flórez-Ordóñez,
+                Y. N., González-Salvador, A., &amp; Millet Roig,
+                J. (2013). Estimación de la frecuencia cardiaca
+                fetal en el ECG fetal no invasivo.
+                <em>Tecno Lógicas</em>, 277–288.
+            </p>
+</blockquote>
+            <p class="source-access">
+    <a
+        class="source-icon"
+        href="http://www.redalyc.org/pdf/3442/344234341021.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Presiona para ingresar a la fuente">
+        ↗
+        <span class="source-tooltip">
+            Presiona para ingresar a la fuente
+        </span>
+    </a>
+</p>
+
+            <p>
+                Artículo técnico que explica cómo se intenta aislar
+                la señal eléctrica del corazón del feto de la del
+                corazón de la madre en un electrocardiograma no
+                invasivo. Es útil para el taller porque profundiza
+                en la dificultad técnica que menciona la lectura
+                de Barón Birchenall et al. (2014) al justificar por
+                qué no se usa electrocardiografía directa en fetos.
+            </p>
+
+        </div>
+
+
+        <!-- ==================================================
+             4. LECTURA EN INGLÉS
+             ================================================== -->
+        <div class="entry__next">
+
+            <h2>
+                Lectura en inglés
+            </h2>
+<blockquote>
+            <p>
+                Ferrari, G. A., Nicolini, Y., Demuru, E., Tosato,
+                C., Hussain, M., Scesa, E., Romei, L., Boerci, M.,
+                Iappini, E., Dalla Rosa Prati, G., Palagi, E.,
+                &amp; Ferrari, P. F. (2016). Ultrasonographic
+                investigation of human fetus responses to maternal
+                communicative and non-communicative stimuli.
+                <em>Frontiers in Psychology</em>, <em>7</em>,
+                Article 354.
+            </p>
+</blockquote>
+            <p class="source-access">
+    <a
+        class="source-icon"
+        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4792883/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Presiona para ingresar a la fuente">
+        ↗
+        <span class="source-tooltip">
+            Presiona para ingresar a la fuente
+        </span>
+    </a>
+</p>
+
+            <p>
+                Estudio de acceso abierto que usa ultrasonido para
+                observar cómo el feto responde de forma diferenciada
+                a la voz y otros estímulos maternos. Complementa el
+                trabajo de Kisilevsky et al. (2009) y muestra que el
+                paradigma de discriminación de estímulos maternos
+                sigue vigente en investigación reciente.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+                        <!-- ACTIVIDAD LÚDICA
+                        ================================================== -->
+                        <div class="linea-separadora"></div>
+                        <h2>
+                            Actividad Lúdica
+                        </h2>
+
+
+                        <h3>
+                            Simulación del paradigma de orientación cardiaca
+                        </h3>
+
+
+                        <p>
+
+                            Responde las siguientes preguntas para comprobar
+                            qué ocurre con la frecuencia cardíaca de un bebé
+                            cuando se presentan estímulos repetidos o nuevos.
+
+                        </p>
+
+
+                        <!-- QUIZ
+                        ================================================== -->
+
+                        <div
+                            class="cardio-quiz"
+                            id="cardioQuiz">
+
+
+                            <!-- PREGUNTA 1 -->
+
+                            <div
+                                class="quiz-step active"
+                                id="quizStep1">
+
+                                <h3>
+                                    Pregunta 1
+                                </h3>
+
+
+                                <p>
+
+                                    A un bebé se le muestra la misma imagen
+                                    5 veces seguidas. Su frecuencia cardíaca
+                                    al inicio era de 130 lpm. Después de la
+                                    quinta repetición baja a 110 lpm.
+                                    ¿Qué está pasando?
+
+                                </p>
+
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 1)">
+
+                                        a) El bebé se aburrió y dejó de prestar
+                                        atención
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 1)">
+
+                                        b) El bebé se habituó al estímulo
+                                        (dejó de ser novedoso)
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 1)">
+
+                                        c) El bebé tiene un problema de salud
+
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback1">
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next1"
+                                    onclick="siguientePregunta(2)">
+
+                                    Siguiente pregunta →
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- PREGUNTA 2 -->
+
+                            <div
+                                class="quiz-step"
+                                id="quizStep2">
+
+                                <h3>
+                                    Pregunta 2
+                                </h3>
+
+
+                                <p>
+
+                                    Justo después, le muestran una imagen
+                                    totalmente distinta. Su pulso sube de
+                                    golpe a 128 lpm. ¿Qué fenómeno se está
+                                    registrando?
+
+                                </p>
+
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 2)">
+
+                                        a) Deshabituación / respuesta de
+                                        orientación
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 2)">
+
+                                        b) Habituación
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 2)">
+
+                                        c) Es un error de medición
+
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback2">
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next2"
+                                    onclick="siguientePregunta(3)">
+
+                                    Siguiente pregunta →
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- PREGUNTA 3 -->
+
+                            <div
+                                class="quiz-step"
+                                id="quizStep3">
+
+                                <h3>
+                                    Pregunta 3
+                                </h3>
+
+
+                                <p>
+
+                                    Si el pulso del bebé se mantuviera igual
+                                    (sin bajar) durante las 5 repeticiones del
+                                    primer estímulo, ¿qué podríamos concluir?
+
+                                </p>
+
+
+                                <div class="quiz-options">
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 3)">
+
+                                        a) Que ya se habituó rápidamente
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, true, 3)">
+
+                                        b) Que aún no se ha habituado al
+                                        estímulo
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="quiz-option"
+                                        onclick="respuestaQuiz(this, false, 3)">
+
+                                        c) Que el estímulo no es real
+
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="quiz-feedback"
+                                    id="feedback3">
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="quiz-next"
+                                    id="next3"
+                                    onclick="siguientePregunta(4)">
+
+                                    Siguiente pregunta →
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- PREGUNTA 4 -->
+
+                            
+
+
+
+                            <!-- RESULTADO FINAL -->
+
+                            <div
+    class="quiz-final"
+    id="quizFinal">
+
+    <h3>
+        🎉 Actividad completada
+    </h3>
+
+    <p>
+        Has terminado la simulación del paradigma
+        de orientación cardiaca.
+    </p>
+
+    <p
+        class="quiz-score"
+        id="quizScore">
+    </p>
+
+    <p id="quizCorrectas"></p>
+
+    <p id="quizIncorrectas"></p>
+
+    <button
+        type="button"
+        class="quiz-submit"
+        onclick="reiniciarQuiz()">
+
+        🔄 Volver a hacer el quiz
+
+    </button>
+
+</div>
+
+                        </div>
+
+
+                        <!-- DATO LLAMATIVO
+                        ================================================== -->
+
+                        <h2>
+                            9. Dato llamativo
+                        </h2>
+
+
+                        <p>
+
+                            Los fetos pueden mostrar cambios en su ritmo
+                            cardiaco incluso antes de nacer. Estudios con
+                            fetos en el tercer trimestre de embarazo han
+                            encontrado que su frecuencia cardiaca se
+                            desacelera de forma distinta cuando “escuchan”
+                            la voz de su propia madre en comparación con la
+                            voz de una mujer desconocida, lo que sugiere que
+                            el sistema auditivo y los procesos de discriminación
+                            ya están funcionando desde el vientre materno
+                            (Kisilevsky et al., 2009, referenciado en Barón
+                            Birchenall et al., 2014).
+
+                        </p>
+
+
+                        
+
+
+                        <!-- ==================================================
+                             DESDE AQUÍ SOLO QUEDA LA NUBE DE FUENTES
+                             ================================================== -->
+
+                        <section
+                            class="src-section"
+                            id="fuentes">
+
+
+                            <button
+                                type="button"
+                                class="src-toggle"
+                                id="src-toggle"
+                                aria-expanded="false"
+                                aria-controls="src-panel">
+
+
+                                <span
+                                    class="src-cloud"
+                                    aria-hidden="true">
+
+                                    ☁️
+
+                                </span>
+
+
+                                <span class="src-label">
+
+                                    Fuentes consultadas
+
+                                </span>
+
+
+                                <span
+                                    class="src-chevron"
+                                    aria-hidden="true">
+
+                                    ▾
+
+                                </span>
+
+
+                            </button>
+
+
+                            <div
+                                class="src-panel"
+                                id="src-panel">
+
+
+                                <div class="src-inner">
+
+
+                                    <div class="src-box">
+
+
+                                        <h3>
+                                            Fuentes consultadas
+                                        </h3>
+
+
+                                        <ul class="src-list">
+
+
+                                            <!-- FUENTE 1 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    Barón Birchenall et al.
+                                                    (2014).
+
+                                                </p>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 2 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    Sarmiento-Álvarez,
+                                                    L. O., Flórez-Ordóñez,
+                                                    Y. N., González-Salvador,
+                                                    A., &amp; Millet Roig,
+                                                    J. (2013). Estimación de
+                                                    la frecuencia cardiaca
+                                                    fetal en el ECG fetal no
+                                                    invasivo.
+                                                    <em>
+                                                        Tecno Lógicas
+                                                    </em>,
+                                                    277–288.
+
+                                                </p>
+
+
+                                                <a
+                                                    class="src-link"
+                                                    href="http://www.redalyc.org/pdf/3442/344234341021.pdf"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Consultar artículo completo
+
+                                                </a>
+
+                                            </li>
+
+
+                                            <!-- FUENTE 3 -->
+
+                                            <li class="src-item">
+
+                                                <p class="src-ref">
+
+                                                    Ferrari, G. A., Nicolini,
+                                                    Y., Demuru, E., Tosato, C.,
+                                                    Hussain, M., Scesa, E.,
+                                                    Romei, L., Boerci, M.,
+                                                    Iappini, E., Dalla Rosa
+                                                    Prati, G., Palagi, E.,
+                                                    &amp; Ferrari, P. F. (2016).
+                                                    Ultrasonographic
+                                                    investigation of human
+                                                    fetus responses to maternal
+                                                    communicative and
+                                                    non-communicative stimuli.
+                                                    <em>
+                                                        Frontiers in Psychology
+                                                    </em>,
+                                                    7, Article 354.
+
+                                                </p>
+
+
+                                                <a
+                                                    class="src-link"
+                                                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4792883/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+
+                                                    Consultar artículo completo
+
+                                                </a>
+
+                                            </li>
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                    </div>
+
+
+                    <!-- end entry content -->
+
+
+                    <!-- navigation
+                    ================================================== -->
+
+                    <div class="entry__pagenav">
+
+                        <div class="entry__nav">
+
+
+                            <div class="entry__prev">
+
+                                <a
+                                    href="#0"
+                                    rel="prev">
+
+                                    <span>
+                                        Entrada anterior
+                                    </span>
+
+                                    Paradigma intermodal
+
+                                </a>
+
+                            </div>
+
+
+                            <div class="entry__next">
+
+                                <a
+                                    href="#0"
+                                    rel="next">
+
+                                    <span>
+                                        Siguiente entrada
+                                    </span>
+
+                                    Desarrollo del lenguaje
+
+                                </a>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- end entry pagenav -->
+
+
+                </article>
+
+
+                <!-- end column large-full entry -->
+
+
+                
+
+                        </div>
+
+
+                        <!-- END respond -->
+
+
+                    </div>
+
+
+                    <!-- end comment-respond -->
+
+
+                </div>
+
+
+            </main>
+
+        </div>
+
+
+        <!-- end s-content -->
+
+
+    </div>
+
+
+    <!-- end s-wrap -->
+
+
+    <!-- ==================================================
+         QUIZ SCRIPT
+         ================================================== -->
+
+    <script>
+
+        let puntuacion = 0;
+
+        let pregunta4Evaluada = false;
+
+
+        /*
+         * Preguntas de selección múltiple
+         */
+
+        function respuestaQuiz(
+            boton,
+            correcta,
+            numeroPregunta
+        ) {
+
+            const paso =
+                document.getElementById(
+                    "quizStep" + numeroPregunta
+                );
+
+            const botones =
+                paso.querySelectorAll(
+                    ".quiz-option"
+                );
+
+            const feedback =
+                document.getElementById(
+                    "feedback" + numeroPregunta
+                );
+
+            const siguiente =
+                document.getElementById(
+                    "next" + numeroPregunta
+                );
+
+
+            /* Evita responder más de una vez */
+
+            botones.forEach(function (b) {
+
+                b.disabled = true;
+
+            });
+
+
+            /* Colorear la opción seleccionada */
+
+            if (correcta) {
+
+                boton.classList.add("correct");
+
+                puntuacion++;
+
+
+                feedback.innerHTML =
+                    "✓ <strong>Correcto.</strong> " +
+                    "La respuesta identifica correctamente " +
+                    "el fenómeno observado.";
+
+            }
+
+
+            else {
+
+                boton.classList.add("incorrect");
+
+
+                /* Mostrar cuál era la correcta */
+
+                botones.forEach(function (b) {
+
+                    if (
+
+                        (
+                            numeroPregunta === 1 &&
+                            b.textContent.includes(
+                                "se habituó"
+                            )
+                        )
+
+                        ||
+
+                        (
+                            numeroPregunta === 2 &&
+                            b.textContent.includes(
+                                "Deshabituación"
+                            )
+                        )
+
+                        ||
+
+                        (
+                            numeroPregunta === 3 &&
+                            b.textContent.includes(
+                                "aún no se ha habituado"
+                            )
+                        )
+
+                    ) {
+
+                        b.classList.add("correct");
+
+                    }
+
+                });
+
+
+                if (numeroPregunta === 1) {
+
+                    feedback.innerHTML =
+                        "✗ <strong>Incorrecto.</strong> " +
+                        "La disminución progresiva de la " +
+                        "frecuencia cardíaca ante un estímulo " +
+                        "repetido es compatible con un proceso " +
+                        "de habituación.";
+
+                }
+
+
+                else if (numeroPregunta === 2) {
+
+                    feedback.innerHTML =
+                        "✗ <strong>Incorrecto.</strong> " +
+                        "El cambio ante un estímulo nuevo " +
+                        "corresponde a una respuesta de " +
+                        "orientación o deshabituación.";
+
+                }
+
+
+                else if (numeroPregunta === 3) {
+
+                    feedback.innerHTML =
+                        "✗ <strong>Incorrecto.</strong> " +
+                        "Si la frecuencia no disminuye durante " +
+                        "las repeticiones, no hay evidencia de " +
+                        "que se haya producido habituación.";
+
+                }
+
+            }
+
+
+            feedback.classList.add("visible");
+
+            siguiente.style.display = "inline-block";
+
+        }
+
+
+        /*
+         * Pasar a la siguiente pregunta
+         */
+
+        function siguientePregunta(numero) {
+
+            document
+                .querySelectorAll(".quiz-step")
+                .forEach(function (step) {
+
+                    step.classList.remove("active");
+
+                });
+
+
+            document
+                .getElementById(
+                    "quizStep" + numero
+                )
+                .classList.add("active");
+
+
+            document
+                .getElementById("cardioQuiz")
+                .scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+        }
+
+
+        /*
+         * Normalizar texto
+         */
+
+        function normalizarTexto(texto) {
+
+            return texto
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(
+                    /[\u0300-\u036f]/g,
+                    ""
+                );
+
+        }
+
+
+        /*
+         * Evaluación automática de la pregunta 4.
+         *
+         * La respuesta correcta NO se muestra.
+         */
+
+        function evaluarPreguntaAbierta() {
+
+            const campo =
+                document.getElementById(
+                    "respuestaAbierta"
+                );
+
+            const resultado =
+                document.getElementById(
+                    "resultadoAbierto"
+                );
+
+            const siguiente =
+                document.getElementById(
+                    "next4"
+                );
+
+
+            const respuesta =
+                normalizarTexto(
+                    campo.value.trim()
+                );
+
+
+            if (respuesta.length < 10) {
+
+                resultado.style.display = "block";
+
+                resultado.innerHTML =
+                    "Escribe una respuesta un poco " +
+                    "más desarrollada para poder evaluarla.";
+
+                return;
+
+            }
+
+
+            /*
+             * Grupos de conceptos esperados.
+             *
+             * El estudiante NO ve estas palabras.
+             */
+
+            const conceptos = [
+
+                [
+                    "procesos cognitivos",
+                    "proceso cognitivo",
+                    "cognitivo",
+                    "cognitivos"
+                ],
+
+                [
+                    "reconocer",
+                    "reconocimiento",
+                    "reconoce"
+                ],
+
+                [
+                    "discriminar",
+                    "discriminacion",
+                    "discrimina",
+                    "distinguir",
+                    "distincion"
+                ],
+
+                [
+                    "interes",
+                    "atencion",
+                    "atencional",
+                    "habituacion"
+                ],
+
+                [
+                    "lenguaje",
+                    "verbalizar",
+                    "verbal",
+                    "hablar",
+                    "comunicar"
+                ]
+
+            ];
+
+
+            let conceptosEncontrados = 0;
+
+
+            conceptos.forEach(
+                function (grupo) {
+
+                    const encontrado =
+                        grupo.some(
+                            function (palabra) {
+
+                                return respuesta.includes(
+                                    palabra
+                                );
+
+                            }
+                        );
+
+
+                    if (encontrado) {
+
+                        conceptosEncontrados++;
+
+                    }
+
+                }
+            );
+
+
+            /*
+             * Se consideran suficientes
+             * 3 grupos de conceptos.
+             */
+
+            if (conceptosEncontrados >= 3) {
+
+                if (!pregunta4Evaluada) {
+
+                    puntuacion++;
+
+                    pregunta4Evaluada = true;
+
+                }
+
+
+                resultado.style.display = "block";
+
+
+                resultado.innerHTML =
+                    "✓ <strong>Respuesta aceptada.</strong> " +
+                    "Tu respuesta contiene suficientes " +
+                    "elementos relacionados con el objetivo " +
+                    "de la técnica.";
+
+
+                siguiente.style.display =
+                    "inline-block";
+
+            }
+
+
+            else {
+
+                resultado.style.display = "block";
+
+
+                resultado.innerHTML =
+                    "✗ <strong>La respuesta necesita mayor " +
+                    "precisión.</strong> Explica con más claridad " +
+                    "qué procesos permite estudiar esta técnica " +
+                    "y por qué resulta útil cuando se trabaja " +
+                    "con bebés.";
+
+
+                siguiente.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        /*
+         * Mostrar resultado final
+         */
+
+        function mostrarResultadoFinal() {
+
+    document
+        .querySelectorAll(".quiz-step")
+        .forEach(function (step) {
+
+            step.classList.remove("active");
+
+        });
+
+
+    document.getElementById(
+        "quizFinal"
+    ).style.display = "block";
+
+
+    /* ==========================================
+       CALCULAR RESULTADOS
+       ========================================== */
+
+    const totalPreguntas = 4;
+
+    const correctas = puntuacion;
+
+    const incorrectas =
+        totalPreguntas - correctas;
+
+
+    /* ==========================================
+       MOSTRAR PUNTUACIÓN
+       ========================================== */
+
+    document.getElementById(
+        "quizScore"
+    ).textContent =
+        "Puntuación: " +
+        correctas +
+        " / " +
+        totalPreguntas;
+
+
+    /* ==========================================
+       MOSTRAR CORRECTAS
+       ========================================== */
+
+    document.getElementById(
+        "quizCorrectas"
+    ).innerHTML =
+        "✅ <strong>Respuestas correctas:</strong> " +
+        correctas;
+
+
+    /* ==========================================
+       MOSTRAR INCORRECTAS
+       ========================================== */
+
+    document.getElementById(
+        "quizIncorrectas"
+    ).innerHTML =
+        "❌ <strong>Respuestas incorrectas:</strong> " +
+        incorrectas;
+
+
+    /* ==========================================
+       IR AL RESULTADO
+       ========================================== */
+
+    document
+        .getElementById("cardioQuiz")
+        .scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+}
+
+        /*
+         * Reiniciar actividad
+         */
+
+        function reiniciarQuiz() {
+
+            puntuacion = 0;
+
+            pregunta4Evaluada = false;
+
+
+            document
+                .querySelectorAll(".quiz-step")
+                .forEach(function (step) {
+
+                    step.classList.remove("active");
+
+                });
+
+
+            document
+                .getElementById("quizStep1")
+                .classList.add("active");
+
+
+            document
+                .getElementById("quizFinal")
+                .style.display = "none";
+
+
+            document
+                .querySelectorAll(".quiz-option")
+                .forEach(function (boton) {
+
+                    boton.disabled = false;
+
+                    boton.classList.remove(
+                        "correct"
+                    );
+
+                    boton.classList.remove(
+                        "incorrect"
+                    );
+
+                });
+
+
+            document
+                .querySelectorAll(".quiz-feedback")
+                .forEach(function (feedback) {
+
+                    feedback.classList.remove(
+                        "visible"
+                    );
+
+                    feedback.innerHTML = "";
+
+                });
+
+
+            document
+                .querySelectorAll(".quiz-next")
+                .forEach(function (boton) {
+
+                    boton.style.display = "none";
+
+                });
+
+
+            document.getElementById(
+                "respuestaAbierta"
+            ).value = "";
+
+
+            document.getElementById(
+                "resultadoAbierto"
+            ).style.display = "none";
+
+        }
+
+    </script>
+
+
+    <!-- ==================================================
+         NUBE DE FUENTES
+         ================================================== -->
+
+    <script>
+
+        (function () {
+
+            var btn =
+                document.getElementById(
+                    "src-toggle"
+                );
+
+            var panel =
+                document.getElementById(
+                    "src-panel"
+                );
+
+
+            if (!btn || !panel) return;
+
+
+            btn.addEventListener(
+                "click",
+                function () {
+
+                    var open =
+                        panel.classList.toggle(
+                            "open"
+                        );
+
+
+                    btn.setAttribute(
+                        "aria-expanded",
+                        open ? "true" : "false"
+                    );
+
+                }
+            );
+
+        })();
+
+    </script>
+
+
+    <!-- JavaScript
+    ================================================== -->
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
+```
