@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="es">
 <head>
 
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>About - Cognitiva</title>
-    <meta name="description" content="">
+    <title>Nosotras - Cognitiva</title>
+    <meta name="description" content="Las mentes detrás de Cognitiva">
     <meta name="author" content="">
-
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- mobile specific metas
     ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +32,16 @@
 
 </head>
 <style>
+
+.logo-cognitivo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    color: #ffffff;
+}
+
     .header__social {
         display: flex;
         gap: 15px;
@@ -101,6 +111,154 @@
     display: block;
     flex: 1;
 }
+
+
+/* ==================================================
+   EQUIPO (sin contenedores, fotos pequeñas)
+   ================================================== */
+
+.equipo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem 2rem;
+    margin: 3.6rem 0 1rem;
+}
+
+.integrante {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.integrante.visible {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* Foto */
+
+.integrante__foto {
+    width: 120px;
+    height: 120px;
+    margin: 0 0 1.4rem;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #f1f1f1;
+}
+
+.integrante__foto img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+}
+
+/* Si la foto no carga se muestra la inicial */
+
+.integrante__foto.sin-foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #111;
+}
+
+
+/* Nombre */
+
+.integrante__nombre {
+    margin: 0 0 .6rem;
+    font-size: 1.7rem;
+    line-height: 1.3;
+}
+
+
+/* ID y correo */
+
+.integrante__dato {
+    margin: 0 0 .4rem;
+    max-width: 100%;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.integrante__dato:last-child {
+    margin-bottom: 0;
+}
+
+.integrante__dato strong {
+    display: block;
+    font-size: 1rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: .55;
+}
+
+
+/* Aparición al hacer scroll (frase de presentación) */
+
+.revelar {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.revelar.visible {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* Responsivo */
+
+@media (max-width: 900px) {
+
+    .equipo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .equipo {
+        gap: 2.6rem 1rem;
+    }
+
+    .integrante__foto {
+        width: 96px;
+        height: 96px;
+    }
+
+    .integrante__nombre {
+        font-size: 1.5rem;
+    }
+
+    .integrante__dato {
+        font-size: 1.25rem;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .integrante,
+    .revelar {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+}
 </style>
 
 <body class="ss-bg-white">
@@ -122,12 +280,16 @@
         <header class="s-header header">
 
             <div class="header__top">
-                <div class="header__logo">
-                    <a class="site-logo" href="index.html">
-                        <img src="images/logo.svg" alt="Homepage">
-                    </a>
-                </div>
-            </div>
+
+    <div class="header__logo">
+
+        <a class="site-logo" href="index.html">
+            <span class="logo-cognitivo">Cognitiva.</span>
+        </a>
+
+    </div>
+
+</div>
 
             <!-- ==================================================
                  MENÚ DE NAVEGACIÓN
@@ -139,7 +301,7 @@
 
                     <!-- Enlace a la página principal -->
                     <li class="current">
-                        <a href="inicio.html" title="">Inicio</a>
+                        <a href="index.html" title="">Inicio</a>
                     </li>
 
 
@@ -275,73 +437,79 @@
                 
                 <section class="column large-full entry format-standard">
 
-                    <div class="media-wrap">
-                        <div>
-                            <img src="images/thumbs/about/about-1000.jpg" srcset="images/thumbs/about/about-2000.jpg 2000w, 
-                                      images/thumbs/about/about-1000.jpg 1000w, 
-                                      images/thumbs/about/about-500.jpg 500w" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
-                        </div>
-                    </div>
-
+                    <!-- Título -->
                     <div class="content__page-header">
                         <h1 class="display-1">
-                        Hello, We Are Cognitiva.
+                        Las mentes detrás de Cognitiva
                         </h1>
                     </div> <!-- end content__page-header -->
 
                     <p class="lead drop-cap">
-                    Duis ex ad cupidatat tempor Excepteur cillum cupidatat 
-                    fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation 
-                    incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor 
-                    dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui 
-                    labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua 
-                    ea nisi sint.
+                    Cognitiva es un proyecto académico desarrollado con el propósito de conocer,
+                    investigar y compartir información relacionada con el desarrollo de la mente
+                    durante los primeros años de vida. A lo largo de este proceso tuvimos la
+                    oportunidad de aprender, investigar y descubrir nuevas formas de comprender
+                    el desarrollo humano.
                     </p>
 
                     <p>
-                    Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat 
-                    dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit 
-                    id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit 
-                    nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam 
-                    consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut 
-                    dolore culpa occaecat.
+                    Esperamos que disfruten explorar Cognitiva tanto como nosotras disfrutamos
+                    investigar, aprender y darle vida a este proyecto. Cada sección fue creada
+                    con dedicación y entusiasmo, buscando presentar información interesante,
+                    clara y cercana.
                     </p>
 
-                    <h2>This Is Our Story</h2>
+                    <blockquote class="revelar">
+                        <p>
+                        A continuación, podrán conocernos un poco más y saber quiénes estamos
+                        detrás de este blog.
+                        </p>
+                    </blockquote>
 
-                    <p>
-                    Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti 
-                    dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique 
-                    sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis 
-                    
-                    <p>
-                    Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor 
-                    sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim 
-                    mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco. Lorem 
-                    ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat aute.
-                    </p>
+                    <div class="linea-separadora"></div>
 
-                    <hr>
+                    <!-- ==================================================
+                         INTEGRANTES
+                         Edita la foto (src), el nombre, el ID y el correo.
+                         ================================================== -->
+                    <div class="equipo">
 
-                    <div class="row block-large-1-2 block-tab-full">
-                        <div class="column">
-                            <h4>Who We Are.</h4>
-                            <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
+                        <div class="integrante">
+                            <div class="integrante__foto">
+                                <img src="images/nosotras/WhatsApp Image 2026-09-30 at 8.01.31 PM.jpeg" alt="Foto de Nombre Apellido 1">
+                            </div>
+                            <h4 class="integrante__nombre">Sandra Michelle Quintero Quintero </h4>
+                            <p class="integrante__dato"><strong>ID institucional</strong>100133971</p>
+                            <p class="integrante__dato"><strong>Correo institucional</strong><a href="squint46@estudiante.ibero.edu.co">squint46@estudiante.ibero.edu.co</a></p>
                         </div>
 
-                        <div class="column">
-                            <h4>Our Mission.</h4>
-                            <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
+                        <div class="integrante">
+                            <div class="integrante__foto">
+                                <img src="images/nosotras/WhatsApp Image 2026-09-30 at 8.01.50 PM.jpeg" alt="Foto de Nombre Apellido 2">
+                            </div>
+                            <h4 class="integrante__nombre">Meyly Daniela Duran Patiño </h4>
+                            <p class="integrante__dato"><strong>ID institucional</strong>100176451</p>
+                            <p class="integrante__dato"><strong>Correo institucional</strong><a href="mduranpa@estudiante.ibero.edu.co ">mduranpa@estudiante.ibero.edu.co </a></p>
                         </div>
 
-                        <div class="column">
-                            <h4>Our Vision.</h4>
-                            <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
+                        <div class="integrante">
+                            <div class="integrante__foto">
+                                <img src="images/nosotras/WhatsApp Image 2026-09-30 at 8.02.31 PM (1).jpeg" alt="Foto de Nombre Apellido 3">
+                            </div>
+                            <h4 class="integrante__nombre">Daniela Sanchez Olivera</h4>
+                            <p class="integrante__dato"><strong>ID institucional</strong>100187898</p>
+                            <p class="integrante__dato"><strong>Correo institucional</strong><a href="dsanc145@estudiante.ibero.edu.co
+">dsanc145@estudiante.ibero.edu.co
+</a></p>
                         </div>
 
-                        <div class="column">
-                            <h4>Our Core Values.</h4>
-                            <p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
+                        <div class="integrante">
+                            <div class="integrante__foto">
+                                <img src="images/nosotras/WhatsApp Image 2026-09-30 at 8.02.31 PM.jpeg" alt="Foto de Nombre Apellido 4">
+                            </div>
+                            <h4 class="integrante__nombre">Laura valentina alvarez moreno</h4>
+                            <p class="integrante__dato"><strong>ID institucional</strong>100186051</p>
+                            <p class="integrante__dato"><strong>Correo institucional</strong><a href="Lalvar84@estudiante.ibero.edu.co">correo4@institucion.edu.co</a></p>
                         </div>
 
                     </div>
@@ -353,23 +521,7 @@
         </div> <!-- end s-content -->
 
 
-        <!-- footer
-        ================================================== -->
-        <footer class="s-footer footer">
-            <div class="row">
-                <div class="column large-full footer__content">
-                    <div class="footer__copyright">
-                        <span>© Copyright Typerite 2021</span> 
-                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"></a>
-            </div>
-        </footer>
-
+        
     </div> <!-- end s-wrap -->
 
 
@@ -378,5 +530,115 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script>
+(function () {
+
+    var tarjetas = document.querySelectorAll(".integrante, .revelar");
+
+
+    /* Si una foto no carga, se muestra la inicial del nombre */
+
+    document.querySelectorAll(".integrante__foto img").forEach(function (img) {
+
+        function mostrarInicial() {
+
+            var contenedor = img.parentNode,
+                nombre = contenedor.parentNode
+                    .querySelector(".integrante__nombre")
+                    .textContent.trim();
+
+            contenedor.classList.add("sin-foto");
+            contenedor.textContent = nombre.charAt(0).toUpperCase();
+
+        }
+
+        img.addEventListener("error", mostrarInicial);
+
+        if (img.complete && img.naturalWidth === 0) {
+            mostrarInicial();
+        }
+
+    });
+
+
+    /* Aparición al hacer scroll: se repite cada vez que el elemento
+       entra en pantalla (y se oculta de nuevo al salir) */
+
+    var observer = null;
+
+    function mostrar(el) {
+
+        if (el.classList.contains("integrante")) {
+
+            var indice = Array.prototype.indexOf.call(
+                document.querySelectorAll(".integrante"),
+                el
+            );
+
+            el.style.transitionDelay = (indice * 0.12) + "s";
+
+        }
+
+        el.classList.add("visible");
+
+    }
+
+    function ocultar(el) {
+
+        el.style.transitionDelay = "0s";
+        el.classList.remove("visible");
+
+    }
+
+    if ("IntersectionObserver" in window) {
+
+        observer = new IntersectionObserver(function (entradas) {
+
+            entradas.forEach(function (entrada) {
+
+                if (entrada.intersectionRatio >= 0.15) {
+
+                    mostrar(entrada.target);
+
+                } else if (!entrada.isIntersecting) {
+
+                    ocultar(entrada.target);
+
+                }
+
+            });
+
+        }, { threshold: [0, 0.15] });
+
+        tarjetas.forEach(function (t) { observer.observe(t); });
+
+    } else {
+
+        tarjetas.forEach(function (t) { t.classList.add("visible"); });
+
+    }
+
+
+    /* Al volver a esta página desde otra (botón atrás/adelante), el
+       navegador puede restaurarla tal como estaba: se reinicia la
+       animación para que se vea otra vez */
+
+    window.addEventListener("pageshow", function (e) {
+
+        if (e.persisted && observer) {
+
+            tarjetas.forEach(ocultar);
+            observer.disconnect();
+
+            requestAnimationFrame(function () {
+                tarjetas.forEach(function (t) { observer.observe(t); });
+            });
+
+        }
+
+    });
+
+})();
+    </script>
 
 </body>

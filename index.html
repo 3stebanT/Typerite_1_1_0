@@ -1,120 +1,509 @@
-<!-- ============================================================
-     CONFIGURACIÓN INICIAL DEL DOCUMENTO
-     Define el tipo de documento y el idioma de la página.
-     ============================================================ -->
 <!DOCTYPE html>
 
 <html class="no-js" lang="es">
 
 <head>
 
-    <!-- ========================================================
-         INFORMACIÓN BÁSICA DE LA PÁGINA
-         Configuración del título, codificación y descripción.
-         ======================================================== -->
+    <!--- basic page needs
+    ================================================== -->
     <meta charset="utf-8">
-    <title>Cognitiva</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-
-    <!-- ========================================================
-         CONFIGURACIÓN PARA DISPOSITIVOS MÓVILES
-         Permite que la página se adapte correctamente
-         a diferentes tamaños de pantalla.
-         ======================================================== -->
+    <title>Teorías del Desarrollo - Cognitiva</title>
+    <meta name="description" content="Introducción a las principales teorías del desarrollo humano">
+    <meta name="author" content="Cognitiva">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- mobile specific metas
+    ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    <!-- ========================================================
-         ARCHIVOS CSS
-         Estos archivos contienen los estilos visuales
-         utilizados por la página.
-         ======================================================== -->
+    <!-- CSS
+    ================================================== -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
 
-
-    <!-- ========================================================
-         JAVASCRIPT
-         Modernizr permite detectar características
-         compatibles con el navegador.
-         ======================================================== -->
+    <!-- script
+    ================================================== -->
     <script src="js/modernizr.js"></script>
 
-
-    <!-- ========================================================
-         ICONOS DE LA PÁGINA
-         Estos archivos corresponden al favicon que aparece
-         en la pestaña del navegador y en dispositivos móviles.
-         ======================================================== -->
+    <!-- favicons
+    ================================================== -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
 </head>
+<style>
+
+    .logo-cognitivo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    color: #ffffff;
+}
+
+    /* ==================================================
+   FUENTES CONSULTADAS
+   ================================================== */
+
+.src-section {
+    margin: 5rem 0 2rem;
+    text-align: center;
+}
 
 
-<!-- ============================================================
-     CUERPO PRINCIPAL DE LA PÁGINA
-     Aquí se encuentra todo el contenido visible del sitio.
-     ============================================================ -->
-<body>
+/* Botón de la nube */
+
+.src-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    margin: 0;
+    padding: 1rem 2.4rem;
+    height: auto;
+    line-height: 1.2;
+    background: transparent;
+    border: 0;
+    border-radius: 14px;
+    color: #111;
+    font-family: inherit;
+    cursor: pointer;
+}
 
 
-    <!-- ========================================================
-         PRECARGADOR
-         Se muestra mientras los archivos de la página
-         terminan de cargar.
-         ======================================================== -->
+/* Nube */
+
+.src-cloud {
+    display: block;
+    font-size: 5.6rem;
+    line-height: 1;
+
+    filter: drop-shadow(
+        0 6px 8px rgba(0, 0, 0, .14)
+    );
+
+    animation: src-float 5s ease-in-out infinite;
+}
+
+
+/* Texto "Fuentes consultadas" */
+
+.src-label {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    transition: opacity .2s;
+}
+
+
+/* Flecha */
+
+.src-chevron {
+    display: block;
+    font-size: 1.3rem;
+    line-height: 1;
+    transition: transform .4s ease;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.src-toggle:hover .src-label {
+    opacity: .65;
+}
+
+
+/* Girar la flecha cuando se abre */
+
+.src-toggle[aria-expanded="true"] .src-chevron {
+    transform: rotate(180deg);
+}
+
+
+/* Animación de la nube */
+
+@keyframes src-float {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+
+/* ==================================================
+   PANEL QUE SE ABRE
+   ================================================== */
+
+.src-panel {
+    display: grid;
+
+    grid-template-rows: 0fr;
+
+    opacity: 0;
+    visibility: hidden;
+
+    text-align: left;
+
+    transition:
+        grid-template-rows .55s ease,
+        opacity .4s ease,
+        visibility 0s linear .55s;
+}
+
+
+/* Panel abierto */
+
+.src-panel.open {
+
+    grid-template-rows: 1fr;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transition:
+        grid-template-rows .55s ease,
+        opacity .45s ease .05s,
+        visibility 0s;
+
+}
+
+
+/* Contenedor interno */
+
+.src-inner {
+    min-height: 0;
+    overflow: hidden;
+}
+
+
+/* Caja de fuentes */
+
+.src-box {
+
+    max-width: 900px;
+
+    margin: 2rem auto 0;
+
+    padding: 2.6rem;
+
+    background: #fff;
+
+    border: 1px solid #e2e2e2;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .12);
+
+}
+
+
+/* Título */
+
+.entry__content .src-box h3 {
+
+    margin: 0 0 2rem;
+
+    padding-bottom: 1rem;
+
+    border-bottom: 2px solid #111;
+
+    font-size: 2rem;
+
+    color: #111;
+
+}
+
+
+/* Lista */
+
+.entry__content .src-list {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+/* Cada fuente */
+
+.entry__content .src-item {
+
+    margin: 0;
+
+    padding: 1.5rem 1.8rem;
+
+    background: #f7f7f7;
+
+    border-left: 4px solid #111;
+
+    border-radius: 0 8px 8px 0;
+
+}
+
+
+/* Separación entre fuentes */
+
+.entry__content .src-item + .src-item {
+
+    margin-top: 1.4rem;
+
+}
+
+
+/* Texto de la referencia */
+
+.entry__content .src-ref {
+
+    margin: 0 0 .9rem;
+
+    font-size: 1.6rem;
+
+    line-height: 1.6;
+
+    color: #333;
+
+}
+
+
+/* Enlace */
+
+.entry__content .src-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .6rem;
+
+    font-weight: 700;
+
+    color: #111;
+
+    text-decoration: none;
+
+    border-bottom: 2px solid #111;
+
+    padding-bottom: 1px;
+
+}
+
+
+/* Flecha del enlace */
+
+.entry__content .src-link::before {
+
+    content: "→";
+
+    display: inline-block;
+
+    transition: transform .2s;
+
+}
+
+
+/* Hover del enlace */
+
+.entry__content .src-link:hover {
+
+    opacity: .65;
+
+}
+
+
+/* Animación de la flecha */
+
+.entry__content .src-link:hover::before {
+
+    transform: translateX(4px);
+
+}
+
+
+/* ==================================================
+   ANIMACIÓN DE LAS FUENTES
+   ================================================== */
+
+.src-panel.open .src-item {
+
+    animation: src-in .5s ease both;
+
+}
+
+
+.src-panel.open .src-item:nth-child(2) {
+
+    animation-delay: .08s;
+
+}
+
+
+.src-panel.open .src-item:nth-child(3) {
+
+    animation-delay: .16s;
+
+}
+
+
+.src-panel.open .src-item:nth-child(4) {
+
+    animation-delay: .24s;
+
+}
+
+
+@keyframes src-in {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: none;
+
+    }
+
+}
+
+
+/* ==================================================
+   MÓVIL
+   ================================================== */
+
+@media (max-width: 600px) {
+
+    .src-box {
+        padding: 1.6rem;
+    }
+
+    .entry__content .src-item {
+        padding: 1.2rem 1.3rem;
+    }
+
+}
+
+    .header__social {
+        display: flex;
+        gap: 15px;
+    }
+
+/* ==================================================
+   LÍNEA SEPARADORA
+   ================================================== */
+
+.linea-separadora {
+    width: 100%;
+    height: 1px;
+    background: #898989;
+    margin: 40px 0;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE LAS PUBLICACIONES DEL MENÚ
+   ================================================== */
+
+.header__nav .sub-menu li {
+    margin-bottom: 8px;
+}
+
+.header__nav .sub-menu li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   ESPACIO INTERNO DE CADA PUBLICACIÓN
+   ================================================== */
+
+.header__nav .sub-menu li a {
+    display: block;
+    padding: 8px 0;
+    line-height: 1.4;
+}
+
+
+/* ==================================================
+   SEPARACIÓN ENTRE NÚMERO Y TEXTO
+   ================================================== */
+
+.header__nav .sub-menu li a.publicacion-link {
+    display: flex !important;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+/* Número */
+
+.numero-publicacion {
+    display: block;
+    flex: 0 0 35px;
+    width: 35px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+
+/* Texto */
+
+.texto-publicacion {
+    display: block;
+    flex: 1;
+}
+
+</style>
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
     <div id="preloader">
-
         <div id="loader" class="dots-fade">
             <div></div>
             <div></div>
             <div></div>
         </div>
-
     </div>
 
 
-    <!-- ========================================================
-         CONTENEDOR PRINCIPAL
-         Envuelve todo el contenido de la página.
-         ======================================================== -->
     <div id="top" class="s-wrap site-wrapper">
 
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
 
-        <!-- ====================================================
-             ENCABEZADO DEL SITIO
-             Contiene el logotipo, menú de navegación,
-             redes sociales y controles de búsqueda.
-             ==================================================== -->
-        <header class="s-header">
-
-
-            <!-- ==================================================
-                 PARTE SUPERIOR DEL ENCABEZADO
-                 Contiene el logotipo principal.
-                 ================================================== -->
             <div class="header__top">
 
-                <div class="header__logo">
+    <div class="header__logo">
 
-                    <!-- Enlace que lleva a la página principal -->
-                    <a class="site-logo" href="index.html">
+        <a class="site-logo" href="index.html">
+            <span class="logo-cognitivo">Cognitiva.</span>
+        </a>
 
-                        <!-- Logotipo del sitio -->
-                        <img src="images/logo.svg" alt="Página de inicio">
+    </div>
 
-                    </a>
-
-                </div>
-
-            </div>
-            <!-- Fin de la parte superior del encabezado -->
+</div>
 
 
             <!-- ==================================================
@@ -127,7 +516,7 @@
 
                     <!-- Enlace a la página principal -->
                     <li class="current">
-                        <a href="inicio.html" title="">Inicio</a>
+                        <a href="index.html" title="">Inicio</a>
                     </li>
 
 
@@ -145,82 +534,63 @@
 
                         <ul class="sub-menu">
 
-                            <!-- Publicación con video -->
                             <li>
-                                <a href="single-video.html">
-                                    + Paradigma intermodal de preferencia de mirada
-                                </a>
-                            </li>
-
-                            <!-- Publicación con audio -->
-                            <li>
-                                <a href="metodo_de_succion.html">
-                                    TEMA #2
-                                </a>
-                            </li>
-
-                            <!-- Publicación con galería -->
-                            <li>
-                                <a href="Mediciones_cardiacas.html">
-                                    TEMA #3
-                                </a>
-                            </li>
-
-                            <!-- Publicación de formato estándar -->
-                            <li>
-                                <a href="Preferencia_Giro_Cabeza.html">
-                                    TEMA #4
+                                <a href="metodo_de_succion.html" class="publicacion-link">
+                                    <span class="numero-publicacion">1.</span>
+                                    <span class="texto-publicacion">Procedimiento de succión de amplitud elevada</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="Procedimientos_Reforzamiento_Diferencia.html">
-                                    TEMA #5
+                                <a href="Mediciones_cardiacas.html" class="publicacion-link">
+                                    <span class="numero-publicacion">2.</span>
+                                    <span class="texto-publicacion">Mediciones del ritmo cardíaco</span>
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="Preferencia_Giro_Cabeza.html" class="publicacion-link">
+                                    <span class="numero-publicacion">3.</span>
+                                    <span class="texto-publicacion">Procedimiento de preferencia de giro de cabeza</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Procedimientos_Reforzamiento_Diferencia.html" class="publicacion-link">
+                                    <span class="numero-publicacion">4.</span>
+                                    <span class="texto-publicacion">Procedimientos basados en el reforzamiento diferencial</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="single-video.html" class="publicacion-link">
+                                    <span class="numero-publicacion">5.</span>
+                                    <span class="texto-publicacion">Paradigma intermodal de preferencia de mirada</span>
+                                </a>
+                            </li>
                         </ul>
-
                     </li>
-
-
-                    <!-- Enlace hacia la página de estilos -->
-                    <li>
-                        <a href="styles.html" title="">Esttteeetetete</a>
-                    </li>
-
-
                     <!-- Enlace hacia la página "Nosotros" -->
                     <li>
-                        <a href="page-about.html" title="">Nosotros</a>
-                    </li>
-
-
-                    <!-- Enlace hacia la página de contacto -->
-                    <li>
-                        <a href="page-contact.html" title="">Contacto</a>
+                        <a href="page-about.html" title="">Nosotras</a>
                     </li>
 
                 </ul>
                 <!-- Fin del menú de navegación -->
 
 
-                <!-- ==================================================
-                     REDES SOCIALES
-                     Enlaces hacia las diferentes redes sociales.
-                     ================================================== -->
-                <ul class="header__social">
 
-                    <!-- Facebook -->
+                <!-- end header__nav -->
+
+
+                <ul class="header__social">
                     <li class="ss-facebook">
-                        <a href="https://facebook.com/">
+                        <a href="#0">
                             <span class="screen-reader-text">
                                 Facebook
                             </span>
                         </a>
                     </li>
-
-                    <!-- Twitter -->
                     <li class="ss-twitter">
                         <a href="#0">
                             <span class="screen-reader-text">
@@ -228,139 +598,369 @@
                             </span>
                         </a>
                     </li>
-
-                    <!-- Dribbble -->
-                    <li class="ss-dribbble">
+                    <li class="ss-instagram">
                         <a href="#0">
                             <span class="screen-reader-text">
-                                Dribbble
+                                Instagram
                             </span>
                         </a>
                     </li>
-
-                    <!-- Behance -->
-                    <li class="ss-pinterest">
-                        <a href="#0">
-                            <span class="screen-reader-text">
-                                Behance
-                            </span>
-                        </a>
-                    </li>
-
                 </ul>
-
-                
-
             </nav>
-            <!-- Fin del menú de navegación -->
+
+            <!-- end header__nav-wrap -->
 
 
-            <!-- ==================================================
-                 BOTÓN DEL MENÚ MÓVIL
-                 Permite abrir y cerrar el menú cuando la página
-                 se visualiza desde dispositivos pequeños.
-                 ================================================== -->
+            <!-- menu toggle -->
+
             <a href="#0" class="header__menu-toggle">
-                <span>Menú</span>
+
+                <span>Menu</span>
+
             </a>
 
         </header>
-        <!-- Fin del encabezado -->
+
+        <!-- end s-header -->
 
 
-        <!-- ========================================================
-             SISTEMA DE BÚSQUEDA
-             Contiene el campo donde el usuario puede escribir
-             palabras clave para realizar una búsqueda.
-             ======================================================== -->
+
+        <!-- search
+        ================================================== -->
+
         <div class="s-search">
 
-
-            <!-- Contenedor del formulario de búsqueda -->
             <div class="search-block">
 
-                <!-- Formulario utilizado para realizar búsquedas -->
-                <form
-                    role="search"
-                    method="get"
-                    class="search-form"
-                    action="#"
-                >
+                <form role="search"
+                      method="get"
+                      class="search-form"
+                      action="#">
 
                     <label>
 
-                        <!-- Texto utilizado por lectores de pantalla -->
                         <span class="hide-content">
-                            Buscar:
+                            Search for:
                         </span>
 
-                        <!-- Campo donde el usuario escribe las palabras -->
-                        <input
-                            type="search"
-                            class="search-field"
-                            placeholder="Escribe palabras clave"
-                            value=""
-                            name="s"
-                            title="Buscar:"
-                            autocomplete="off"
-                        >
+                        <input type="search"
+                               class="search-field"
+                               placeholder="Type Keywords"
+                               value=""
+                               name="s"
+                               title="Search for:"
+                               autocomplete="off">
 
                     </label>
 
 
-                    <!-- Botón para ejecutar la búsqueda -->
-                    <input
-                        type="submit"
-                        class="search-submit"
-                        value="Buscar"
-                    >
+                    <input type="submit"
+                           class="search-submit"
+                           value="Search">
 
                 </form>
 
 
-                <!-- Botón para cerrar el buscador -->
-                <a
-                    href="#0"
-                    title="Cerrar búsqueda"
-                    class="search-close"
-                >
-                    Cerrar
+                <a href="#0"
+                   title="Close Search"
+                   class="search-close">
+
+                    Close
+
                 </a>
 
             </div>
-            <!-- Fin del bloque de búsqueda -->
+
+            <!-- end search-block -->
 
 
-            <!-- ==================================================
-                 BOTÓN PARA ABRIR EL BUSCADOR
-                 Este enlace activa visualmente el formulario
-                 de búsqueda mediante JavaScript.
-                 ================================================== -->
+            <!-- search modal trigger -->
+
             <a href="#0" class="search-trigger">
 
-                <!-- Icono de lupa en formato SVG -->
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"
-                >
-                    <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+
+                    <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z">
+                    </path>
+
                 </svg>
 
-                <span>Buscar</span>
+                <span>Search</span>
 
             </a>
 
-            <!-- Línea decorativa del buscador -->
+
             <span class="search-line"></span>
 
         </div>
-        <!-- Fin del sistema de búsqueda -->
+
+        <!-- end s-search -->
 
 
-       
+
+        <!-- site content
+        ================================================== -->
+
+        <div class="s-content content">
+
+            <main class="row content__page">
+
+                <section class="column large-full entry format-standard">
+                    <!-- Título -->
+
+                    <div class="content__page-header">
+
+                        <h1 class="display-1">
+
+                            Teorías del Desarrollo
+
+                        </h1>
+
+                    </div>
+
+                    <!-- end content__page-header -->
+
+
+
+                    <!-- Introducción -->
+
+                    <p class="lead drop-cap">
+
+                        El desarrollo humano es un proceso complejo que comienza desde las
+                        primeras etapas de la vida y continúa a lo largo del ciclo vital.
+                        Comprende cambios físicos, cognitivos, emocionales y sociales.
+                        Debido a esta complejidad, no existe una única explicación para
+                        comprender cómo se desarrolla una persona. Por esta razón,
+                        la psicología del desarrollo utiliza diferentes teorías y
+                        perspectivas que permiten estudiar el desarrollo desde distintos
+                        puntos de vista (OpenStax, s. f.).
+
+                    </p>
+
+<blockquote>
+                    <p>
+
+                        Las teorías del desarrollo funcionan como marcos de referencia
+                        para interpretar los cambios que ocurren durante la vida.
+                        Algunas se concentran en la manera en que las personas construyen
+                        conocimientos, mientras que otras estudian las relaciones sociales,
+                        el ambiente, el aprendizaje o los cambios emocionales. Estas
+                        perspectivas no necesariamente se excluyen entre sí; pueden
+                        complementar la comprensión del desarrollo humano (OpenStax, s. f.).
+
+                    </p>
+</blockquote>
+
+
+                    
+
+
+                    <!-- Visión general -->
+
+                    <h2>
+                        Una visión integral del desarrollo
+                    </h2>
+
+                    <p>
+
+                        El desarrollo humano puede entenderse mejor cuando se consideran
+                        diferentes dimensiones al mismo tiempo. Los cambios cognitivos,
+                        sociales, emocionales, biológicos y ambientales están relacionados
+                        entre sí. Por esta razón, las investigaciones actuales pueden
+                        utilizar diferentes teorías y métodos para observar y analizar
+                        el comportamiento humano desde distintas perspectivas
+                        (OpenStax, s. f.).
+
+                    </p>
+
+
+<div class="linea-separadora"></div>
+                    <!-- Métodos -->
+
+                    <h2>
+                        Métodos para estudiar el desarrollo en bebés
+                    </h2>
+
+                    <p>
+
+                        El estudio del desarrollo durante los primeros años de vida
+                        requiere métodos que permitan observar respuestas del bebé
+                        sin depender exclusivamente del lenguaje. Por ello, la
+                        investigación del desarrollo infantil utiliza diferentes
+                        procedimientos conductuales y fisiológicos para estudiar
+                        atención, percepción, aprendizaje y procesamiento de información.
+
+                    </p>
+
+
+                    <div class="row block-large-1-2 block-tab-full">
+
+
+                        <!-- Método 1 -->
+
+                        <div class="column">
+
+                            <h3>
+                                01. Succión de Amplitud Elevada
+                            </h3>
+<blockquote>
+                            <p>
+
+                                Procedimiento utilizado para estudiar respuestas de
+                                atención y discriminación en bebés mediante cambios
+                                en su patrón de succión.
+
+                            </p>
+</blockquote>
+                        </div>
+
+
+
+                        <!-- Método 2 -->
+
+                        <div class="column">
+
+                            <h3>
+                                02. Mediciones del Ritmo Cardiaco
+                            </h3>
+<blockquote>
+                            <p>
+
+                                Permiten observar cambios fisiológicos asociados con
+                                diferentes niveles de atención, activación o respuesta
+                                ante determinados estímulos.
+
+                            </p>
+</blockquote>
+                        </div>
+
+
+
+                        <!-- Método 3 -->
+
+                        <div class="column">
+
+                            <h3>
+                                03. Preferencia de Giro de Cabeza
+                            </h3>
+<blockquote>
+                            <p>
+
+                                Se utiliza para observar hacia qué estímulos dirige
+                                el bebé su atención, especialmente en investigaciones
+                                relacionadas con percepción y audición.
+
+                            </p>
+</blockquote>
+                        </div>
+
+
+
+                        <!-- Método 4 -->
+
+                        <div class="column">
+
+                            <h3>
+                                04. Reforzamiento Diferencial
+                            </h3>
+<blockquote>
+                            <p>
+
+                                Permite estudiar procesos de aprendizaje observando
+                                cómo determinadas respuestas pueden cambiar cuando
+                                reciben diferentes consecuencias.
+
+                            </p>
+</blockquote>
+                        </div>
+
+
+
+                        <!-- Método 5 -->
+
+                        <div class="column">
+
+                            <h3>
+                                05. Preferencia Intermodal de Mirada
+                            </h3>
+<blockquote>
+                            <p>
+
+                                Permite estudiar cómo los bebés relacionan información
+                                proveniente de diferentes sentidos, por ejemplo,
+                                información visual y auditiva.
+
+                            </p>
+</blockquote>
+                        </div>
+
+
+                    </div>
+
+<!-- ================= FUENTES CONSULTADAS ================= -->
+
+<section class="src-section" id="fuentes">
+
+    <button
+        type="button"
+        class="src-toggle"
+        id="src-toggle"
+        aria-expanded="false"
+        aria-controls="src-panel">
+
+        <span class="src-cloud" aria-hidden="true">☁️</span>
+
+        <span class="src-label">
+            Fuentes consultadas
+        </span>
+
+        <span class="src-chevron" aria-hidden="true">
+            ▾
+        </span>
+
+    </button>
+<div class="src-panel" id="src-panel">
+    <div class="src-inner">
+        <div class="src-box">
+            <h3>Fuentes consultadas</h3>
+
+            <ul class="src-list">
+
+                <li class="src-item">
+                    <p class="src-ref">
+                        OpenStax. (s. f.).
+                        <em>Lifespan Development</em>.
+                        Rice University.
+                    </p>
+
+                    <a
+                        class="src-link"
+                        href="https://openstax.org/books/lifespan-development"
+                        target="_blank"
+                        rel="noopener">
+                        Consultar libro completo
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+</section>
+
+                </section>
+
+            </main>
+
+        </div>
+
+        <!-- end s-content -->
+
 
 
         <!-- ========================================================
@@ -406,26 +1006,47 @@
 
                 <i class="im im-arrow-up"></i>
 
-                <span>Volver arriba</span>
+                <span></span>
 
             </a>
 
         </div>
 
-
     </div>
-    <!-- Fin del contenedor principal -->
+
+    <!-- end s-wrap -->
 
 
-    <!-- ========================================================
-         JAVASCRIPT
-         Estos archivos controlan las interacciones,
-         animaciones, navegación y funcionalidades dinámicas
-         de la página.
-         ======================================================== -->
+
+    <!-- Java Script
+    ================================================== -->
+
     <script src="js/jquery-3.2.1.min.js"></script>
+
     <script src="js/plugins.js"></script>
+
     <script src="js/main.js"></script>
+    <script>
+(function () {
+
+    var btn = document.getElementById("src-toggle"),
+        panel = document.getElementById("src-panel");
+
+    if (!btn || !panel) return;
+
+    btn.addEventListener("click", function () {
+
+        var open = panel.classList.toggle("open");
+
+        btn.setAttribute(
+            "aria-expanded",
+            open ? "true" : "false"
+        );
+
+    });
+
+})();
+</script>
 
 </body>
 
