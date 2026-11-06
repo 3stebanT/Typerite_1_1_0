@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="es">
+
+<head>
+
+    <!-- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Caso de Santiago y Mateo - Cognitiva</title>
+    <meta name="description" content="Caso de Santiago y Mateo: lo que opinan los expertos">
+    <meta name="author" content="Cognitiva">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+
+    /* ==================================================
+       PALETA DE COLORES
+       Las 4 lilas son las superficies; la tinta y el
+       violeta dan contraste (textos, botones, detalles).
+       ================================================== */
+
+    :root {
+        --lila-1: #D6B6EE;   /* el más fuerte */
+        --lila-2: #E3CDF5;
+        --lila-3: #EFE3FB;
+        --lila-4: #F8F2FF;   /* el más suave */
+        --tinta:  #2d1b45;   /* morado muy oscuro: textos y botones */
+        --violeta: #5a3590;  /* acento profundo: detalles y foco */
+        --ambar:  #F5B700;   /* solo para la luz del bombillo */
+        --sombra: 0 1px 2px rgba(45, 27, 69, .06), 0 10px 30px rgba(45, 27, 69, .10);
+    }
+
+
+
+/* Iconos del menú lateral */
+.icono-menu {
+    width: 19px;
+    height: 19px;
+    min-width: 19px;
+    color: #211530;
+    stroke-width: 2.5;
+    flex-shrink: 0;
+}
+
+/* Alineación de iconos y textos */
+.header__nav li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+/* El texto ocupa el espacio restante */
+.header__nav li a span:last-child {
+    flex: 1;
+}
+
+
+
+
+    /* ==================================================
+       MENÚ (igual que en las otras páginas)
+       ================================================== */
+
+    .logo-cognitivo {
+        font-family: 'Oswald', sans-serif;
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 1;
+        white-space: nowrap;
+        color: #211530;
+    }
+
+    .header__social {
+        display: flex;
+        gap: 15px;
+    }
+
+    .header__nav .sub-menu li {
+        margin-bottom: 8px;
+    }
+
+    .header__nav .sub-menu li:last-child {
+        margin-bottom: 0;
+    }
+
+    .header__nav .sub-menu li a {
+        display: block;
+        padding: 8px 0;
+        line-height: 1.4;
+    }
+
+    .header__nav .sub-menu li a.publicacion-link {
+        display: flex !important;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .header__nav li.current a {
+    color: #DBC9F9 !important;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.header__nav li.current a:hover {
+    color: #211530 !important;
+}
+
+    .numero-publicacion {
+        display: block;
+        flex: 0 0 35px;
+        width: 35px;
+        margin-right: 10px;
+        font-weight: 600;
+    }
+
+    .texto-publicacion {
+        display: block;
+        flex: 1;
+    }
+
+
+    /* ==================================================
+       ANIMACIÓN DE ENTRADA (solo si hay JavaScript)
+       ================================================== */
+
+    .js .cs-reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .js .cs-reveal.in {
+        opacity: 1;
+        transform: none;
+    }
+
+
+    /* ==================================================
+       PORTADA DEL CASO
+       ================================================== */
+
+    .cs-hero {
+        position: relative;
+        overflow: hidden;
+        margin: 0 0 4rem;
+        padding: 4.6rem 4.4rem 4rem;
+        background: linear-gradient(135deg, var(--lila-3) 0%, var(--lila-2) 100%);
+        border: 1px solid var(--lila-1);
+        border-radius: 26px;
+    }
+
+    /* Círculos decorativos suaves */
+    .cs-hero::before {
+        content: "";
+        position: absolute;
+        right: -90px;
+        top: -90px;
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #fff 0, rgba(255, 255, 255, 0) 70%);
+        opacity: .85;
+    }
+
+    .cs-hero::after {
+        content: "";
+        position: absolute;
+        left: -70px;
+        bottom: -120px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: var(--lila-1);
+        opacity: .35;
+    }
+
+    .cs-hero > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cs-eyebrow {
+        display: inline-block;
+        margin: 0 0 1.6rem;
+        padding: .5rem 1.4rem;
+        border-radius: 999px;
+        background: var(--tinta);
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+    }
+
+    .cs-hero .cs-title {
+        margin: 0 0 3rem;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 600;
+        font-size: clamp(3.6rem, 6.4vw, 6rem);
+        line-height: 1.05;
+        letter-spacing: .01em;
+        color: var(--tinta);
+    }
+
+    /* Personajes */
+    .cs-cast {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.4rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .cs-cast li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.2rem;
+        margin: 0;
+        padding: 1.4rem 1.6rem;
+        background: rgba(255, 255, 255, .8);
+        border: 1px solid rgba(255, 255, 255, .95);
+        border-radius: 16px;
+        box-shadow: 0 4px 14px rgba(45, 27, 69, .08);
+        transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .cs-cast li:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(90, 53, 144, .18);
+    }
+
+    .cs-av {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--tinta);
+        color: #fff;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.9rem;
+        font-weight: 500;
+    }
+
+    .cs-cast strong {
+        display: block;
+        margin-bottom: .2rem;
+        font-size: 1.6rem;
+        color: var(--tinta);
+    }
+
+    .cs-role {
+        display: block;
+        font-size: 1.35rem;
+        line-height: 1.5;
+        color: #5b4a73;
+    }
+
+
+    /* ==================================================
+       TEXTO DEL CASO
+       ================================================== */
+
+    .cs-article {
+        max-width: 780px;
+        margin: 0 0 3.4rem;
+    }
+
+    .cs-article p {
+        margin: 0 0 2.2rem;
+        font-size: 1.75rem;
+        line-height: 1.85;
+        color: var(--tinta);
+    }
+
+    /* Cita del docente */
+    .cs-quote {
+        position: relative;
+        margin: 3.2rem 0;
+        padding: 3rem 3rem 2.4rem 3.6rem;
+        background: var(--lila-4);
+        border: 1px solid var(--lila-2);
+        border-left: 6px solid var(--violeta);
+        border-radius: 0 18px 18px 0;
+    }
+
+    .cs-quote::before {
+        content: "\201C";
+        position: absolute;
+        left: 12px;
+        top: -4px;
+        font-family: Georgia, serif;
+        font-size: 7.2rem;
+        line-height: 1;
+        color: var(--lila-1);
+    }
+
+    .cs-article .cs-quote-text {
+        margin: 0 0 1.4rem;
+        font-size: 1.9rem;
+        line-height: 1.65;
+        font-style: italic;
+    }
+
+    .cs-article .cs-quote-by {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--violeta);
+    }
+
+
+    /* ==================================================
+       EL DILEMA EN UN VISTAZO
+       ================================================== */
+
+    .cs-dilema {
+        margin: 0 0 5rem;
+    }
+
+    .cs-dilema h3 {
+        margin: 0 0 2rem;
+        font-family: 'Oswald', sans-serif;
+        font-size: 2.8rem;
+        font-weight: 500;
+        color: var(--tinta);
+    }
+
+    .cs-paths {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 1.6rem;
+        align-items: stretch;
+    }
+
+    .cs-path {
+        padding: 2.4rem;
+        background: #fff;
+        border: 1px solid var(--lila-2);
+        border-top: 6px solid var(--lila-1);
+        border-radius: 18px;
+        box-shadow: var(--sombra);
+    }
+
+    .cs-path--b {
+        border-top-color: var(--violeta);
+    }
+
+    .cs-path h4 {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 0 0 1.6rem;
+        font-family: 'Oswald', sans-serif;
+        font-size: 2.2rem;
+        font-weight: 500;
+        color: var(--tinta);
+    }
+
+    .cs-ab {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--lila-2);
+        color: var(--tinta);
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+
+    .cs-path--b .cs-ab {
+        background: var(--tinta);
+        color: #fff;
+    }
+
+    .cs-path ul {
+        margin: 0 0 1.6rem;
+        padding: 0;
+        list-style: none;
+    }
+
+    .cs-path li {
+        position: relative;
+        margin: 0 0 1rem;
+        padding: 0 0 0 3rem;
+        font-size: 1.5rem;
+        line-height: 1.6;
+        color: var(--tinta);
+    }
+
+    .cs-path li::before {
+        content: "\2713";
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        border-radius: 50%;
+        background: var(--lila-2);
+        color: var(--tinta);
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    .cs-cost {
+        margin: 0;
+        padding: 1.2rem 1.4rem;
+        background: var(--lila-4);
+        border-radius: 12px;
+        font-size: 1.4rem;
+        line-height: 1.6;
+        color: var(--tinta);
+    }
+
+    .cs-vs {
+        align-self: center;
+        display: grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--tinta);
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: .05em;
+        box-shadow: 0 6px 16px rgba(45, 27, 69, .3);
+    }
+
+
+    /* ==================================================
+       SECCIÓN DE TARJETAS
+       ================================================== */
+
+    .tc-seccion {
+        margin: 2rem 0 3rem;
+        padding: 4rem;
+        background: linear-gradient(180deg, var(--lila-4) 0%, #fff 95%);
+        border: 1px solid var(--lila-2);
+        border-radius: 28px;
+    }
+
+    .cs-sec-head {
+        margin: 0 0 3.2rem;
+    }
+
+    .cs-sec-head .cs-eyebrow {
+        background: var(--lila-1);
+        color: var(--tinta);
+    }
+
+    .cs-subtitulo {
+        margin: 0;
+        font-family: 'Oswald', sans-serif;
+        font-size: clamp(2.8rem, 4vw, 3.8rem);
+        font-weight: 600;
+        color: var(--tinta);
+    }
+
+    .cs-subtitulo::after {
+        content: "";
+        display: block;
+        width: 64px;
+        height: 5px;
+        margin-top: 1.2rem;
+        border-radius: 3px;
+        background: linear-gradient(90deg, var(--violeta), var(--lila-1));
+    }
+
+    /* 3 tarjetas una al lado de la otra */
+    .tc-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2.6rem;
+        align-items: start;
+    }
+
+
+    /* ---------- Tarjeta ---------- */
+
+    .tc-card {
+        position: relative;
+        background: #fff;
+        border: 1px solid var(--lila-2);
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: var(--sombra);
+        scroll-margin-top: 100px;
+
+        transition:
+            transform .35s ease,
+            box-shadow .35s ease,
+            border-color .35s ease,
+            opacity .35s ease;
+    }
+
+    .tc-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--lila-1);
+        box-shadow: 0 2px 4px rgba(45, 27, 69, .06), 0 28px 50px rgba(90, 53, 144, .25);
+    }
+
+    .tc-card.abierta {
+        border-color: var(--lila-1);
+        box-shadow: 0 2px 4px rgba(45, 27, 69, .06), 0 28px 60px rgba(90, 53, 144, .22);
+    }
+
+    /* Barra de color inferior */
+    .tc-card::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--lila-1), var(--violeta));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .4s ease;
+    }
+
+    .tc-card:hover::after,
+    .tc-card.abierta::after {
+        transform: scaleX(1);
+    }
+
+
+    /* ---------- Imagen + título ---------- */
+
+    .tc-media {
+        position: relative;
+        height: 310px;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--lila-1), var(--lila-3));
+    }
+
+    .tc-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 20%;
+        transition: transform .7s ease;
+    }
+
+    .tc-card:hover .tc-media img {
+        transform: scale(1.08);
+    }
+
+    /* El degradado solo oscurece la parte baja: la foto se ve */
+    .tc-media::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 55%;
+        background: linear-gradient(to top, rgba(45, 27, 69, .9) 0%, rgba(45, 27, 69, .4) 40%, rgba(45, 27, 69, 0) 100%);
+        pointer-events: none;
+    }
+
+    .tc-title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        margin: 0;
+        padding: 1.4rem 1.8rem 1.6rem;
+        font-family: 'Oswald', sans-serif;
+        font-size: 2.2rem;
+        font-weight: 500;
+        letter-spacing: .02em;
+        line-height: 1.2;
+        color: #fff;
+    }
+
+    .tc-title::after {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 3px;
+        margin-top: .8rem;
+        border-radius: 2px;
+        background: var(--lila-1);
+        transition: width .35s ease;
+    }
+
+    .tc-card:hover .tc-title::after {
+        width: 72px;
+    }
+
+
+    /* ---------- Botón "Ver más" ---------- */
+
+    .tc-body {
+        padding: 1.6rem 1.8rem 1.8rem;
+    }
+
+    .tc-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .7rem;
+        width: 100%;
+        margin: 0;
+        padding: 1.1rem 1.2rem;
+        height: auto;
+        line-height: 1.2;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        text-transform: none;
+        letter-spacing: .03em;
+        font-family: inherit;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #fff;
+        background: var(--tinta);
+        border: 2px solid var(--tinta);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background .25s ease, border-color .25s ease, transform .2s ease;
+    }
+
+    .tc-btn:hover,
+    .tc-btn:focus {
+        color: #fff;
+        background: var(--violeta);
+        border-color: var(--violeta);
+    }
+
+    .tc-btn:active {
+        transform: scale(.97);
+    }
+
+    .tc-btn:focus-visible,
+    .ac-head:focus-visible,
+    .jg-opt:focus-visible,
+    .dc-btn:focus-visible,
+    .src-toggle:focus-visible {
+        outline: 3px solid var(--violeta);
+        outline-offset: 3px;
+    }
+
+    .tc-arrow {
+        display: inline-block;
+        transition: transform .4s ease;
+    }
+
+    .tc-btn[aria-expanded="true"] .tc-arrow {
+        transform: rotate(180deg);
+    }
+
+
+    /* ---------- Panel de la tarjeta (se despliega) ---------- */
+
+    .tc-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        visibility: hidden;
+        transition:
+            grid-template-rows .5s ease,
+            visibility 0s linear .5s;
+    }
+
+    .tc-card.abierta .tc-panel {
+        grid-template-rows: 1fr;
+        visibility: visible;
+        transition:
+            grid-template-rows .5s ease,
+            visibility 0s;
+    }
+
+    .tc-panel-inner {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .tc-content {
+        padding: .4rem 2.2rem 2.6rem;
+    }
+
+
+    /* ---------- Cuando una tarjeta está abierta ---------- */
+
+    .tc-grid.hay-abierta .tc-card.abierta {
+        grid-column: 1 / -1;
+    }
+
+    .tc-card.abierta:hover {
+        transform: none;
+    }
+
+    .tc-card.abierta .tc-media {
+        height: 320px;
+    }
+
+    .tc-card.tc-oculta {
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+        pointer-events: none;
+    }
+
+    .tc-card[hidden] {
+        display: none;
+    }
+
+
+    /* ==================================================
+       BOMBILLO DE DATOS CURIOSOS
+       ================================================== */
+
+    .dc {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 1rem 0 1.8rem;
+    }
+
+    .dc-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .8rem;
+        margin: 0;
+        padding: .3rem .5rem .3rem 1.4rem;
+        height: auto;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        text-transform: none;
+        letter-spacing: 0;
+        font-family: inherit;
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--tinta);
+        background: var(--lila-4);
+        border: 1px solid var(--lila-2);
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .dc-btn:hover,
+    .dc-btn:focus {
+        color: var(--tinta);
+        background: var(--lila-3);
+        border-color: var(--lila-1);
+        box-shadow: 0 6px 16px rgba(90, 53, 144, .15);
+    }
+
+    .dc.on .dc-btn {
+        background: var(--lila-3);
+        border-color: var(--lila-1);
+    }
+
+    /* Bombillo (pequeño) */
+    .dc-bulb {
+        position: relative;
+        flex: none;
+        width: 48px;
+        height: 48px;
+    }
+
+    /* Halo de luz que late */
+    .dc-bulb::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 226, 122, .65) 0%, rgba(255, 226, 122, 0) 68%);
+        animation: dc-halo 2.6s ease-in-out infinite;
+    }
+
+    .dc-svg {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        transform-origin: 50% 6%;
+        animation: dc-sway 3.2s ease-in-out infinite;
+    }
+
+    .dc-glass {
+        fill: var(--lila-3);
+        stroke: var(--tinta);
+        stroke-width: 2.5;
+        stroke-linejoin: round;
+        animation: dc-glow 2.6s ease-in-out infinite;
+    }
+
+    .dc-fil {
+        fill: none;
+        stroke: var(--tinta);
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .dc-base {
+        fill: var(--tinta);
+    }
+
+    .dc-rays line {
+        stroke: var(--ambar);
+        stroke-width: 3;
+        stroke-linecap: round;
+        opacity: .15;
+        animation: dc-rays 2.6s ease-in-out infinite;
+    }
+
+    .dc-rays line:nth-child(2) { animation-delay: .25s; }
+    .dc-rays line:nth-child(3) { animation-delay: .5s; }
+    .dc-rays line:nth-child(4) { animation-delay: .75s; }
+    .dc-rays line:nth-child(5) { animation-delay: 1s; }
+
+    /* Encendido (cuando se abre el dato) */
+    .dc.on .dc-glass {
+        fill: #FFE27A;
+        animation: none;
+    }
+
+    .dc.on .dc-svg {
+        filter: drop-shadow(0 0 7px rgba(245, 183, 0, .75));
+    }
+
+    .dc.on .dc-rays line {
+        animation: dc-rays-on 2s ease-in-out infinite;
+    }
+
+    @keyframes dc-sway {
+        0%, 100% { transform: rotate(-4deg); }
+        50%      { transform: rotate(4deg); }
+    }
+
+    @keyframes dc-halo {
+        0%, 100% { transform: scale(.8); opacity: .45; }
+        50%      { transform: scale(1.15); opacity: 1; }
+    }
+
+    @keyframes dc-glow {
+        0%, 100% { fill: #EFE3FB; }
+        50%      { fill: #FFF0B3; }
+    }
+
+    @keyframes dc-rays {
+        0%, 100% { opacity: .1; }
+        50%      { opacity: 1; }
+    }
+
+    @keyframes dc-rays-on {
+        0%, 100% { opacity: .7; }
+        50%      { opacity: 1; }
+    }
+
+    /* Globo con el dato */
+    .dc-pop {
+        display: grid;
+        grid-template-rows: 0fr;
+        width: min(100%, 520px);
+        visibility: hidden;
+        transition:
+            grid-template-rows .45s ease,
+            visibility 0s linear .45s;
+    }
+
+    .dc.on .dc-pop {
+        grid-template-rows: 1fr;
+        visibility: visible;
+        transition:
+            grid-template-rows .45s ease,
+            visibility 0s;
+    }
+
+    .dc-pop-inner {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .dc-card {
+        position: relative;
+        margin-top: 12px;
+        padding: 1.8rem 2rem;
+        background: var(--lila-4);
+        border: 1px solid var(--lila-1);
+        border-left: 5px solid var(--ambar);
+        border-radius: 14px;
+        box-shadow: 0 8px 22px rgba(90, 53, 144, .14);
+    }
+
+    /* Piquito que apunta al bombillo */
+    .dc-card::before {
+        content: "";
+        position: absolute;
+        top: -7px;
+        right: 22px;
+        width: 12px;
+        height: 12px;
+        background: var(--lila-4);
+        border-top: 1px solid var(--lila-1);
+        border-left: 1px solid var(--lila-1);
+        transform: rotate(45deg);
+    }
+
+    .dc-tag {
+        display: inline-block;
+        margin-bottom: .8rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--violeta);
+    }
+
+    .dc-card p {
+        margin: 0 0 1rem;
+        font-size: 1.5rem;
+        line-height: 1.7;
+        color: var(--tinta);
+    }
+
+    .dc-card p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* ==================================================
+       TÍTULOS DESPLEGABLES (acordeón)
+       ================================================== */
+
+    .ac-item {
+        margin: 0 0 1.2rem;
+        background: #fff;
+        border: 1px solid var(--lila-2);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .ac-item:hover {
+        border-color: var(--lila-1);
+    }
+
+    .ac-item.open {
+        border-color: var(--lila-1);
+        box-shadow: 0 10px 24px rgba(90, 53, 144, .14);
+    }
+
+    .ac-head {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        width: 100%;
+        margin: 0;
+        padding: 1.3rem 1.6rem;
+        height: auto;
+        line-height: 1.3;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: 0;
+        font-family: inherit;
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--tinta);
+        background: #fff;
+        border: 0;
+        border-radius: 0;
+        cursor: pointer;
+        transition: background .25s ease;
+    }
+
+    .ac-head:hover,
+    .ac-head:focus {
+        color: var(--tinta);
+        background: var(--lila-4);
+    }
+
+    .ac-item.open .ac-head,
+    .ac-item.open .ac-head:hover,
+    .ac-item.open .ac-head:focus {
+        background: var(--lila-3);
+    }
+
+    .ac-num {
+        flex: none;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        background: var(--lila-2);
+        color: var(--tinta);
+        font-size: 1.3rem;
+        font-weight: 700;
+        transition: background .3s ease, color .3s ease;
+    }
+
+    .ac-item.open .ac-num {
+        background: var(--tinta);
+        color: #fff;
+    }
+
+    .ac-name {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .ac-icon {
+        flex: none;
+        font-size: 2.4rem;
+        line-height: 1;
+        color: var(--violeta);
+        transition: transform .35s ease;
+    }
+
+    .ac-item.open .ac-icon {
+        transform: rotate(45deg);
+    }
+
+    .ac-body {
+        display: grid;
+        grid-template-rows: 0fr;
+        visibility: hidden;
+        transition:
+            grid-template-rows .45s ease,
+            visibility 0s linear .45s;
+    }
+
+    .ac-item.open .ac-body {
+        grid-template-rows: 1fr;
+        visibility: visible;
+        transition:
+            grid-template-rows .45s ease,
+            visibility 0s;
+    }
+
+    .ac-body-inner {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .ac-text {
+        padding: 1.8rem 1.8rem 2rem;
+        background: #fff;
+        border-top: 1px solid var(--lila-2);
+    }
+
+    .ac-text p {
+        margin: 0 0 1.2rem;
+        font-size: 1.55rem;
+        line-height: 1.75;
+        color: var(--tinta);
+    }
+
+    .ac-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    .ac-text h4 {
+        margin: 0 0 1rem;
+        font-size: 1.7rem;
+        color: var(--tinta);
+    }
+
+
+    /* ---------- Enlaces ---------- */
+
+    .ac-text a.tc-link {
+        display: inline-flex;
+        align-items: center;
+        gap: .6rem;
+        font-weight: 700;
+        color: var(--tinta);
+        text-decoration: none;
+        border-bottom: 2px solid var(--lila-1);
+        padding-bottom: 1px;
+        transition: background .2s ease, border-color .2s ease;
+    }
+
+    .ac-text a.tc-link:hover {
+        background: var(--lila-3);
+        border-color: var(--violeta);
+    }
+
+
+    /* ---------- Lecturas (español / inglés) ---------- */
+
+    .rd-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.6rem;
+    }
+
+    .rd-card {
+        padding: 1.8rem;
+        background: var(--lila-4);
+        border: 1px solid var(--lila-2);
+        border-radius: 12px;
+        transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .rd-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--lila-1);
+        box-shadow: 0 10px 22px rgba(90, 53, 144, .12);
+    }
+
+
+    /* ---------- Video ---------- */
+
+    .vd-box video {
+        display: block;
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        margin: 0 auto;
+        background: var(--tinta);
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(90, 53, 144, .25);
+    }
+
+
+    /* ---------- Juego interactivo ---------- */
+
+    .jg-q {
+        font-weight: 700;
+    }
+
+    .jg-opts {
+        display: grid;
+        gap: 1rem;
+        margin: 1.2rem 0;
+    }
+
+    .jg-opt {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 1rem 1.4rem;
+        height: auto;
+        line-height: 1.3;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: 0;
+        font-family: inherit;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--tinta);
+        background: #fff;
+        border: 2px solid var(--lila-1);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background .2s ease, transform .2s ease;
+    }
+
+    .jg-opt:hover,
+    .jg-opt:focus {
+        color: var(--tinta);
+        background: var(--lila-3);
+        transform: translateX(4px);
+    }
+
+    .jg-opt.bien,
+    .jg-opt.bien:hover,
+    .jg-opt.bien:focus {
+        background: var(--lila-1);
+        border-color: var(--tinta);
+    }
+
+    .jg-opt.mal,
+    .jg-opt.mal:hover,
+    .jg-opt.mal:focus {
+        background: repeating-linear-gradient(45deg, #fff 0 5px, var(--lila-3) 5px 8px);
+        border-style: dashed;
+    }
+
+    .jg-msg {
+        min-height: 2.4rem;
+        margin: 0;
+        font-weight: 700;
+    }
+
+
+    /* ==================================================
+       NUBE: FUENTES CONSULTADAS (dentro de cada tarjeta,
+       debajo del video)
+       ================================================== */
+
+    .src-section {
+        margin: 2.6rem 0 0;
+        text-align: center;
+    }
+
+    .src-toggle {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5rem;
+        margin: 0;
+        padding: 1rem 2.4rem;
+        height: auto;
+        line-height: 1.2;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        text-transform: none;
+        letter-spacing: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 14px;
+        color: var(--tinta);
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    .src-toggle:hover,
+    .src-toggle:focus {
+        background: transparent;
+        color: var(--tinta);
+    }
+
+    .src-cloud {
+        display: block;
+        font-size: 5rem;
+        line-height: 1;
+        filter: drop-shadow(0 6px 8px rgba(45, 27, 69, .18));
+        animation: src-float 5s ease-in-out infinite;
+    }
+
+    .src-label {
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        transition: opacity .2s;
+    }
+
+    .src-chevron {
+        display: block;
+        font-size: 1.3rem;
+        line-height: 1;
+        transition: transform .4s ease;
+    }
+
+    .src-toggle:hover .src-label {
+        opacity: .65;
+    }
+
+    .src-toggle[aria-expanded="true"] .src-chevron {
+        transform: rotate(180deg);
+    }
+
+    @keyframes src-float {
+        0%, 100% { transform: translateY(0); }
+        50%      { transform: translateY(-8px); }
+    }
+
+    .src-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        visibility: hidden;
+        text-align: left;
+        transition:
+            grid-template-rows .55s ease,
+            opacity .4s ease,
+            visibility 0s linear .55s;
+    }
+
+    .src-panel.open {
+        grid-template-rows: 1fr;
+        opacity: 1;
+        visibility: visible;
+        transition:
+            grid-template-rows .55s ease,
+            opacity .45s ease .05s,
+            visibility 0s;
+    }
+
+    .src-inner {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .src-box {
+        max-width: 900px;
+        margin: 1.6rem auto .6rem;
+        padding: 2.4rem;
+        background: #fff;
+        border: 1px solid var(--lila-2);
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(90, 53, 144, .14);
+    }
+
+    .src-box h3 {
+        margin: 0 0 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--tinta);
+        font-size: 2rem;
+        color: var(--tinta);
+    }
+
+    .src-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .src-item {
+        margin: 0;
+        padding: 1.5rem 1.8rem;
+        background: var(--lila-4);
+        border-left: 4px solid var(--violeta);
+        border-radius: 0 10px 10px 0;
+    }
+
+    .src-item + .src-item {
+        margin-top: 1.4rem;
+    }
+
+    .src-ref {
+        margin: 0 0 1rem;
+        font-size: 1.5rem;
+        line-height: 1.7;
+        color: var(--tinta);
+    }
+
+    .src-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 2.4rem;
+    }
+
+    .src-link {
+        display: inline-flex;
+        align-items: center;
+        gap: .6rem;
+        font-weight: 700;
+        color: var(--tinta);
+        text-decoration: none;
+        border-bottom: 2px solid var(--tinta);
+        padding-bottom: 1px;
+    }
+
+    .src-link::before {
+        content: "\2192";
+        display: inline-block;
+        transition: transform .2s;
+    }
+
+    .src-link:hover {
+        opacity: .65;
+    }
+
+    .src-link:hover::before {
+        transform: translateX(4px);
+    }
+
+    .src-panel.open .src-item {
+        animation: src-in .5s ease both;
+    }
+
+    .src-panel.open .src-item:nth-child(2) {
+        animation-delay: .08s;
+    }
+
+    @keyframes src-in {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: none; }
+    }
+
+
+    /* ==================================================
+       RESPONSIVE
+       ================================================== */
+
+    /* Tablet y móvil: una debajo de la otra */
+    @media (max-width: 800px) {
+
+        .cs-hero {
+            padding: 3rem 2.2rem 2.6rem;
+        }
+
+        .cs-cast {
+            grid-template-columns: 1fr;
+        }
+
+        .cs-paths {
+            grid-template-columns: 1fr;
+        }
+
+        .cs-vs {
+            justify-self: center;
+        }
+
+        .tc-seccion {
+            padding: 2.2rem;
+        }
+
+        .tc-grid {
+            grid-template-columns: 1fr;
+            gap: 2.4rem;
+        }
+
+        .tc-media,
+        .tc-card.abierta .tc-media {
+            height: 270px;
+        }
+
+        .tc-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .rd-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+    @media (max-width: 480px) {
+
+        .cs-article p {
+            font-size: 1.65rem;
+        }
+
+        .cs-quote {
+            padding: 2.8rem 1.8rem 2rem 2.2rem;
+        }
+
+        .tc-seccion {
+            padding: 1.4rem;
+        }
+
+        .tc-content {
+            padding: .4rem 1rem 1.8rem;
+        }
+
+        .ac-head {
+            padding: 1.1rem 1.2rem;
+            font-size: 1.55rem;
+        }
+
+        .ac-text {
+            padding: 1.4rem 1.2rem 1.6rem;
+        }
+
+        .src-box {
+            padding: 1.6rem;
+        }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .tc-card,
+        .tc-media img,
+        .tc-panel,
+        .tc-arrow,
+        .ac-body,
+        .ac-icon,
+        .dc-pop,
+        .js .cs-reveal {
+            transition: none;
+        }
+
+        .dc-svg,
+        .dc-glass,
+        .dc-rays line,
+        .dc-bulb::before,
+        .src-cloud,
+        .src-panel.open .src-item {
+            animation: none;
+        }
+
+        .dc-rays line {
+            opacity: .6;
+        }
+
+        .js .cs-reveal {
+            opacity: 1;
+            transform: none;
+        }
+
+    }
+/* Color de los enlaces del menú lateral */
+.header__nav li a {
+    color: #ffffff;
+}
+
+/* Color cuando se pasa el cursor */
+.header__nav li a:hover {
+    color: #211530;
+}
+
+/* Color de la página actual */
+.header__nav li a.current {
+    color: #211530;
+    font-weight: 600;
+}
+    </style>
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+
+                <div class="header__logo">
+
+                    <a class="site-logo" href="index.html">
+                        <span class="logo-cognitivo">Cognitiva.</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 MENÚ DE NAVEGACIÓN
+                 ================================================== -->
+            <nav class="header__nav-wrap">
+
+                
+<ul class="header__nav">
+
+    <!-- Inicio -->
+    <li>
+        <a href="index.html">
+            <i data-lucide="house" class="icono-menu"></i>
+            <span>Inicio</span>
+        </a>
+    </li>
+
+    <!-- Desarrollo Moral: página actual -->
+    <li class="current">
+        <a href="caso_tema_2.html">
+            <i data-lucide="user-round" class="icono-menu"></i>
+            <span>Desarrollo Moral y competencias ciudadanas</span>
+        </a>
+    </li>
+
+    <!-- Nosotras -->
+    <li>
+        <a href="page-about.html">
+            <i data-lucide="users-round" class="icono-menu"></i>
+            <span>Nosotras</span>
+        </a>
+    </li>
+
+    
+
+</ul>
+
+                <!-- Fin del menú de navegación -->
+
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Facebook
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Twitter
+                            </span>
+                        </a>
+                    </li>
+                    <li class="ss-instagram">
+                        <a href="#0">
+                            <span class="screen-reader-text">
+                                Instagram
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- end header__nav-wrap -->
+
+
+            <!-- menu toggle -->
+
+            <a href="#0" class="header__menu-toggle">
+
+                <span>Menu</span>
+
+            </a>
+
+        </header>
+
+        <!-- end s-header -->
+
+
+
+        <!-- search
+        ================================================== -->
+
+        <div class="s-search">
+
+            <div class="search-block">
+
+                <form role="search"
+                      method="get"
+                      class="search-form"
+                      action="#">
+
+                    <label>
+
+                        <span class="hide-content">
+                            Search for:
+                        </span>
+
+                        <input type="search"
+                               class="search-field"
+                               placeholder="Type Keywords"
+                               value=""
+                               name="s"
+                               title="Search for:"
+                               autocomplete="off">
+
+                    </label>
+
+
+                    <input type="submit"
+                           class="search-submit"
+                           value="Search">
+
+                </form>
+
+
+                <a href="#0"
+                   title="Close Search"
+                   class="search-close">
+
+                    Close
+
+                </a>
+
+            </div>
+
+            <!-- end search-block -->
+
+
+            <!-- search modal trigger -->
+
+            <a href="#0" class="search-trigger">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
+
+                    <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z">
+                    </path>
+
+                </svg>
+
+                <span>Search</span>
+
+            </a>
+
+
+            <span class="search-line"></span>
+
+        </div>
+
+        <!-- end s-search -->
+
+
+
+        <!-- site content
+        ================================================== -->
+
+        <div class="s-content content">
+
+            <main class="row content__page">
+
+                <section class="column large-full entry format-standard">
+
+
+                    <!-- ============ PORTADA DEL CASO ============ -->
+
+                    <div class="cs-hero cs-reveal">
+
+                        <span class="cs-eyebrow">Caso de estudio</span>
+
+                        <h1 class="display-1 cs-title">El peso del silencio</h1>
+
+                        <ul class="cs-cast">
+                            <li>
+                                <span class="cs-av" aria-hidden="true">M</span>
+                                <div>
+                                    <strong>Mateo</strong>
+                                    <span class="cs-role">Becado al 100%. Atraviesa una crisis familiar y económica.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="cs-av" aria-hidden="true">S</span>
+                                <div>
+                                    <strong>Santiago</strong>
+                                    <span class="cs-role">Su mejor amigo y compañero de estudio. Presencia el fraude.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="cs-av" aria-hidden="true">D</span>
+                                <div>
+                                    <strong>El docente</strong>
+                                    <span class="cs-role">Sospecha del fraude, pero no tiene pruebas físicas.</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <!-- ============ TEXTO DEL CASO ============ -->
+
+                    <div class="cs-article">
+
+                        <p class="cs-reveal">
+                            En la Facultad de Ciencias de una prestigiosa universidad, Mateo y Santiago son mejores amigos y compañeros de estudio en el último semestre de su carrera. Mateo cuenta con una beca del 100% que financia la totalidad de sus estudios; mantenerla exige un promedio perfecto. Sin embargo, debido a una grave crisis familiar y económica en su hogar, Mateo no pudo prepararse adecuadamente para el examen final de Bioquímica, una materia de alta exigencia académica. Desesperado por la posibilidad de perder la beca y verse obligado a retirar la carrera, Mateo decide diseñar un método sofisticado de copia utilizando un canal de mensajería en su reloj inteligente, con la ayuda de un estudiante de un semestre superior.
+                        </p>
+
+                        <p class="cs-reveal">
+                            Santiago, quien se sienta a su lado durante la prueba, se percata de la situación desde los primeros minutos del examen. Observa con claridad cómo Mateo consulta el dispositivo de manera sistemática y transcribe las respuestas en su hoja. Santiago experimenta una profunda tensión interna. Sabe que el reglamento de la universidad es categórico: cualquier intento de fraude conlleva la expulsión inmediata del estudiante y la cancelación definitiva de cualquier beneficio financiero o beca.
+                        </p>
+
+                        <p class="cs-reveal">
+                            Al finalizar el examen, el docente a cargo nota una anomalía en el patrón de respuestas de Mateo y sospecha que hubo fraude, pero no tiene pruebas físicas. El profesor convoca a Santiago a su oficina de manera privada, sabiendo que se sienta junto a él. El docente le plantea la situación directamente:
+                        </p>
+
+                        <aside class="cs-quote cs-reveal">
+                            <p class="cs-quote-text">
+                                Santiago, sé que eres un estudiante honesto y que valoras la justicia en esta institución. Tengo serias sospechas de que Mateo hizo copia. Si me lo confirmas, aplicaremos el reglamento; si callas y descubro después que lo encubriste, tú también enfrentarás una sanción disciplinaria por complicidad.
+                            </p>
+                            <p class="cs-quote-by">El docente a Santiago</p>
+                        </aside>
+
+                        <p class="cs-reveal">
+                            Santiago se encuentra ante múltiples decisiones posibles. Por un lado, puede optar por denunciar a su amigo, priorizando el cumplimiento estricto de las normas institucionales, la justicia frente a los compañeros que sí estudiaron y la evitación de una sanción personal. No obstante, esta decisión implicaría la expulsión de Mateo y la pérdida irreversible de su beca, arruinando su futuro profesional en un momento de vulnerabilidad. Por otro lado, puede elegir guardar silencio y proteger a Mateo, priorizando el valor de la lealtad, la empatía ante la crisis de su amigo y la solidaridad grupal frente a la autoridad. Sin embargo, esta opción perpetúa una injusticia académica, vulnera las normas que sostienen la convivencia universitaria y pone en riesgo su propia permanencia en la institución.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ============ EL DILEMA EN UN VISTAZO ============ -->
+
+                    <section class="cs-dilema cs-reveal">
+
+                        <h3>El dilema de Santiago en un vistazo</h3>
+
+                        <div class="cs-paths">
+
+                            <div class="cs-path cs-path--a">
+                                <h4><span class="cs-ab" aria-hidden="true">A</span>Denunciar</h4>
+                                <ul>
+                                    <li>Prioriza el cumplimiento estricto de las normas institucionales.</li>
+                                    <li>Defiende la justicia frente a los compañeros que sí estudiaron.</li>
+                                    <li>Evita una sanción personal.</li>
+                                </ul>
+                                <p class="cs-cost"><strong>Consecuencia:</strong> la expulsión de Mateo y la pérdida irreversible de su beca.</p>
+                            </div>
+
+                            <span class="cs-vs" aria-hidden="true">VS</span>
+
+                            <div class="cs-path cs-path--b">
+                                <h4><span class="cs-ab" aria-hidden="true">B</span>Guardar silencio</h4>
+                                <ul>
+                                    <li>Prioriza el valor de la lealtad.</li>
+                                    <li>Muestra empatía ante la crisis de su amigo.</li>
+                                    <li>Apuesta por la solidaridad grupal frente a la autoridad.</li>
+                                </ul>
+                                <p class="cs-cost"><strong>Consecuencia:</strong> perpetúa una injusticia académica, vulnera las normas de convivencia y pone en riesgo su propia permanencia.</p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ============ SUBTÍTULO + TARJETAS ============ -->
+
+                    <section class="tc-seccion" id="expertos">
+
+                        <div class="cs-sec-head cs-reveal">
+                            <span class="cs-eyebrow">Tres miradas</span>
+                            <h2 class="cs-subtitulo">Qué opinan los expertos</h2>
+                        </div>
+
+                        <div class="tc-grid" id="tc-grid">
+
+
+                            <!-- ================= TARJETA 1 ================= -->
+                            <article class="tc-card">
+
+                                <div class="tc-media">
+                                    <img src="images/Caso_tema2/piaget.jpg" alt="Foto de Jean Piaget" onerror="this.style.display='none'">
+                                    <h3 class="tc-title">Jean Piaget</h3>
+                                </div>
+
+                                <div class="tc-body">
+                                    <button type="button" class="tc-btn" aria-expanded="false" aria-controls="tc-panel-1">
+                                        <span class="tc-btn-text">Ver más</span>
+                                        <span class="tc-arrow" aria-hidden="true">▾</span>
+                                    </button>
+                                </div>
+
+                                <div class="tc-panel" id="tc-panel-1">
+                                    <div class="tc-panel-inner">
+                                        <div class="tc-content">
+
+
+                                            <!-- ===== BOMBILLO: DATO CURIOSO ===== -->
+                                            <div class="dc">
+                                                <button type="button" class="dc-btn" aria-expanded="false" aria-controls="dc-1">
+                                                    <span class="dc-label">¿Sabías que…?</span>
+                                                    <span class="dc-bulb">
+                                                        <svg class="dc-svg" viewBox="0 0 64 64" aria-hidden="true">
+                                                            <g class="dc-rays">
+                                                                <line x1="32" y1="3" x2="32" y2="9"/>
+                                                                <line x1="10" y1="11" x2="14.5" y2="15.5"/>
+                                                                <line x1="54" y1="11" x2="49.5" y2="15.5"/>
+                                                                <line x1="3" y1="29" x2="9" y2="29"/>
+                                                                <line x1="61" y1="29" x2="55" y2="29"/>
+                                                            </g>
+                                                            <path class="dc-glass" d="M32 12c-9.4 0-17 7.4-17 16.6 0 5.6 2.8 9.4 5.6 12.6 1.7 1.9 2.4 3.7 2.4 5.8v1h18v-1c0-2.1.7-3.9 2.4-5.8 2.8-3.2 5.6-7 5.6-12.6C49 19.4 41.4 12 32 12z"/>
+                                                            <path class="dc-fil" d="M26 31l4 5 2-3 2 3 4-5"/>
+                                                            <rect class="dc-base" x="23" y="49" width="18" height="4" rx="2"/>
+                                                            <rect class="dc-base" x="25" y="54" width="14" height="4" rx="2"/>
+                                                            <path class="dc-base" d="M29 59h6a3 3 0 0 1-6 0z"/>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+
+                                                <div class="dc-pop" id="dc-1">
+                                                    <div class="dc-pop-inner">
+                                                        <div class="dc-card">
+                                                            <span class="dc-tag">Dato curioso</span>
+                                                            <p>
+                                                                Para los niños pequeños, una mentira es más grave cuanto más absurda, aunque engañe menos: decir que un perro es del tamaño de una vaca les parece peor que una mentira creíble, porque provoca antes la reacción del adulto. Los niños mayores invierten el juicio y consideran más grave la mentira que más probablemente engaña, es decir, miran la intención de engañar y no el castigo. 
+                                                            </p>
+                                                            <p>
+                                                                Este paso de juzgar por la reacción de la autoridad a juzgar por la intención es el que usamos para leer la decisión de Santiago
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- 1. Análisis -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-1">
+                                                    <span class="ac-num">1</span>
+                                                    <span class="ac-name">Análisis</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-1-1">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <p>
+                                                                Para Piaget la moral heterónoma se basa en el respeto a la autoridad y su seguimiento de
+                                                                 reglas que se ven fijas y los actos que se juzgan por sus consecuencias. La moral
+                                                                  autónoma surge de la cooperación entre partes iguales, ya que las reglas son acuerdos
+                                                                   e importan las intenciones y su reciprocidad, ya que las reglas son inicialmente exteriores al niño.
+                                                            </p>
+                                                            <p>
+                                                                En el caso podemos evidenciar que el reglamento se categoriza, ya que el docente presiona con una sanción por su complicidad, por lo que una autoridad impone desde afuera. Mateo actúa por necesidad más no por malicia, y Santiago duda entre la norma, su lealtad y el daño a su amigo.
+                                                            </p>
+                                                            <p>
+                                                                Sí Santiago denuncia solo por temor a la sanción por obediencia total al reglamento, razona de forma heterónoma. Se considera la intención de mateo, la reciprocidad entre compañeros y la justicia hacia quienes estudiaron, se decide con argumentos propio, se acerca a la autonomía, ambas moralidades están vinculada a un cierto tipo de relación social.
+                                                            </p>
+                                                            <p>
+                                                                Los límites de Piaget es que no estudio adolescentes, si no únicamente estudio a los niños, en el caso no se muestra el razonamiento real de parte de Santiago. Las etapas son tendencias que pueden convivir entre sí
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 2. Lectura en español y en inglés -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-2">
+                                                    <span class="ac-num">2</span>
+                                                    <span class="ac-name">Lectura en español y en inglés</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-1-2">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <div class="rd-grid">
+                                                                <div class="rd-card">
+                                                                    <h4>Lectura en español</h4>
+                                                                    <p>Presenta el paso de la heteronomía a la autonomía en Piaget a partir del juego de canicas y de historias como la de las tazas. Explica que el juicio moral depende del desarrollo de la inteligencia, de las relaciones entre iguales y de la independencia frente a la imposición adulta, y discute el papel de la escuela y la familia.</p>
+                                                                    <a class="tc-link" href="https://revistace.ucm.cl/article/download/262/246" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+                                                                </div>
+                                                                <div class="rd-card">
+                                                                    <h4>Lectura en inglés</h4>
+                                                                    <p>Sostiene que, para Piaget, el juicio moral se construye entre el desarrollo cognitivo y la experiencia social. Revisa realismo moral, responsabilidad, mentira y justicia, y concluye que la autonomía moral surge de relaciones cooperativas; también compara a Piaget con Kohlberg.</p>
+                                                                    <a class="tc-link" href="https://sserr.ro/wp-content/uploads/2026/06/sserr-13-1-134-140.pdf" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 3. Página recomendada -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-3">
+                                                    <span class="ac-num">3</span>
+                                                    <span class="ac-name">Página recomendada</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-1-3">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <p>
+                                                                Qué tiene de útil: Resume en una tabla la moral heterónoma frente a la autónoma, explica el juego de canicas y las historias con ejemplos, e incluye críticas (muestras pequeñas, edades de desarrollo, variación cultural). Sirve para repasar la teoría antes de leer los artículos, pero es una página divulgativa, no una fuente revisada por pares.
+                                                            </p>
+                                                            <a class="tc-link" href="https://www.simplypsychology.org/piaget-moral.html" target="_blank" rel="noopener">→ Visitar la página</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 4. Juego interactivo -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-4">
+                                                    <span class="ac-num">4</span>
+                                                    <span class="ac-name">Juego interactivo</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-1-4">
+    <div class="ac-body-inner">
+        <div class="ac-text">
+            <a href="https://es.educaplay.com/recursos-educativos/19130535-colores_y_numeros_quiz.html"
+               target="_blank"
+               rel="noopener noreferrer">
+                Haz clic aquí para jugar: Colores y números
+            </a>
+        </div>
+    </div>
+</div>
+                                            </div>
+
+                                            <!-- 5. Video -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-5">
+                                                    <span class="ac-num">5</span>
+                                                    <span class="ac-name">Video</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-1-5">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <div class="vd-box">
+                                                                <video controls preload="metadata">
+                                                                    <source src="videos/primero.mp4" type="video/mp4">
+                                                                    Tu navegador no puede reproducir este video.
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- ===== NUBE: FUENTES CONSULTADAS (debajo del video) ===== -->
+                                            <div class="src-section">
+
+                                                <button type="button" class="src-toggle" aria-expanded="false" aria-controls="src-panel-1">
+                                                    <span class="src-cloud" aria-hidden="true">☁️</span>
+                                                    <span class="src-label">Fuentes consultadas</span>
+                                                    <span class="src-chevron" aria-hidden="true">▾</span>
+                                                </button>
+
+                                                <div class="src-panel" id="src-panel-1">
+                                                    <div class="src-inner">
+                                                        <div class="src-box">
+
+                                                            <h3>Fuentes consultadas</h3>
+
+                                                            <ul class="src-list">
+
+                                                                <li class="src-item">
+                                                                    <p class="src-ref">
+                                                                        Fuentes, R., Gamboa, J., Morales, K., Retamal, N. y San Martín, V. (2012). Jean Piaget, aportes a la educación del desarrollo del juicio moral para el siglo XXI. <em>Facultad de Ciencias de la Educación, Universidad Católica del Maule</em>, N.º 1, pp. 55-69.
+                                                                    </p>
+                                                                    <div class="src-links">
+                                                                        <a class="src-link" href="https://revistace.ucm.cl/article/download/262/246" target="_blank" rel="noopener">Consultar artículo completo</a>
+                                                                        <a class="src-link" href="https://revistaschilenas.uchile.cl/handle/2250/123313" target="_blank" rel="noopener">Ficha del catálogo</a>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="src-item">
+                                                                    <p class="src-ref">
+                                                                        Ghenea, Ș. V. (2026). From Heteronomy to Autonomy: The Development of Moral Thinking in Children in Genetic Epistemology. <em>Social Sciences and Education Research Review, 13</em>(1), 134-140. DOI: 10.5281/zenodo.21036187
+                                                                    </p>
+                                                                    <div class="src-links">
+                                                                        <a class="src-link" href="https://sserr.ro/wp-content/uploads/2026/06/sserr-13-1-134-140.pdf" target="_blank" rel="noopener">Consultar artículo en inglés</a>
+                                                                        <a class="src-link" href="https://doi.org/10.5281/zenodo.21036187" target="_blank" rel="noopener">Ver DOI</a>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </article>
+
+
+                            <!-- ================= TARJETA 2 ================= -->
+                            <article class="tc-card">
+
+                                <div class="tc-media">
+                                    <img src="images/Caso_tema2/Sigmund_Freud.jpg" alt="Foto de Sigmund Freud" onerror="this.style.display='none'">
+                                    <h3 class="tc-title">Sigmund Freud</h3>
+                                </div>
+
+                                <div class="tc-body">
+                                    <button type="button" class="tc-btn" aria-expanded="false" aria-controls="tc-panel-2">
+                                        <span class="tc-btn-text">Ver más</span>
+                                        <span class="tc-arrow" aria-hidden="true">▾</span>
+                                    </button>
+                                </div>
+
+                                <div class="tc-panel" id="tc-panel-2">
+                                    <div class="tc-panel-inner">
+                                        <div class="tc-content">
+
+
+                                            <!-- ===== BOMBILLO: DATO CURIOSO ===== -->
+                                            <div class="dc">
+                                                <button type="button" class="dc-btn" aria-expanded="false" aria-controls="dc-2">
+                                                    <span class="dc-label">¿Sabías que…?</span>
+                                                    <span class="dc-bulb">
+                                                        <svg class="dc-svg" viewBox="0 0 64 64" aria-hidden="true">
+                                                            <g class="dc-rays">
+                                                                <line x1="32" y1="3" x2="32" y2="9"/>
+                                                                <line x1="10" y1="11" x2="14.5" y2="15.5"/>
+                                                                <line x1="54" y1="11" x2="49.5" y2="15.5"/>
+                                                                <line x1="3" y1="29" x2="9" y2="29"/>
+                                                                <line x1="61" y1="29" x2="55" y2="29"/>
+                                                            </g>
+                                                            <path class="dc-glass" d="M32 12c-9.4 0-17 7.4-17 16.6 0 5.6 2.8 9.4 5.6 12.6 1.7 1.9 2.4 3.7 2.4 5.8v1h18v-1c0-2.1.7-3.9 2.4-5.8 2.8-3.2 5.6-7 5.6-12.6C49 19.4 41.4 12 32 12z"/>
+                                                            <path class="dc-fil" d="M26 31l4 5 2-3 2 3 4-5"/>
+                                                            <rect class="dc-base" x="23" y="49" width="18" height="4" rx="2"/>
+                                                            <rect class="dc-base" x="25" y="54" width="14" height="4" rx="2"/>
+                                                            <path class="dc-base" d="M29 59h6a3 3 0 0 1-6 0z"/>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+
+                                                <div class="dc-pop" id="dc-2">
+                                                    <div class="dc-pop-inner">
+                                                        <div class="dc-card">
+                                                            <span class="dc-tag">Dato curioso</span>
+                                                            <p>
+                                                                la investigación moderna con bebés y lactantes (infant research) ha aportado evidencia empírica directa que valida los procesos psíquicos tempranos estudiados por el psicoanálisis, demostrando que la mente del infante no es una "tabula rasa" caótica, sino que cuenta con capacidades cognitivas y afectivas altamente organizadas desde el inicio para interactuar con su entorno y vincularse con las figuras de cuidado, lo cual sostiene la formación intrapsíquica de las estructuras que Freud denominó posteriormente.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- 1. Análisis -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-1">
+                                                    <span class="ac-num">1</span>
+                                                    <span class="ac-name">Análisis</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-2-1">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <p>
+                                                                Desde el psicoanálisis se dice que la conciencia moral no es innata, sino que surge mediante la formación del superyó. Según Sánchez Hurtado (2001), «para Freud, en el desarrollo de la personalidad la restricción de las pulsiones es un aspecto esencial; de ahí que asocie el proceso de socialización a la renuncia a la satisfacción de las pulsiones» (p. 138).
+                                                            </p>
+                                                            <p>
+                                                                Este mecanismo se consolida a través de la internalización de las prohibiciones y del reconocimiento de las figuras de autoridad durante las primeras etapas de la infancia. El superyó funciona como un medio que vigila al yo, imponiendo mandatos normativos y castigando las transgresiones por medio de la culpa. Como señala la misma autora, «la cultura tiene que poner todo de su parte para poner límites a las pulsiones agresivas del hombre [...]. De allí el recurso a los métodos que incitan a las personas a las identificaciones y a las relaciones amorosas protegidas por la inhibición del fin» (p. 138).
+                                                            </p>
+                                                            <p>
+                                                                Como consecuencia, el sujeto experimenta de manera constante un conflicto psíquico entre los deseos primitivos del ello, las exigencias de la realidad y las restricciones del superyó.
+                                                            </p>
+                                                            <p>
+                                                                Esta dualidad la podemos ver en las decisiones de los protagonistas del caso «El peso del silencio». Mateo enfrenta una profunda tensión interna entre la necesidad de evitar el fracaso académico y conservar su beca ante una crisis familiar, que refleja los impulsos del ello orientados a la supervivencia y el éxito, y las normativas institucionales que prohíben el fraude. Ante la desesperación, Mateo no logra una renuncia efectiva a sus impulsos y cede al uso del reloj inteligente para superar la evaluación.
+                                                            </p>
+                                                            <p>
+                                                                Por otro lado, Santiago experimenta un severo conflicto psíquico al verse obligado a decidir entre la lealtad afectiva hacia su compañero y el respeto por el reglamento. El superyó de Santiago, moldeado por la internalización de las normas sociales y universitarias, le exige honestidad. Delatar a Mateo le genera un dilema ligado al remordimiento por perjudicar a un amigo vulnerable, mientras que encubrirlo activa el temor a la sanción y la culpa moral por transgredir la justicia institucional.
+                                                            </p>
+                                                            <p>
+                                                                Finalmente, la intervención del docente representa la figura de autoridad externa, la cual reactiva la presión del superyó sobre el yo de Santiago, confrontándolo con las consecuencias de sus actos y empujándolo a definir su posición frente a la norma y la complicidad.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 2. Lectura en español y en inglés -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-2">
+                                                    <span class="ac-num">2</span>
+                                                    <span class="ac-name">Lectura en español y en inglés</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-2-2">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <div class="rd-grid">
+                                                                <div class="rd-card">
+                                                                    <h4>Lectura en español</h4>
+                                                                    <p>Esta página tiene una explicación clara en español de las tres instancias psíquicas de Freud. Muestra que el ello busca placer inmediato, el yo media con la realidad y el superyó interioriza las normas morales. También presenta la mente como un conflicto constante entre estas fuerzas, lo que ayuda a entender el dilema de los personajes de nuestro caso, además incluye críticas a la teoría, como la falta de verificación científica y el sesgo cultural, que sirven para reconocer sus límites.</p>
+                                                                    <a class="tc-link" href="https://psicologiaymente.com/psicologia/ello-yo-superyo-sigmund-freud" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+                                                                </div>
+                                                                <div class="rd-card">
+                                                                    <h4>Lectura en inglés</h4>
+                                                                    <p>Este artículo examina cómo la investigación sobre el desarrollo infantil y los procesos psíquicos tempranos dialoga con la teoría psicoanalítica tradicional de Sigmund Freud. Es útil para comprender de qué manera los vínculos iniciales, la internalización de prohibiciones y la formación de la estructura psíquica (como el superyó) influyen en la conducta moral y en los conflictos internos de las personas a lo largo de su vida.</p>
+                                                                    <a class="tc-link" href="https://www.nature.com/articles/s41599-022-01219-z" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 3. Página recomendada -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-3">
+                                                    <span class="ac-num">3</span>
+                                                    <span class="ac-name">Página recomendada</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-2-3">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <a class="tc-link" href="https://www.freudedition.net/werke/la-moral-sexual-cultural-y-la-nerviosidad-moderna/druckschrift" target="_blank" rel="noopener">→ Visitar la página</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 4. Juego interactivo -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-4">
+                                                    <span class="ac-num">4</span>
+                                                    <span class="ac-name">Juego interactivo</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-1-4">
+    <div class="ac-body-inner">
+        <div class="ac-text">
+            <a href="https://es.educaplay.com/recursos-educativos/31335783-el_superyo.html"
+               target="_blank"
+               rel="noopener noreferrer">
+                Haz clic aquí para jugar: Sopa de letras.
+            </a>
+        </div>
+    </div>
+</div>
+                                            </div>
+
+                                            <!-- 5. Video -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-5">
+                                                    <span class="ac-num">5</span>
+                                                    <span class="ac-name">Video</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-2-5">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <div class="vd-box">
+                                                                <video controls preload="metadata">
+                                                                    <source src="videos/freud.mp4" type="video/mp4">
+                                                                    Tu navegador no puede reproducir este video.
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- ===== NUBE: FUENTES CONSULTADAS (debajo del video) ===== -->
+                                            <div class="src-section">
+
+                                                <button type="button" class="src-toggle" aria-expanded="false" aria-controls="src-panel-2">
+                                                    <span class="src-cloud" aria-hidden="true">☁️</span>
+                                                    <span class="src-label">Fuentes consultadas</span>
+                                                    <span class="src-chevron" aria-hidden="true">▾</span>
+                                                </button>
+
+                                                <div class="src-panel" id="src-panel-2">
+                                                    <div class="src-inner">
+                                                        <div class="src-box">
+
+                                                            <h3>Fuentes consultadas</h3>
+
+                                                            <ul class="src-list">
+
+                                                                <li class="src-item">
+                                                                    <p class="src-ref">
+                                                                        Freud, S. (1908). La moral sexual «cultural» y la nerviosidad moderna. Freud Edition. https://www.freudedition.net/werke/la-moral-sexual-cultural-y-la-nerviosidad-moderna/druckschrift
+                                                                    </p>
+                                                                    <div class="src-links">
+                                                                        <a class="src-link" href="https://www.freudedition.net/werke/la-moral-sexual-cultural-y-la-nerviosidad-moderna/druckschrift" target="_blank" rel="noopener">Consultar fuente</a>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </article>
+
+
+                            <!-- ================= TARJETA 3 ================= -->
+                            <article class="tc-card">
+
+                                <div class="tc-media">
+                                    <img src="images/Caso_tema2/lawrence-kohlberg.jpg" alt="Foto del experto 3" onerror="this.style.display='none'">
+                                    <h3 class="tc-title">Lawrence Kohlberg</h3>
+                                </div>
+
+                                <div class="tc-body">
+                                    <button type="button" class="tc-btn" aria-expanded="false" aria-controls="tc-panel-3">
+                                        <span class="tc-btn-text">Ver más</span>
+                                        <span class="tc-arrow" aria-hidden="true">▾</span>
+                                    </button>
+                                </div>
+
+                                <div class="tc-panel" id="tc-panel-3">
+                                    <div class="tc-panel-inner">
+                                        <div class="tc-content">
+
+
+                                            <!-- ===== BOMBILLO: DATO CURIOSO ===== -->
+                                            <div class="dc">
+                                                <button type="button" class="dc-btn" aria-expanded="false" aria-controls="dc-3">
+                                                    <span class="dc-label">¿Sabías que…?</span>
+                                                    <span class="dc-bulb">
+                                                        <svg class="dc-svg" viewBox="0 0 64 64" aria-hidden="true">
+                                                            <g class="dc-rays">
+                                                                <line x1="32" y1="3" x2="32" y2="9"/>
+                                                                <line x1="10" y1="11" x2="14.5" y2="15.5"/>
+                                                                <line x1="54" y1="11" x2="49.5" y2="15.5"/>
+                                                                <line x1="3" y1="29" x2="9" y2="29"/>
+                                                                <line x1="61" y1="29" x2="55" y2="29"/>
+                                                            </g>
+                                                            <path class="dc-glass" d="M32 12c-9.4 0-17 7.4-17 16.6 0 5.6 2.8 9.4 5.6 12.6 1.7 1.9 2.4 3.7 2.4 5.8v1h18v-1c0-2.1.7-3.9 2.4-5.8 2.8-3.2 5.6-7 5.6-12.6C49 19.4 41.4 12 32 12z"/>
+                                                            <path class="dc-fil" d="M26 31l4 5 2-3 2 3 4-5"/>
+                                                            <rect class="dc-base" x="23" y="49" width="18" height="4" rx="2"/>
+                                                            <rect class="dc-base" x="25" y="54" width="14" height="4" rx="2"/>
+                                                            <path class="dc-base" d="M29 59h6a3 3 0 0 1-6 0z"/>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+
+                                                <div class="dc-pop" id="dc-3">
+                                                    <div class="dc-pop-inner">
+                                                        <div class="dc-card">
+                                                            <span class="dc-tag">Dato curioso</span>
+                                                            <p>
+                                                                Kohlberg demostró que el desarrollo moral no depende de memorizar leyes, sino de cómo madura tu cerebro. Descubrió que la mayoría de los adultos en el mundo nunca llegan al nivel Postconvencional; casi todo el mundo se queda estancado en el Nivel Convencional (Estadios 3 y 4) actuando por presión social.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- 1. Análisis -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-1">
+                                                    <span class="ac-num">1</span>
+                                                    <span class="ac-name">Análisis</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-3-1">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <p>
+                                                                Según Lawrence Kohlberg, las decisiones de Santiago reflejan su razonamiento moral, estructurado en tres niveles y seis estadios:
+                                                            </p>
+                                                            <p>
+                                                                En el Nivel Preconvencional, enfocado en las consecuencias individuales, el Estadio 1 (obediencia) implica que Santiago denuncie a Mateo solo para evitar la sanción por complicidad. En el Estadio 2 (individualismo instrumental), optaría por encubrirlo, calculando un beneficio mutuo o un favor en el futuro.
+                                                            </p>
+                                                            <p>
+                                                                En el Nivel Convencional, basado en las expectativas sociales, el Estadio 3 (concordancia interpersonal) lleva a Santiago a guardar silencio por lealtad, priorizando ser un «buen amigo». Por el contrario, el Estadio 4 (orden social y deber) lo obliga a denunciar el fraude, entendiendo que el reglamento universitario debe respetarse para evitar el colapso institucional.
+                                                            </p>
+                                                            <p>
+                                                                Finalmente, en el Nivel Posconvencional, regido por principios autónomos, el Estadio 5 (contrato social) hace que Santiago cuestione la rigidez de la norma ante la vulnerabilidad de su amigo, buscando una solución que proteja su futuro. En el Estadio 6 (principios universales), actuaría por conciencia ética autónoma, defendiendo la justicia y la dignidad humana por encima de cualquier castigo, reglamento o presión social.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 2. Lectura en español y en inglés -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-2">
+                                                    <span class="ac-num">2</span>
+                                                    <span class="ac-name">Lectura en español y en inglés</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-3-2">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <div class="rd-grid">
+                                                                <div class="rd-card">
+                                                                    <h4>Lectura en español</h4>
+                                                                    <p>Esta lectura resume los tres niveles y seis estadios del juicio moral de Lawrence Kohlberg. Explica cómo se avanza de etapa mediante la maduración cognitiva y analiza la metodología que utilizó el autor basándose en entrevistas individuales con dilemas morales hipotéticos.</p>
+                                                                    <a class="tc-link" href="https://www.redalyc.org/pdf/1941/194140994005.pdf " target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+                                                                </div>
+                                                                <div class="rd-card">
+                                                                    <h4>Lectura en inglés</h4>
+                                                                    <p>Es un estudio científico que investiga de manera empírica la relación entre los actos de trampa en las universidades y cómo influye el nivel de razonamiento moral formal de los estudiantes cuando se ven presionados a encubrir o cometer un fraude académico.</p>
+                                                                    <a class="tc-link" href="https://pdfs.semanticscholar.org/916e/bd6a4ff6ffa4f1fcafc4beb03db6647205a7.pdf " target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 3. Página recomendada -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-3">
+                                                    <span class="ac-num">3</span>
+                                                    <span class="ac-name">Página recomendada</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-3-3">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <p>
+                                                                Este artículo detalla la teoría de Kohlberg dividiéndola en sus tres grandes fases: el nivel preconvencional, el nivel convencional y el nivel posconvencional. Se describe cómo el aprendizaje moral progresa de manera irreversible mediante estructuras cognitivas y explica la metodología original.
+                                                            </p>
+                                                            <a class="tc-link" href="https://www.psicoactiva.com/blog/teoria-del-desarrollo-de-la-moral/ " target="_blank" rel="noopener">→ Visitar la página</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 4. Juego interactivo -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-4">
+                                                    <span class="ac-num">4</span>
+                                                    <span class="ac-name">Juego interactivo</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-1-4">
+    <div class="ac-body-inner">
+        <div class="ac-text">
+            <a href="https://view.genially.com/6ae643e2927887383eb8a9e8 "
+               target="_blank"
+               rel="noopener noreferrer">
+                Haz clic aquí para jugar: Al orcado.
+            </a>
+        </div>
+    </div>
+</div>
+                                            </div>
+
+                                            <!-- 5. Video -->
+                                            <div class="ac-item">
+                                                <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-5">
+                                                    <span class="ac-num">5</span>
+                                                    <span class="ac-name">Video</span>
+                                                    <span class="ac-icon" aria-hidden="true">+</span>
+                                                </button>
+                                                <div class="ac-body" id="ac-3-5">
+                                                    <div class="ac-body-inner">
+                                                        <div class="ac-text">
+                                                            <div class="vd-box">
+                                                                <video controls preload="metadata">
+                                                                    <source src="videos/ultimo.mp4" type="video/mp4">
+                                                                    Tu navegador no puede reproducir este video.
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- ===== NUBE: FUENTES CONSULTADAS (debajo del video) ===== -->
+                                            <div class="src-section">
+
+                                                <button type="button" class="src-toggle" aria-expanded="false" aria-controls="src-panel-3">
+                                                    <span class="src-cloud" aria-hidden="true">☁️</span>
+                                                    <span class="src-label">Fuentes consultadas</span>
+                                                    <span class="src-chevron" aria-hidden="true">▾</span>
+                                                </button>
+
+                                                <div class="src-panel" id="src-panel-3">
+                                                    <div class="src-inner">
+                                                        <div class="src-box">
+
+                                                            <h3>Fuentes consultadas</h3>
+
+                                                            <ul class="src-list">
+
+                                                                <li class="src-item">
+                                                                    <p class="src-ref">
+                                                                        Díaz-Serrano, J. (2015). El desarrollo del juicio moral en Kohlberg como factor condicionante del rendimiento académico en ciencias sociales de un grupo de estudiantes de educación secundaria. Revista Electrónica Educare, 19(3), 1-14. https://www.redalyc.org/pdf/1941/194140994005.pdf 
+Redalyc
+                                                                    </p>
+                                                                    <div class="src-links">
+                                                                        <a class="src-link" href="https://www.redalyc.org/pdf/1941/194140994005.pdf" target="_blank" rel="noopener">Consultar fuente</a>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </article>
+
+
+                        </div>
+                        <!-- end tc-grid -->
+
+                    </section>
+
+                </section>
+
+            </main>
+
+        </div>
+
+        <!-- ========================================================
+             BOTÓN VOLVER ARRIBA
+             ======================================================== -->
+        <div class="go-top">
+
+            <a class="smoothscroll" title="Volver arriba" href="#top">
+
+                <i class="im im-arrow-up"></i>
+
+                <span></span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- end s-wrap -->
+
+
+
+    <!-- Java Script
+    ================================================== -->
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script>
+    (function () {
+
+        /* ---------- Animación de entrada al hacer scroll ---------- */
+
+        var reveals = document.querySelectorAll(".cs-reveal");
+
+        if ("IntersectionObserver" in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                    if (en.isIntersecting) {
+                        en.target.classList.add("in");
+                        io.unobserve(en.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            reveals.forEach(function (el) { io.observe(el); });
+        } else {
+            reveals.forEach(function (el) { el.classList.add("in"); });
+        }
+
+
+        var grid = document.getElementById("tc-grid");
+        if (!grid) return;
+
+        var cards = Array.prototype.slice.call(grid.querySelectorAll(".tc-card"));
+
+
+        /* ---------- Tarjetas: abrir una y esconder las demás ---------- */
+
+        function setBtn(card, abierta) {
+            var btn = card.querySelector(".tc-btn");
+            btn.setAttribute("aria-expanded", abierta ? "true" : "false");
+            btn.querySelector(".tc-btn-text").textContent = abierta ? "Ver menos" : "Ver más";
+        }
+
+        function cerrarTitulos(card) {
+            card.querySelectorAll(".ac-item.open").forEach(function (item) {
+                item.classList.remove("open");
+                item.querySelector(".ac-head").setAttribute("aria-expanded", "false");
+            });
+        }
+
+        // Al cerrar la tarjeta también se apagan el bombillo y la nube
+        function cerrarExtras(card) {
+
+            card.querySelectorAll(".dc.on").forEach(function (dc) {
+                dc.classList.remove("on");
+                dc.querySelector(".dc-btn").setAttribute("aria-expanded", "false");
+            });
+
+            card.querySelectorAll(".src-panel.open").forEach(function (panel) {
+                panel.classList.remove("open");
+                panel.parentNode.querySelector(".src-toggle").setAttribute("aria-expanded", "false");
+            });
+        }
+
+        function abrirTarjeta(card) {
+
+            grid.classList.add("hay-abierta");
+            card.classList.add("abierta");
+            setBtn(card, true);
+
+            cards.forEach(function (c) {
+                if (c === card) return;
+                c.classList.add("tc-oculta");
+                c._t = setTimeout(function () { c.hidden = true; }, 350);
+            });
+
+            setTimeout(function () {
+                card.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 80);
+        }
+
+        function cerrarTarjeta(card) {
+
+            grid.classList.remove("hay-abierta");
+            card.classList.remove("abierta");
+            setBtn(card, false);
+            cerrarTitulos(card);
+            cerrarExtras(card);
+
+            cards.forEach(function (c) {
+                if (c === card) return;
+                clearTimeout(c._t);
+                c.hidden = false;
+                void c.offsetWidth;
+                c.classList.remove("tc-oculta");
+            });
+        }
+
+        cards.forEach(function (card) {
+            card.querySelector(".tc-btn").addEventListener("click", function () {
+                if (card.classList.contains("abierta")) {
+                    cerrarTarjeta(card);
+                } else {
+                    abrirTarjeta(card);
+                }
+            });
+        });
+
+
+        /* ---------- Clics dentro de las tarjetas ---------- */
+
+        grid.addEventListener("click", function (e) {
+
+            // Bombillo: muestra u oculta el dato curioso
+            var bombillo = e.target.closest(".dc-btn");
+            if (bombillo) {
+                var dc = bombillo.parentNode;
+                var encendido = dc.classList.toggle("on");
+                bombillo.setAttribute("aria-expanded", encendido ? "true" : "false");
+                return;
+            }
+
+            // Nube: muestra u oculta las fuentes consultadas
+            var nube = e.target.closest(".src-toggle");
+            if (nube) {
+                var panel = nube.parentNode.querySelector(".src-panel");
+                var abierto = panel.classList.toggle("open");
+                nube.setAttribute("aria-expanded", abierto ? "true" : "false");
+                return;
+            }
+
+            // Títulos desplegables: solo uno abierto a la vez
+            var head = e.target.closest(".ac-head");
+            if (head) {
+                var item = head.parentNode;
+                var estabaAbierto = item.classList.contains("open");
+
+                cerrarTitulos(item.closest(".tc-card"));
+
+                if (!estabaAbierto) {
+                    item.classList.add("open");
+                    head.setAttribute("aria-expanded", "true");
+                }
+                return;
+            }
+
+            // Juego interactivo (pregunta de ejemplo)
+            var opt = e.target.closest(".jg-opt");
+            if (opt) {
+                var juego = opt.closest(".jg");
+                var ok = opt.getAttribute("data-ok") === "1";
+
+                juego.querySelectorAll(".jg-opt").forEach(function (b) {
+                    b.classList.remove("bien", "mal");
+                });
+
+                opt.classList.add(ok ? "bien" : "mal");
+                juego.querySelector(".jg-msg").textContent = ok
+                    ? "¡Correcto!"
+                    : "Inténtalo de nuevo.";
+            }
+        });
+
+    })();
+    </script>
+
+    
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+
+</body>
+
+</html>

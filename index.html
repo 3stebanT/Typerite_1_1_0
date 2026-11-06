@@ -35,14 +35,368 @@
 </head>
 <style>
 
+.display-1 {
+    color: #211530;
+}
+
+.header__nav li.current a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px;
+}
+
+.icono-menu {
+    width: 19px;
+    height: 19px;
+    min-width: 19px;
+    color: #211530;
+    stroke-width: 2.5;
+    flex-shrink: 0;
+}
+ 
+
+
+.header__nav li.current a span:last-child {
+    flex: 1;
+}
+
+/* ==================================================
+   TARJETAS DE TEMAS
+   ================================================== */
+ 
+.tc-seccion {
+    margin: 4rem 0 3rem;
+}
+ 
+.tc-seccion > h2 {
+    margin-bottom: 1rem;
+}
+ 
+.tc-intro {
+    margin-bottom: 3rem;
+}
+ 
+/* Contenedor: 5 columnas una al lado de la otra */
+.tc-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+ 
+ 
+/* ---------- Tarjeta ---------- */
+ 
+.tc-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .10);
+    scroll-margin-top: 100px;
+ 
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        opacity .35s ease;
+}
+ 
+/* Se levanta y resalta al pasar el mouse */
+.tc-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, .22);
+}
+ 
+/* Barra de color que aparece abajo al pasar el mouse */
+.tc-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: #339989;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s ease;
+}
+ 
+.tc-card:hover::after,
+.tc-card.abierta::after {
+    transform: scaleX(1);
+}
+ 
+ 
+/* ---------- Imagen + título ---------- */
+ 
+.tc-media {
+    position: relative;
+    height: 270px;
+    overflow: hidden;
+    background: #111;
+}
+ 
+.tc-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s ease;
+}
+ 
+.tc-card:hover .tc-media img {
+    transform: scale(1.1);
+}
+ 
+/* El degradado solo oscurece la parte baja:
+   la foto se sigue viendo casi completa */
+.tc-media::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, .78), rgba(0, 0, 0, 0));
+    pointer-events: none;
+}
+ 
+/* Número de la tarjeta */
+.tc-num {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 50%;
+    background: #339989;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+}
+ 
+/* Título: pequeño, pegado abajo, para dejar ver la imagen */
+.tc-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    margin: 0;
+    padding: 1.2rem 1.4rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, .6);
+}
+ 
+ 
+/* ---------- Botón "Ver más" ---------- */
+ 
+.tc-body {
+    padding: 1.4rem;
+}
+ 
+.tc-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 1.2rem;
+    height: auto;
+    line-height: 1.2;
+    white-space: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    background: #111;
+    border: 2px solid #111;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .25s ease, border-color .25s ease, transform .2s ease;
+}
+ 
+.tc-btn:hover {
+    background: #339989;
+    border-color: #339989;
+}
+ 
+.tc-btn:active {
+    transform: scale(.97);
+}
+ 
+.tc-btn:focus-visible {
+    outline: 3px solid #339989;
+    outline-offset: 3px;
+}
+ 
+.tc-arrow {
+    display: inline-block;
+    transition: transform .4s ease;
+}
+ 
+.tc-btn[aria-expanded="true"] .tc-arrow {
+    transform: rotate(180deg);
+}
+ 
+ 
+/* ---------- Contenido que se despliega ---------- */
+ 
+.tc-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+        grid-template-rows .5s ease,
+        visibility 0s linear .5s;
+}
+ 
+.tc-card.abierta .tc-panel {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition:
+        grid-template-rows .5s ease,
+        visibility 0s;
+}
+ 
+.tc-panel-inner {
+    min-height: 0;
+    overflow: hidden;
+}
+ 
+.tc-content {
+    padding: .4rem 1.4rem 1.8rem;
+}
+ 
+.tc-content h4 {
+    margin: 1rem 0 1rem;
+    font-size: 1.8rem;
+}
+ 
+.tc-content p {
+    margin: 0 0 1.2rem;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #333;
+}
+ 
+.tc-content a.tc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    font-weight: 700;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 2px solid #111;
+    padding-bottom: 1px;
+}
+ 
+.tc-content a.tc-link:hover {
+    color: #339989;
+    border-color: #339989;
+}
+ 
+ 
+/* ---------- Cuando una tarjeta está abierta ---------- */
+ 
+/* La abierta ocupa todo el ancho */
+.tc-grid.hay-abierta .tc-card.abierta {
+    grid-column: 1 / -1;
+}
+ 
+.tc-card.abierta:hover {
+    transform: none;
+}
+ 
+.tc-card.abierta .tc-media {
+    height: 320px;
+}
+ 
+/* Las demás se bajan y se esconden */
+.tc-card.tc-oculta {
+    opacity: 0;
+    transform: translateY(40px) scale(.95);
+    pointer-events: none;
+}
+ 
+.tc-card[hidden] {
+    display: none;
+}
+ 
+ 
+/* ---------- Responsive ---------- */
+ 
+/* Tablet: 2 columnas (la quinta ocupa todo el ancho) */
+@media (max-width: 1000px) {
+ 
+    .tc-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+ 
+    .tc-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+ 
+}
+ 
+/* Móvil: una debajo de la otra */
+@media (max-width: 600px) {
+ 
+    .tc-grid {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+    }
+ 
+    .tc-media,
+    .tc-card.abierta .tc-media {
+        height: 240px;
+    }
+ 
+    .tc-card:hover {
+        transform: translateY(-6px);
+    }
+ 
+}
+ 
+/* Respeta a quienes prefieren menos animaciones */
+@media (prefers-reduced-motion: reduce) {
+ 
+    .tc-card,
+    .tc-media img,
+    .tc-panel,
+    .tc-arrow {
+        transition: none;
+    }
+ 
+}
+ 
+
+
+
+
+
+
     .logo-cognitivo {
     font-family: 'Oswald', sans-serif;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 500;
     line-height: 1;
     white-space: nowrap;
-    color: #ffffff;
+    color: #211530;
 }
+
 
     /* ==================================================
    FUENTES CONSULTADAS
@@ -448,12 +802,20 @@
    SEPARACIÓN ENTRE NÚMERO Y TEXTO
    ================================================== */
 
-.header__nav .sub-menu li a.publicacion-link {
+.header__nav .sub-menu li a.publicacion-link{
     display: flex !important;
     align-items: flex-start;
     width: 100%;
 }
+.header__nav li.current a {
+    color: #DBC9F9 !important;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
 
+.header__nav li.current a:hover {
+    color: #211530 !important;
+}
 
 /* Número */
 
@@ -474,6 +836,163 @@
 }
 
 </style>
+
+<style>
+:root{
+  --lila-1:#D6B6EE; --lila-2:#E3CDF5; --lila-3:#EFE3FB; --lila-4:#F8F2FF;
+  --tinta:#2d1b45; --violeta:#5a3590;
+  --sombra:0 1px 2px rgba(45,27,69,.06),0 10px 30px rgba(45,27,69,.10);
+}
+ 
+/* ---------- Sección y tarjetas (colores lilas) ---------- */
+.tc-seccion{padding:4rem;background:linear-gradient(180deg,var(--lila-4) 0%,#fff 95%);border:1px solid var(--lila-2);border-radius:28px}
+.tc-seccion > h2{color:var(--tinta)}
+.tc-card{background:#fff;border:1px solid var(--lila-2);border-radius:22px;box-shadow:var(--sombra)}
+.tc-card:hover{border-color:var(--lila-1);box-shadow:0 2px 4px rgba(45,27,69,.06),0 28px 50px rgba(90,53,144,.25)}
+.tc-card.abierta{border-color:var(--lila-1);box-shadow:0 2px 4px rgba(45,27,69,.06),0 28px 60px rgba(90,53,144,.22)}
+.tc-card::after{height:5px;background:linear-gradient(90deg,var(--lila-1),var(--violeta))}
+.tc-media{background:linear-gradient(135deg,var(--lila-1),var(--lila-3))}
+.tc-media::after{height:55%;background:linear-gradient(to top,rgba(45,27,69,.9) 0%,rgba(45,27,69,.4) 40%,rgba(45,27,69,0) 100%)}
+.tc-num{background:var(--tinta);color:#fff}
+.tc-title{text-shadow:none;letter-spacing:.02em}
+.tc-title::after{content:"";display:block;width:36px;height:3px;margin-top:.8rem;border-radius:2px;background:var(--lila-1);transition:width .35s}
+.tc-card:hover .tc-title::after{width:72px}
+.tc-btn{background:var(--tinta);border:2px solid var(--tinta);border-radius:12px;color:#fff}
+.tc-btn:hover,.tc-btn:focus{background:var(--violeta);border-color:var(--violeta);color:#fff}
+.tc-btn:focus-visible,.ac-head:focus-visible,.qz-opt:focus-visible,.qz-next:focus-visible{outline:3px solid var(--violeta);outline-offset:3px}
+.tc-content a.tc-link{color:var(--tinta);border-bottom:2px solid var(--lila-1)}
+.tc-content a.tc-link:hover{color:var(--tinta);background:var(--lila-3);border-color:var(--violeta)}
+.tc-content p{color:var(--tinta)}
+ 
+/* ---------- Secciones desplegables ---------- */
+.ac-item{margin:0 0 1.2rem;background:#fff;border:1px solid var(--lila-2);border-radius:14px;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.ac-item:hover{border-color:var(--lila-1)}
+.ac-item.open{border-color:var(--lila-1);box-shadow:0 10px 24px rgba(90,53,144,.14)}
+.ac-head{display:flex;align-items:center;gap:1.2rem;width:100%;margin:0;padding:1.3rem 1.6rem;height:auto;line-height:1.3;white-space:normal;text-align:left;text-transform:none;letter-spacing:0;font-family:inherit;font-size:1.7rem;font-weight:700;color:var(--tinta);background:#fff;border:0;border-radius:0;cursor:pointer;transition:background .25s}
+.ac-head:hover,.ac-head:focus{color:var(--tinta);background:var(--lila-4)}
+.ac-item.open .ac-head,.ac-item.open .ac-head:hover,.ac-item.open .ac-head:focus{background:var(--lila-3)}
+.ac-num{flex:none;width:30px;height:30px;line-height:30px;text-align:center;border-radius:50%;background:var(--lila-2);color:var(--tinta);font-size:1.3rem;font-weight:700;transition:background .3s,color .3s}
+.ac-item.open .ac-num{background:var(--tinta);color:#fff}
+.ac-name{flex:1;min-width:0}
+.ac-icon{flex:none;font-size:2.4rem;line-height:1;color:var(--violeta);transition:transform .35s}
+.ac-item.open .ac-icon{transform:rotate(45deg)}
+.ac-body{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .45s ease,visibility 0s linear .45s}
+.ac-item.open .ac-body{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .45s ease,visibility 0s}
+.ac-body-inner{min-height:0;overflow:hidden}
+.ac-text{padding:1.8rem 1.8rem 2rem;background:#fff;border-top:1px solid var(--lila-2)}
+.ac-text p:last-child{margin-bottom:0}
+.ac-text ul,.ac-text ol{margin:0 0 1.2rem 2rem;padding:0}
+.ac-text li{margin:0 0 .8rem;font-size:1.5rem;line-height:1.7;color:var(--tinta)}
+.ac-text h4,.ac-text h5{color:var(--tinta)}
+.ac-text h5{margin:1.4rem 0 .8rem;font-size:1.6rem}
+.ac-text blockquote{margin:1.2rem 0;padding:1.2rem 1.6rem;background:var(--lila-4);border:1px solid var(--lila-2);border-left:5px solid var(--violeta);border-radius:0 12px 12px 0;font-size:1.5rem}
+.ac-text blockquote p{margin:0}
+.ac-cap{text-align:center;font-weight:700;font-size:1.4rem}
+.ac-img{display:block;max-width:100%;max-height:380px;margin:1.2rem auto 0;border-radius:12px;box-shadow:0 8px 25px rgba(90,53,144,.2)}
+@media(max-width:480px){.tc-seccion{padding:1.4rem}.ac-head{padding:1.1rem 1.2rem;font-size:1.55rem}.ac-text{padding:1.4rem 1.2rem 1.6rem}}
+ 
+/* Lecturas */
+.rd-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem}
+.rd-card{padding:1.8rem;background:var(--lila-4);border:1px solid var(--lila-2);border-radius:12px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.rd-card:hover{transform:translateY(-4px);border-color:var(--lila-1);box-shadow:0 10px 22px rgba(90,53,144,.12)}
+.rd-card h4{margin:0 0 1rem}
+@media(max-width:700px){.rd-grid{grid-template-columns:1fr}.tc-seccion{padding:2.2rem}}
+ 
+/* Videos */
+.vd-box video{display:block;width:100%;max-width:800px;height:auto;margin:0 auto;background:var(--tinta);border-radius:12px;box-shadow:0 8px 25px rgba(90,53,144,.25)}
+.vd-yt{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:var(--tinta);margin:1rem 0;box-shadow:0 8px 25px rgba(90,53,144,.25)}
+.vd-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vd-link{display:flex;justify-content:center;margin:1.6rem 0 .6rem}
+.vd-link img{width:110px;height:110px;object-fit:contain;transition:transform .25s,filter .25s}
+.vd-link:hover img{transform:scale(1.12);filter:brightness(1.12)}
+ 
+/* ---------- Quizzes (tarjetas 2 a 5) ---------- */
+.qz{background:var(--lila-4);color:var(--tinta);padding:2.2rem;border:1px solid var(--lila-2);border-radius:14px;box-sizing:border-box}
+.qz p{color:var(--tinta);margin:0 0 1.2rem}
+.qz-top{font-size:1.3rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--violeta)}
+.qz-q{font-size:1.6rem;font-weight:700;line-height:1.5}
+.qz-opts{margin-top:1.4rem}
+.qz-opt,.qz-next{display:block;width:100%;margin:0 0 1rem;padding:1.1rem 1.4rem;height:auto;line-height:1.4;white-space:normal;text-align:left;text-transform:none;letter-spacing:0;font-family:inherit;font-size:1.5rem;font-weight:600;color:var(--tinta);background:#fff;border:2px solid var(--lila-1);border-radius:10px;cursor:pointer;transition:background .2s,transform .2s}
+.qz-opt:hover:not(:disabled){background:var(--lila-3);color:var(--tinta);transform:translateX(4px)}
+.qz-opt:disabled{cursor:default;opacity:1}
+.qz-opt.ok{background:var(--lila-1)!important;border-color:var(--tinta)!important;color:var(--tinta)!important}
+.qz-opt.no{background:repeating-linear-gradient(45deg,#fff 0 5px,var(--lila-3) 5px 8px)!important;border:2px dashed var(--violeta)!important;color:var(--tinta)!important}
+.qz-fb{margin:1.2rem 0 0;padding:1.2rem 1.4rem;background:#fff;border-left:5px solid var(--violeta);border-radius:0 10px 10px 0;font-size:1.5rem;line-height:1.6;display:none}
+.qz-fb.on{display:block}
+.qz-next{display:inline-block;width:auto;margin-top:1.6rem;background:var(--tinta);border-color:var(--tinta);color:#fff;font-weight:700;text-align:center}
+.qz-next:hover{background:var(--violeta);border-color:var(--violeta);color:#fff}
+.qz-next[hidden]{display:none}
+.qz-end{text-align:center;padding:1rem 0}
+.qz-score{font-size:2.4rem;font-weight:700}
+@media(max-width:600px){.qz{padding:1.6rem 1.2rem}}
+ 
+/* ---------- Crucigrama (tarjeta 1) ---------- */
+.cx{--ink:var(--tinta);--paper:#fff;--soft:var(--lila-4);--mid:var(--lila-2);--line:var(--lila-1);--muted:#5b4a73;
+    margin:0;padding:1.4rem;background:var(--paper);border:2px solid var(--ink);border-radius:14px;color:var(--ink);box-sizing:border-box}
+.cx *{box-sizing:border-box}
+.cx-top{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.cx-progress{flex:1;height:8px;background:var(--mid);border-radius:99px;overflow:hidden}
+.cx-bar{height:100%;width:0;background:var(--violeta);border-radius:99px;transition:width .25s}
+.cx-count{font-size:1.3rem;font-weight:700;white-space:nowrap}
+.cx-now{min-height:3.4rem;display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;margin-bottom:1.2rem;background:var(--soft);border-left:6px solid var(--violeta);border-radius:6px;font-size:1.5rem;line-height:1.4}
+.cx-now b{white-space:nowrap}
+.cx-now.idle{color:var(--muted);border-left-color:var(--line)}
+.cx-layout{display:flex;flex-direction:column;gap:1.8rem}
+.cx-board{display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:3px;width:100%;max-width:700px;margin:0 auto}
+.cx-cell{position:relative;aspect-ratio:1;min-width:0}
+.cx-cell input{width:100%;height:100%;padding:0;border:2px solid var(--ink);border-radius:3px;background:var(--paper);color:var(--ink);text-align:center;text-transform:uppercase;font-weight:700;font-size:clamp(.9rem,2.4vw,1.5rem);caret-color:transparent;outline:none;cursor:pointer;transition:background .12s,color .12s}
+.cx-cell.in-word input{background:var(--lila-2)}
+.cx-cell.active input{background:var(--tinta);color:#fff}
+.cx-cell.locked input{background:var(--lila-3);color:var(--muted);font-style:italic}
+/* Estados de "Comprobar": bien visibles (con !important para que no los pise el tema) */
+.cx-cell.correct input{background:#d9f2e0!important;border:2px solid #2e7d32!important;box-shadow:inset 0 0 0 2px #2e7d32!important;color:#14532d!important}
+.cx-cell.incorrect input{background:#fde2e4!important;border:2px solid #c62828!important;box-shadow:inset 0 0 0 2px #c62828!important;color:#7f1d1d!important}
+.cx-n{position:absolute;top:2px;left:4px;font:700 clamp(7px,1.4vw,10px)/1 Arial,sans-serif;color:var(--ink);pointer-events:none;z-index:1}
+.cx-cell.active .cx-n{color:#fff}
+.cx-side{width:100%}
+.cx-side h4{margin:0 0 .7rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink);font-size:1.5rem}
+.cx-side h4:not(:first-child){margin-top:1.8rem}
+.cx-side ol{list-style:none;margin:0;padding:0}
+.cx-clue{display:flex;gap:.7rem;width:100%;margin:0 0 .4rem;padding:.6rem .8rem;text-align:left;font-size:1.4rem;line-height:1.4;height:auto;min-height:0;white-space:normal;text-transform:none;letter-spacing:0;font-weight:400;font-family:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:6px;cursor:pointer;transition:background .12s,color .12s,border-color .12s}
+.cx-clue .txt{flex:1;min-width:0;overflow-wrap:anywhere}
+.cx-clue:hover{border-color:var(--violeta);background:var(--lila-4);color:var(--ink)}
+.cx-clue .num{flex:none;width:1.9rem;height:1.9rem;line-height:1.9rem;text-align:center;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:1.2rem}
+.cx-clue.on,.cx-clue.on:hover{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.cx-clue.on .num{background:#fff;color:var(--tinta)}
+.cx-clue.done:not(.on){color:var(--muted);background:var(--lila-3)}
+.cx-clue.done .txt{text-decoration:line-through}
+.cx-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.cx-actions button{margin:0;height:auto;padding:.7rem 1.3rem;line-height:1.2;border-radius:8px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-weight:700;cursor:pointer;text-transform:none;letter-spacing:0}
+.cx-actions button.primary{background:var(--tinta);color:#fff}
+.cx-actions button:hover{background:var(--lila-2);color:var(--ink)}
+.cx-actions button.primary:hover{background:var(--violeta);border-color:var(--violeta);color:#fff}
+.cx-msg{min-height:2rem;margin:1rem 0 0;font-size:1.5rem;font-weight:600}
+.cx-msg.win{padding:.6rem .9rem;background:#d9f2e0;color:#14532d;border-radius:6px}
+.cx-msg.bad{padding:.6rem .9rem;background:#fde2e4;color:#7f1d1d;border-radius:6px}
+@media(max-width:820px){.cx{padding:1rem}.cx-board{gap:2px}.cx-cell input{border-width:1.5px;border-radius:2px}}
+</style>
+
+<style>
+/* Tarjetas un poco más anchas (solo en pantallas grandes) */
+@media (min-width: 1001px) {
+
+    .tc-seccion {
+        padding: 2rem;          /* antes 4rem */
+        margin-left: -2rem;     /* la sección se extiende un poco hacia los lados */
+        margin-right: -2rem;
+    }
+
+    .tc-grid {
+        gap: 1.4rem;            /* antes 2rem */
+    }
+}
+
+/* Tablet y móvil: se ajusta el relleno para no perder ancho */
+@media (max-width: 1000px) {
+    .tc-seccion { padding: 2rem; }
+}
+</style>
+
 <body class="ss-bg-white">
 
     <!-- preloader
@@ -516,64 +1035,29 @@
 
                     <!-- Enlace a la página principal -->
                     <li class="current">
-                        <a href="index.html" title="">Inicio</a>
-                    </li>
+    <a href="index.html">
+        <i data-lucide="house" class="icono-menu"></i>
+        <span>Inicio</span>
+    </a>
+</li>
+
+<li class="current">
+    <a href="caso_tema_2.html">
+        <i data-lucide="user-round" class="icono-menu"></i>
+        <span>Desarrollo Moral y competencias ciudadanas</span>
+    </a>
+</li>
+
+<li class="current">
+    <a href="page-about.html">
+        <i data-lucide="users-round" class="icono-menu"></i>
+        <span>Nosotras</span>
+    </a>
+</li>
+                   
 
 
                     
-
-
-                    <!-- ==================================================
-                         MENÚ DE PUBLICACIONES
-                         Contiene los diferentes tipos de artículos
-                         que puede mostrar el sitio.
-                         ================================================== -->
-                    <li class="has-children">
-
-                        <a href="#0" title="">Publicaciones</a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-                                <a href="metodo_de_succion.html" class="publicacion-link">
-                                    <span class="numero-publicacion">1.</span>
-                                    <span class="texto-publicacion">Procedimiento de succión de amplitud elevada</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="Mediciones_cardiacas.html" class="publicacion-link">
-                                    <span class="numero-publicacion">2.</span>
-                                    <span class="texto-publicacion">Mediciones del ritmo cardíaco</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="Preferencia_Giro_Cabeza.html" class="publicacion-link">
-                                    <span class="numero-publicacion">3.</span>
-                                    <span class="texto-publicacion">Procedimiento de preferencia de giro de cabeza</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="Procedimientos_Reforzamiento_Diferencia.html" class="publicacion-link">
-                                    <span class="numero-publicacion">4.</span>
-                                    <span class="texto-publicacion">Procedimientos basados en el reforzamiento diferencial</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="single-video.html" class="publicacion-link">
-                                    <span class="numero-publicacion">5.</span>
-                                    <span class="texto-publicacion">Paradigma intermodal de preferencia de mirada</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Enlace hacia la página "Nosotros" -->
-                    <li>
-                        <a href="page-about.html" title="">Nosotras</a>
-                    </li>
 
                 </ul>
                 <!-- Fin del menú de navegación -->
@@ -723,183 +1207,583 @@
                     </div>
 
                     <!-- end content__page-header -->
-
-
-
-                    <!-- Introducción -->
-
-                    <p class="lead drop-cap">
-
-                        El desarrollo humano es un proceso complejo que comienza desde las
-                        primeras etapas de la vida y continúa a lo largo del ciclo vital.
-                        Comprende cambios físicos, cognitivos, emocionales y sociales.
-                        Debido a esta complejidad, no existe una única explicación para
-                        comprender cómo se desarrolla una persona. Por esta razón,
-                        la psicología del desarrollo utiliza diferentes teorías y
-                        perspectivas que permiten estudiar el desarrollo desde distintos
-                        puntos de vista (OpenStax, s. f.).
-
-                    </p>
-
-<blockquote>
-                    <p>
-
-                        Las teorías del desarrollo funcionan como marcos de referencia
-                        para interpretar los cambios que ocurren durante la vida.
-                        Algunas se concentran en la manera en que las personas construyen
-                        conocimientos, mientras que otras estudian las relaciones sociales,
-                        el ambiente, el aprendizaje o los cambios emocionales. Estas
-                        perspectivas no necesariamente se excluyen entre sí; pueden
-                        complementar la comprensión del desarrollo humano (OpenStax, s. f.).
-
-                    </p>
-</blockquote>
-
-
-                    
-
-
-                    <!-- Visión general -->
-
-                    <h2>
-                        Una visión integral del desarrollo
-                    </h2>
-
-                    <p>
-
-                        El desarrollo humano puede entenderse mejor cuando se consideran
-                        diferentes dimensiones al mismo tiempo. Los cambios cognitivos,
-                        sociales, emocionales, biológicos y ambientales están relacionados
-                        entre sí. Por esta razón, las investigaciones actuales pueden
-                        utilizar diferentes teorías y métodos para observar y analizar
-                        el comportamiento humano desde distintas perspectivas
-                        (OpenStax, s. f.).
-
-                    </p>
-
-
-<div class="linea-separadora"></div>
-                    <!-- Métodos -->
-
-                    <h2>
-                        Métodos para estudiar el desarrollo en bebés
-                    </h2>
-
-                    <p>
-
-                        El estudio del desarrollo durante los primeros años de vida
-                        requiere métodos que permitan observar respuestas del bebé
-                        sin depender exclusivamente del lenguaje. Por ello, la
-                        investigación del desarrollo infantil utiliza diferentes
-                        procedimientos conductuales y fisiológicos para estudiar
-                        atención, percepción, aprendizaje y procesamiento de información.
-
-                    </p>
-
-
-                    <div class="row block-large-1-2 block-tab-full">
-
-
-                        <!-- Método 1 -->
-
-                        <div class="column">
-
-                            <h3>
-                                01. Succión de Amplitud Elevada
-                            </h3>
-<blockquote>
-                            <p>
-
-                                Procedimiento utilizado para estudiar respuestas de
-                                atención y discriminación en bebés mediante cambios
-                                en su patrón de succión.
-
-                            </p>
-</blockquote>
+ 
+<section class="tc-seccion" id="temas">
+ 
+    <h2>Explora las teorias</h2>
+  
+    <div class="tc-grid" id="tc-grid">
+ 
+        <!-- ================= TARJETA 1 ================= -->
+        <article class="tc-card">
+ 
+            <div class="tc-media">
+                <span class="tc-num">1</span>
+                <img src="images/Procedimiento_de_Succión/images (1).jpg" alt="Procedimiento de succión de amplitud elevada">
+                <h3 class="tc-title">Succión de amplitud elevada</h3>
+            </div>
+ 
+            <div class="tc-body">
+                <button type="button" class="tc-btn" aria-expanded="false" aria-controls="tc-panel-1">
+                    <span class="tc-btn-text">Ver más</span>
+                    <span class="tc-arrow" aria-hidden="true">▾</span>
+                </button>
+            </div>
+ 
+            <div class="tc-panel" id="tc-panel-1">
+                <div class="tc-panel-inner">
+                    <div class="tc-content">
+ 
+                        <!-- 1. ¿En qué consiste y cómo se aplica? -->
+                        <div class="ac-item">
+                            <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-1">
+                                <span class="ac-num">1</span>
+                                <span class="ac-name">¿En qué consiste y cómo se aplica?</span>
+                                <span class="ac-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="ac-body" id="ac-1-1">
+                                <div class="ac-body-inner">
+                                    <div class="ac-text">
+                                        <p>Según Barón Birchenall, Müller y Galindo (2014), el Procedimiento de Succión de Amplitud Elevada o conocido como HASP por sus siglas en inglés (<em>High-Amplitude Sucking Procedure</em>), es un método experimental utilizado para estudiar cómo los bebés perciben y discriminan diferentes estímulos auditivos, especialmente sonidos del habla. Se utiliza principalmente con bebés desde el nacimiento hasta los 4 meses para estudiar su capacidad de discriminar pequeños fragmentos de material auditivo.</p>
+                                        <p>Para aplicarlo, el bebé se coloca en una cuna ligeramente inclinada y se le da un chupete conectado a un computador mediante un transductor de presión. El computador registra la frecuencia con la que el bebé succiona y permite controlar los estímulos auditivos que se presentan mediante un altoparlante.</p>
+                                        <p>Primero se establece una línea de base, midiendo la frecuencia de succión sin presentar ningún estímulo. Después comienza la fase de familiarización, en la que se presenta repetidamente un mismo estímulo. A medida que el bebé se habitúa, “la frecuencia de succión comienza a disminuir”. Cuando esta disminución alcanza un criterio determinado, generalmente alrededor de una tercera parte, comienza la fase de prueba.</p>
+                                        <blockquote><p>En esta fase se presenta un estímulo novedoso al grupo experimental, mientras que al grupo control se le presenta nuevamente el estímulo conocido. Si la frecuencia de succión aumenta ante el estímulo novedoso, se interpreta como evidencia de que el bebé “ha discriminado los estímulos presentados”.</p></blockquote>
+                                        <img class="ac-img" src="images/Procedimiento_de_Succión/images (1).jpg" alt="Imagen del procedimiento HASP">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
-
-                        <!-- Método 2 -->
-
-                        <div class="column">
-
-                            <h3>
-                                02. Mediciones del Ritmo Cardiaco
-                            </h3>
-<blockquote>
-                            <p>
-
-                                Permiten observar cambios fisiológicos asociados con
-                                diferentes niveles de atención, activación o respuesta
-                                ante determinados estímulos.
-
-                            </p>
-</blockquote>
+ 
+                        <!-- 2. Recurso audiovisual -->
+                        <div class="ac-item">
+                            <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-2">
+                                <span class="ac-num">2</span>
+                                <span class="ac-name">Recurso audiovisual: método de habituación</span>
+                                <span class="ac-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="ac-body" id="ac-1-2">
+                                <div class="ac-body-inner">
+                                    <div class="ac-text">
+                                        <p>Este video muestra de manera práctica cómo se utilizan diferentes procedimientos experimentales para estudiar la percepción del habla en bebés, incluyendo el procedimiento de succión de amplitud elevada (HASP).</p>
+                                        <div class="vd-box">
+                                            <video controls preload="metadata">
+                                                <source src="videos/metodo de succion.mp4" type="video/mp4">
+                                                Tu navegador no puede reproducir este video.
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
-
-                        <!-- Método 3 -->
-
-                        <div class="column">
-
-                            <h3>
-                                03. Preferencia de Giro de Cabeza
-                            </h3>
-<blockquote>
-                            <p>
-
-                                Se utiliza para observar hacia qué estímulos dirige
-                                el bebé su atención, especialmente en investigaciones
-                                relacionadas con percepción y audición.
-
-                            </p>
-</blockquote>
+ 
+                        <!-- 3. ¿Qué mide o qué permite estudiar? -->
+                        <div class="ac-item">
+                            <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-3">
+                                <span class="ac-num">3</span>
+                                <span class="ac-name">¿Qué mide o qué permite estudiar?</span>
+                                <span class="ac-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="ac-body" id="ac-1-3">
+                                <div class="ac-body-inner">
+                                    <div class="ac-text">
+                                        <p>El HASP permite estudiar principalmente la capacidad de los bebés para discriminar estímulos auditivos, especialmente pequeños fragmentos de material auditivo. También permite observar cambios en la respuesta de succión cuando el bebé pasa de un estímulo familiar a uno novedoso.</p>
+                                        <blockquote><p>En otras palabras, el método permite saber si un bebé percibe una diferencia entre dos estímulos auditivos, aunque todavía no pueda hablar ni expresar verbalmente lo que ha percibido.</p></blockquote>
+                                        <img class="ac-img" src="images/Procedimiento_de_Succión/alteraciones-en-la-succion-del-bebe.jpg" alt="Succión del bebé">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
-
-                        <!-- Método 4 -->
-
-                        <div class="column">
-
-                            <h3>
-                                04. Reforzamiento Diferencial
-                            </h3>
-<blockquote>
-                            <p>
-
-                                Permite estudiar procesos de aprendizaje observando
-                                cómo determinadas respuestas pueden cambiar cuando
-                                reciben diferentes consecuencias.
-
-                            </p>
-</blockquote>
+ 
+                        <!-- 4. Lectura en español e inglés -->
+                        <div class="ac-item">
+                            <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-4">
+                                <span class="ac-num">4</span>
+                                <span class="ac-name">Lectura en español e inglés</span>
+                                <span class="ac-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="ac-body" id="ac-1-4">
+                                <div class="ac-body-inner">
+                                    <div class="ac-text">
+                                        <div class="rd-grid">
+                                            <div class="rd-card">
+                                                <h4>Lectura en español</h4>
+                                                <p>Este artículo científico presenta diferentes investigaciones sobre la percepción del habla durante el primer año de vida. Entre los métodos mencionados se encuentra el paradigma de succión de elevada amplitud (HASP), utilizado para estudiar la capacidad de los bebés para discriminar diferentes estímulos del habla.</p>
+                                                <a class="tc-link" href="https://www.redalyc.org/pdf/805/80532607002.pdf" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+                                            </div>
+                                            <div class="rd-card">
+                                                <h4>Lectura en inglés</h4>
+                                                <p>Este artículo estudia cómo los bebés de dos meses procesan los sonidos del habla cuando estos son producidos por diferentes personas. Se utilizó una versión modificada del procedimiento de succión de amplitud elevada (HAS), permitiendo analizar la capacidad de los bebés para detectar cambios fonéticos.</p>
+                                                <a class="tc-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3071505/pdf/nihms278728.pdf" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
-
-                        <!-- Método 5 -->
-
-                        <div class="column">
-
-                            <h3>
-                                05. Preferencia Intermodal de Mirada
-                            </h3>
-<blockquote>
-                            <p>
-
-                                Permite estudiar cómo los bebés relacionan información
-                                proveniente de diferentes sentidos, por ejemplo,
-                                información visual y auditiva.
-
-                            </p>
-</blockquote>
+ 
+                        <!-- 5. Actividad lúdica (crucigrama) -->
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-web"><span class="ac-num">5</span><span class="ac-name">Página web recomendada</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-1-web"><div class="ac-body-inner"><div class="ac-text">
+        <p>Es una página que reúne diferentes recursos académicos relacionados con la fonética y la percepción del habla. Entre ellos incluye materiales sobre procedimientos experimentales utilizados para estudiar la percepción del habla en bebés, como el HASP.</p>
+        <p><strong>International Phonetic Association.</strong> <em>Links to phonetics resources</em>.</p>
+        <a class="tc-link" href="https://www.internationalphoneticassociation.org/content/links-phonetics-resources?utm_source" target="_blank" rel="noopener">→ Visitar la página</a>
+      </div></div></div>
+    </div>
+ 
+                        <div class="ac-item">
+                            <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-5">
+                                <span class="ac-num">6</span>
+                                <span class="ac-name">Actividad lúdica: Crucigrama</span>
+                                <span class="ac-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="ac-body" id="ac-1-5">
+                                <div class="ac-body-inner">
+                                    <div class="ac-text">
+                                        <p>Completa el crucigrama utilizando las pistas relacionadas con el procedimiento de succión de amplitud elevada. Haz clic en una pista para llevar el cursor a la primera casilla de su respuesta.</p>
+                                        <div class="cx" id="cx">
+                                            <div class="cx-top">
+                                                <div class="cx-progress"><div class="cx-bar" id="cx-bar"></div></div>
+                                                <span class="cx-count" id="cx-count">0 / 0</span>
+                                            </div>
+                                            <div class="cx-now idle" id="cx-now" aria-live="polite">Toca una casilla o una pista para empezar.</div>
+                                            <div class="cx-layout">
+                                                <div class="cx-board" id="cx-board" role="group" aria-label="Crucigrama interactivo"></div>
+                                                <div class="cx-side">
+                                                    <h4>Horizontales</h4>
+                                                    <ol id="cx-across"></ol>
+                                                    <h4>Verticales</h4>
+                                                    <ol id="cx-down"></ol>
+                                                </div>
+                                            </div>
+                                            <div class="cx-actions">
+                                                <button type="button" class="primary" id="cx-check">Comprobar</button>
+                                                <button type="button" id="cx-hint">Pista (revela una letra)</button>
+                                                <button type="button" id="cx-reset">Reiniciar</button>
+                                            </div>
+                                            <p class="cx-msg" id="cx-msg" aria-live="polite"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
+ 
+                        <!-- 6. Dato llamativo -->
+                        <div class="ac-item">
+                            <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-1-6">
+                                <span class="ac-num">7</span>
+                                <span class="ac-name">Dato llamativo</span>
+                                <span class="ac-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="ac-body" id="ac-1-6">
+                                <div class="ac-body-inner">
+                                    <div class="ac-text">
+                                        <p><strong>¡El HASP ha permitido estudiar lo que los bebés pueden reconocer incluso a los pocos días de haber nacido!</strong></p>
+                                        <p>Una de las cosas más sorprendentes de este método es que no es necesario esperar a que el bebé tenga varios meses para utilizarlo. Investigaciones han aplicado el Procedimiento de Succión de Amplitud Elevada con recién nacidos de apenas 3 días de vida. En uno de estos estudios, los bebés franceses escucharon palabras japonesas y, mediante sus cambios en la succión, se pudo estudiar si diferenciaban palabras de dos y tres sílabas, e incluso diferencias relacionadas con las moras, una unidad rítmica utilizada en japonés.</p>
+                                        <p>Lo llamativo es que el bebé todavía no habla ni puede responder verbalmente a los investigadores, pero su patrón de succión permite obtener información sobre cómo responde ante diferentes estímulos del lenguaje. Esto demuestra por qué el HASP ha sido una herramienta tan útil para investigar las capacidades auditivas y lingüísticas durante los primeros días de vida.</p>
+                                        <img class="ac-img" src="images/Procedimiento_de_Succión/images.jpg" alt="Dato llamativo del HASP">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
                     </div>
+                </div>
+            </div>
+ 
+        </article>
+ 
+ 
+ 
+ <!-- ================= TARJETA 2: RITMO CARDÍACO ================= -->
+<article class="tc-card">
+  <div class="tc-media">
+    <span class="tc-num">2</span>
+    <img src="images/Mediciones_del_ritmo_cardiaco/WhatsApp Image 2026-09-28 at 1.59.05 PM.jpeg" alt="Mediciones del ritmo cardíaco">
+    <h3 class="tc-title">Ritmo cardíaco</h3>
+  </div>
+  <div class="tc-body">
+    <button type="button" class="tc-btn" aria-expanded="false" aria-controls="tc-panel-2">
+      <span class="tc-btn-text">Ver más</span><span class="tc-arrow" aria-hidden="true">▾</span>
+    </button>
+  </div>
+  <div class="tc-panel" id="tc-panel-2"><div class="tc-panel-inner"><div class="tc-content">
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-1"><span class="ac-num">1</span><span class="ac-name">¿En qué consiste y cómo se aplica?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-2-1"><div class="ac-body-inner"><div class="ac-text">
+        <p>Esta técnica se basa en el registro de la frecuencia cardíaca del bebé ante la presentación de estímulos auditivos o visuales. Permite evaluar las respuestas psicofisiológicas involuntarias asociadas con procesos de atención y discriminación.</p>
+        <blockquote><p>"Consiste en la medición de la variación de la frecuencia cardíaca en respuesta a estímulos sonoros presentados mediante un altavoz. Se lleva a cabo fijando electrodos en el tórax del lactante para registrar el electrocardiograma mientras este escucha los estímulos" (Barón Birchenall et al., 2014, p. 80).</p></blockquote>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-2"><span class="ac-num">2</span><span class="ac-name">Recurso audiovisual: método de habituación</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-2-2"><div class="ac-body-inner"><div class="ac-text">
+        <p>El siguiente video presenta de manera práctica cómo se utiliza el <strong>paradigma de habituación</strong> para estudiar los procesos de atención, aprendizaje y discriminación de estímulos en bebés. Se explica el procedimiento experimental, la medición del tiempo de mirada y el proceso de habituación y deshabituación ante estímulos familiares y novedosos.</p>
+        <a class="vd-link" href="https://www.jove.com/es/v/10068/habituation-studying-infants-before-they-can-talk" target="_blank" rel="noopener noreferrer" aria-label="Abrir video"><img src="images/social_media_youtube_video_play_icon_128997.png" alt="Reproducir video"></a>
+        <p class="ac-cap">JoVE. (s. f.). <em>Habituation: Studying infants before they can talk</em>.</p>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-3"><span class="ac-num">3</span><span class="ac-name">¿Qué mide o qué permite estudiar?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-2-3"><div class="ac-body-inner"><div class="ac-text">
+        <p>El registro de la tasa cardíaca actúa como un indicador psicofisiológico directo de los estados de orientación, atención sostenida y habituación en bebés preverbales.</p>
+        <blockquote><p>"Esta técnica permite estudiar los procesos atencionales y de discriminación de estímulos auditivos durante los primeros meses de vida, donde una desaceleración de la frecuencia cardíaca suele interpretarse como un indicador de atención orientada hacia el estímulo" (Barón Birchenall et al., 2014, p. 80).</p></blockquote>
+        <img class="ac-img" src="images/Mediciones_del_ritmo_cardiaco/WhatsApp Image 2026-09-28 at 1.59.05 PM.jpeg" alt="Procesos de atención y discriminación">
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-4"><span class="ac-num">4</span><span class="ac-name">Lectura en español e inglés</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-2-4"><div class="ac-body-inner"><div class="ac-text"><div class="rd-grid">
+        <div class="rd-card">
+          <h4>Lectura en español</h4>
+          <p>Sarmiento-Álvarez, L. O., Flórez-Ordóñez, Y. N., González-Salvador, A., &amp; Millet Roig, J. (2013). Estimación de la frecuencia cardiaca fetal en el ECG fetal no invasivo. <em>Tecno Lógicas</em>, 277–288.</p>
+          <p>Artículo técnico que explica cómo se intenta aislar la señal eléctrica del corazón del feto de la del corazón de la madre en un electrocardiograma no invasivo. Es útil porque profundiza en la dificultad técnica que menciona la lectura de Barón Birchenall et al. (2014) al justificar por qué no se usa electrocardiografía directa en fetos.</p>
+          <a class="tc-link" href="http://www.redalyc.org/pdf/3442/344234341021.pdf" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+        </div>
+        <div class="rd-card">
+          <h4>Lectura en inglés</h4>
+          <p>Ferrari, G. A., Nicolini, Y., Demuru, E., et al. (2016). Ultrasonographic investigation of human fetus responses to maternal communicative and non-communicative stimuli. <em>Frontiers in Psychology, 7</em>, Article 354.</p>
+          <p>Estudio de acceso abierto que usa ultrasonido para observar cómo el feto responde de forma diferenciada a la voz y otros estímulos maternos. Complementa el trabajo de Kisilevsky et al. (2009) y muestra que el paradigma de discriminación de estímulos maternos sigue vigente en investigación reciente.</p>
+          <a class="tc-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4792883/" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+        </div>
+      </div></div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-5"><span class="ac-num">5</span><span class="ac-name">Actividad lúdica: simulación de orientación cardiaca</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-2-5"><div class="ac-body-inner"><div class="ac-text">
+        <p>Responde las siguientes preguntas para comprobar qué ocurre con la frecuencia cardíaca de un bebé cuando se presentan estímulos repetidos o nuevos.</p>
+        <div class="qz" data-quiz="c2"></div>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-2-6"><span class="ac-num">6</span><span class="ac-name">Dato llamativo</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-2-6"><div class="ac-body-inner"><div class="ac-text">
+        <p>Los fetos pueden mostrar cambios en su ritmo cardiaco incluso antes de nacer. Estudios con fetos en el tercer trimestre de embarazo han encontrado que su frecuencia cardiaca se desacelera de forma distinta cuando “escuchan” la voz de su propia madre en comparación con la voz de una mujer desconocida, lo que sugiere que el sistema auditivo y los procesos de discriminación ya están funcionando desde el vientre materno (Kisilevsky et al., 2009, referenciado en Barón Birchenall et al., 2014).</p>
+      </div></div></div>
+    </div>
+ 
+  </div></div></div>
+</article>
+ 
+ 
+<!-- ================= TARJETA 3: GIRO DE CABEZA ================= -->
+<article class="tc-card">
+  <div class="tc-media">
+    <span class="tc-num">3</span>
+    <img src="images/jiro_ de_ cabeza/cabeza_mama_niño.jpg" alt="Preferencia de giro de cabeza">
+    <h3 class="tc-title">Giro de cabeza</h3>
+  </div>
+  <div class="tc-body">
+    <button type="button" class="tc-btn" aria-expanded="false" aria-controls="tc-panel-3">
+      <span class="tc-btn-text">Ver más</span><span class="tc-arrow" aria-hidden="true">▾</span>
+    </button>
+  </div>
+  <div class="tc-panel" id="tc-panel-3"><div class="tc-panel-inner"><div class="tc-content">
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-1"><span class="ac-num">1</span><span class="ac-name">¿En qué consiste y cómo se aplica?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-3-1"><div class="ac-body-inner"><div class="ac-text">
+        <p>El procedimiento de preferencia de giro de cabeza mide cuánto tiempo atiende un bebé a un sonido. El método aprovecha que los bebés tienden a orientar su mirada hacia una fuente de sonido. Sirve para examinar la percepción de sonidos prolongados, sobre todo del habla.</p>
+        <blockquote><p>Se aplica en bebés de entre 4 meses y medio y un año, sentados en el regazo de un adulto, generalmente la madre. El adulto escucha música con audífonos para no influir en el bebé.</p></blockquote>
+        <p>El experimento se realiza en una cabina de sonido atenuado con tres paneles. El panel central tiene una bombilla verde y una videocámara. Cada panel lateral tiene una bombilla roja y un altavoz.</p>
+        <p>Durante la fase de familiarización, la luz central parpadea para captar la atención del bebé. Luego suena el estímulo de familiarización en los altavoces laterales.</p>
+        <p>En la fase de prueba, la luz central parpadea y, cuando el bebé mira, se apaga y empieza a parpadear una luz lateral. Si el bebé gira la cabeza al menos 30 grados hacia ella, suena el estímulo. El sonido continúa mientras el bebé mire esa luz y se detiene cuando aparta la mirada unos 2 segundos.</p>
+        <p>El examinador, también con audífonos, controla las luces y registra la dirección y duración de los giros.</p>
+        <blockquote><p>Una limitación del método es que solo puede usarse con bebés mayores de 4 meses, porque antes no localizan bien una fuente de sonido lateral.</p></blockquote>
+        <img class="ac-img" src="images/jiro_ de_ cabeza/cabeza_mama_niño.jpg" alt="Bebé en el procedimiento de giro de cabeza">
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-2"><span class="ac-num">2</span><span class="ac-name">Recurso audiovisual: método de habituación</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-3-2"><div class="ac-body-inner"><div class="ac-text">
+        <p>Para complementar la explicación del Protocolo de Giro de Cabeza (<em>Head-Turn Preference Procedure, HPP</em>), se presenta el siguiente recurso audiovisual:</p>
+        <div class="vd-yt"><iframe src="https://www.youtube.com/embed/FuvX49q9ASc" title="Head Turn Protocol - English Language Toolkit, University of York" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <p class="ac-cap">"Head Turn Protocol" — English Language Toolkit, University of York (2020)</p>
+        <p>El video muestra en la práctica el método descrito en la lectura de Barón Birchenall et al. (2014): cómo se sienta al bebé frente al panel con las luces y el altavoz, y cómo su giro de cabeza hacia el estímulo sonoro permite a los investigadores medir cuánto tiempo atiende a cada tipo de sonido. Es útil porque muestra visualmente lo que la lectura describe de forma técnica: el montaje experimental, la reacción del bebé y la lógica detrás de la medición de la atención auditiva.</p>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-3"><span class="ac-num">3</span><span class="ac-name">¿Qué mide o qué permite estudiar?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-3-3"><div class="ac-body-inner"><div class="ac-text">
+        <p>Este método permite medir el tiempo de escucha hacia cada estímulo, que es la variable dependiente. Si el bebé escucha significativamente más un tipo de estímulo, eso se toma como evidencia de la capacidad para discriminar entre los dos tipos de estímulos.</p>
+        <p>Permite estudiar la discriminación de idiomas y de categorías rítmicas, la segmentación de palabras en el habla fluida y la sensibilidad a patrones del acento y auditivos de la lengua de origen.</p>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-4"><span class="ac-num">4</span><span class="ac-name">Lectura en español e inglés</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-3-4"><div class="ac-body-inner"><div class="ac-text"><div class="rd-grid">
+        <div class="rd-card">
+          <h4>Lectura en español</h4>
+          <p>Barón Birchenall, L. F., Müller, O., &amp; Galindo, O. (2014). Métodos de estudio de la percepción del habla. <em>Revista Colombiana de Psicología</em>, 23(1), 73-94.</p>
+          <p>El artículo revisa los métodos experimentales usados para estudiar cómo los bebés menores de un año perciben el habla, agrupándolos en tres tipos: los que miden habituación, como el HPP o giro de cabeza, los que miden conducta y los que miden actividad cerebral. Con estos métodos se ha descubierto que, incluso antes de hablar, los bebés ya distinguen idiomas, ritmos y patrones del habla.</p>
+          <a class="tc-link" href="http://www.scielo.org.co/scielo.php?script=sci_arttext&pid=S0121-54692014000100005" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+        </div>
+        <div class="rd-card">
+          <h4>Lectura en inglés</h4>
+          <p>University of Potsdam, BabyLAB. Headturn Preference Paradigm (HPP).</p>
+          <p>Se evidencia cómo el HPP mide cuánto tiempo un bebé, de 4 a 24 meses, mantiene la cabeza girada hacia un sonido, como una palabra o frase, que se reproduce a un lado, como indicador de su atención o preferencia. El niño se sienta en el regazo de su padre o madre en una cabina con luces guía; cuando mira hacia una luz que parpadea, se reproduce el sonido y se cronometra cuánto tiempo sigue mirando. Es un método clásico, usado hace más de 20 años.</p>
+          <a class="tc-link" href="https://www.uni-potsdam.de/en/babylab/informations-for-parents/methods/hpp" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+        </div>
+      </div></div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-web"><span class="ac-num">5</span><span class="ac-name">Página web recomendada</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-3-web"><div class="ac-body-inner"><div class="ac-text">
+        <p><strong>Universitat Pompeu Fabra (UPF), Center for Brain and Cognition. Estudios con bebés.</strong></p>
+        <p>En esta página web se habla del laboratorio de investigación con bebés en Barcelona que estudia cómo perciben el lenguaje, aprenden idiomas y razonan los bebés en sus primeros meses de vida, usando técnicas como seguimiento de mirada y potenciales evocados. Es útil porque muestra en español cómo funciona un laboratorio real de estudios con bebés.</p>
+        <a class="tc-link" href="https://www.upf.edu/es/web/cbclab/bebes_estudis" target="_blank" rel="noopener">→ Visitar la página</a>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-5"><span class="ac-num">6</span><span class="ac-name">Actividad lúdica: ¿Cuánto escucha el bebé?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-3-5"><div class="ac-body-inner"><div class="ac-text">
+        <p>Responde las siguientes preguntas de verdadero o falso para comprobar si comprendiste cómo funciona el Procedimiento de Preferencia de Giro de Cabeza (HPP).</p>
+        <div class="qz" data-quiz="c3"></div>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-3-6"><span class="ac-num">7</span><span class="ac-name">Dato llamativo</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-3-6"><div class="ac-body-inner"><div class="ac-text">
+        <p>Gracias al HPP se ha podido comprobar que los bebés desarrollan desde muy temprano la capacidad de distinguir diferentes idiomas y sonidos. Por ejemplo, desde los primeros días de vida pueden diferenciar idiomas que pertenecen a distintas categorías rítmicas y alrededor de los 5 meses también pueden distinguir idiomas con diferentes ritmos, aunque ninguno sea su lengua materna.</p>
+        <p>A partir de los 7-8 meses, los bebés comienzan a reconocer patrones de sonido y a identificar palabras dentro del habla continua. Hacia los 9 meses, además, muestran preferencia por palabras que siguen los patrones de acentuación y de sonidos más comunes en su lengua materna.</p>
+        <p>Esto demuestra que desde los primeros meses de vida los bebés empiezan a desarrollar sensibilidad hacia las características de su idioma.</p>
+      </div></div></div>
+    </div>
+ 
+  </div></div></div>
+</article>
+ 
+ 
+<!-- ================= TARJETA 4: REFORZAMIENTO DIFERENCIAL ================= -->
+<article class="tc-card">
+  <div class="tc-media">
+    <span class="tc-num">4</span>
+    <img src="images/reforzamiento diferencial.jpeg" alt="Reforzamiento diferencial">
+    <h3 class="tc-title">Reforzamiento diferencial</h3>
+  </div>
+  <div class="tc-body">
+    <button type="button" class="tc-btn" aria-expanded="false" aria-controls="tc-panel-4">
+      <span class="tc-btn-text">Ver más</span><span class="tc-arrow" aria-hidden="true">▾</span>
+    </button>
+  </div>
+  <div class="tc-panel" id="tc-panel-4"><div class="tc-panel-inner"><div class="tc-content">
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-4-1"><span class="ac-num">1</span><span class="ac-name">¿En qué consiste y cómo se aplica?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-4-1"><div class="ac-body-inner"><div class="ac-text">
+        <p>Este método se fundamenta en modificar y condicionar la conducta natural de succión no nutritiva del recién nacido mediante la presentación contingente de un estímulo auditivo específico (reforzador). La producción o modificación de un sonido del habla depende de que el bebé ajuste la velocidad, ritmo o duración de sus descansos de succión según un parámetro predeterminado por el experimentador.</p>
+        <p>Se aplica siguiendo fases rigurosas:</p>
+        <ol>
+          <li><strong>Fase de exposición preconcepcional o prenatal:</strong> las madres recitan un estímulo sonoro, como un cuento infantil, de forma repetida durante las últimas semanas de gestación para exponer auditivamente al feto.</li>
+          <li><strong>Establecimiento de la línea de base:</strong> tras el nacimiento, se le coloca al bebé un chupete modificado conectado a un transductor de presión e interconectado a un computador. Durante unos minutos sin estimulación auditiva, se registra la tasa habitual de succión y la duración media de los Intervalos Entre Estallidos de Succión (IES) para obtener el Valor Medio (VM).</li>
+          <li><strong>Fase de reforzamiento diferencial:</strong> se le presentan al recién nacido dos estímulos auditivos distintos, por ejemplo, una historia conocida y una desconocida. Para que suene un determinado estímulo, el bebé debe ajustar su patrón de succión: si el IES es igual o mayor al VM se reproduce una historia, y si es menor se activa la otra. Se invierte la contingencia para descartar sesgos fisiológicos.</li>
+          <li><strong>Fase de registro:</strong> se mide la frecuencia relativa con la que el lactante ajusta voluntariamente la duración de sus IES para mantener en reproducción el estímulo auditivo de su preferencia.</li>
+        </ol>
+        <blockquote><p>"La presentación de uno u otro tipo de historia dependía de las características de la succión de un chupete (conectado a un computador mediante un transductor de presión) por parte de los bebés [...] La línea de base de la frecuencia de succión se utilizó entonces para determinar la distribución y el valor medio de los IES de todos los bebés (VM) [...]" (Barón Birchenall et al., 2014, p. 81).</p></blockquote>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-4-2"><span class="ac-num">2</span><span class="ac-name">Recurso audiovisual: método de habituación</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-4-2"><div class="ac-body-inner"><div class="ac-text">
+        <p>El siguiente video permite observar un procedimiento relacionado con la investigación de la percepción auditiva prenatal y la respuesta de los recién nacidos ante estímulos sonoros previamente escuchados durante la gestación.</p>
+        <div class="vd-box"><video controls preload="metadata"><source src="videos/WhatsApp Video 2026-09-29 at 11.33.16 AM.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video></div>
+        <p class="ac-cap">Video de referencia. Desde el minuto 3:40.</p>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-4-3"><span class="ac-num">3</span><span class="ac-name">¿Qué mide o qué permite estudiar?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-4-3"><div class="ac-body-inner"><div class="ac-text">
+        <p>Permite estudiar el aprendizaje prenatal, la memoria auditiva temprana, el reconocimiento de la voz materna, la discriminación de características prosódicas y la preferencia por el habla materna con entonación natural desde los primeros días y semanas de vida.</p>
+        <blockquote><p>"Sucedió entonces que la frecuencia relativa de los IES que generaban la presentación de la historia conocida aumentó significativamente en relación con la frecuencia de los IES que generaban la presentación de la historia desconocida. Esto se interpretó como indicio de que la percepción del habla materna por parte de los fetos (por lo menos en el mes y medio previo al alumbramiento) influye sobre la percepción de los sonidos del lenguaje después del nacimiento [...] Los resultados de este estudio indican que hacia el primer mes de vida se prefiere la voz materna a la de un extraño, siempre y cuando se hable con una entonación natural" (Barón Birchenall et al., 2014, p. 81).</p></blockquote>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-4-4"><span class="ac-num">4</span><span class="ac-name">Lectura en español e inglés</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-4-4"><div class="ac-body-inner"><div class="ac-text"><div class="rd-grid">
+        <div class="rd-card">
+          <h4>Lectura en español</h4>
+          <p>Es un estudio cualitativo y descriptivo enfocado en evaluar cómo la estimulación auditiva durante la gestación favorece el desarrollo lingüístico infantil durante los primeros años de vida.</p>
+          <a class="tc-link" href="https://www.researchgate.net/publication/390361567_La_estimulacion_auditiva_prenatal_en_el_desarrollo_del_lenguaje" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+        </div>
+        <div class="rd-card">
+          <h4>Lectura en inglés</h4>
+          <p>DeCasper &amp; Spence (1986). El estudio investigó si los fetos en el tercer trimestre de gestación son capaces de reconocer patrones del habla materna recurrente, como un poema o rima específica, a los que han sido expuestos previamente.</p>
+          <a class="tc-link" href="https://www.researchgate.net/publication/240474886_Fetal_reaction_to_recurrent_maternal_speech" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+        </div>
+      </div></div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-4-web"><span class="ac-num">5</span><span class="ac-name">Página web recomendada</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-4-web"><div class="ac-body-inner"><div class="ac-text">
+        <p>Este laboratorio, dirigido por la investigadora Linda Polka, utiliza paradigmas relacionados con los descritos en el artículo de Barón Birchenall et al. (2014) y Mariscal et al. (2012).</p>
+        <ul>
+          <li><strong>Estudio del habla preverbal:</strong> investigan cómo los bebés perciben las vocales, los patrones prosódicos y las consonantes antes de poder hablar.</li>
+          <li><strong>Integración y preferencia:</strong> evalúan cómo la exposición temprana a la voz humana y al entorno auditivo moldea el aprendizaje del lenguaje en recién nacidos y lactantes.</li>
+          <li><strong>Laboratorio de Percepción del Habla Infantil:</strong> McGill University.</li>
+        </ul>
+        <a class="tc-link" href="https://www.psych.mcgill.ca/labs/bebe/english/" target="_blank" rel="noopener">→ Visitar la página</a>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-4-5"><span class="ac-num">6</span><span class="ac-name">Actividad lúdica: resuelve el caso</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-4-5"><div class="ac-body-inner"><div class="ac-text">
+        <p><strong>Caso de aprendizaje prenatal (DeCasper &amp; Spence, 1986).</strong> Un investigador quiere saber si los recién nacidos reconocen la voz de su madre tras haberla oído antes de nacer. Le coloca al bebé un chupete conectado a un equipo que mide la duración de los descansos de succión (IES).</p>
+        <div class="qz" data-quiz="c4"></div>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-4-6"><span class="ac-num">7</span><span class="ac-name">Dato llamativo</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-4-6"><div class="ac-body-inner"><div class="ac-text">
+        <!-- Esta página no tenía "Dato llamativo": lo armé con la información de tu propio texto. Cámbialo si tienes otro. -->
+        <p>¡Los bebés pueden reconocer algo que escucharon antes de nacer! En este procedimiento, recién nacidos cuyas madres recitaron una historia durante las últimas semanas del embarazo aumentaron las pausas largas de succión para escuchar esa historia conocida en lugar de una desconocida. Es decir, aprendieron a modificar su propia conducta para conseguir oír lo que ya les resultaba familiar, y hacia el primer mes de vida prefieren la voz materna a la de un extraño, siempre que hable con entonación natural.</p>
+      </div></div></div>
+    </div>
+ 
+  </div></div></div>
+</article>
+ 
+ 
+<!-- ================= TARJETA 5: MIRADA INTERMODAL ================= -->
+<article class="tc-card">
+  <div class="tc-media">
+    <span class="tc-num">5</span>
+    <img src="images/preferencia_de_mirada/rastreador ocular.jpg" alt="Paradigma intermodal de preferencia de mirada">
+    <h3 class="tc-title">Mirada intermodal</h3>
+  </div>
+  <div class="tc-body">
+    <button type="button" class="tc-btn" aria-expanded="false" aria-controls="tc-panel-5">
+      <span class="tc-btn-text">Ver más</span><span class="tc-arrow" aria-hidden="true">▾</span>
+    </button>
+  </div>
+  <div class="tc-panel" id="tc-panel-5"><div class="tc-panel-inner"><div class="tc-content">
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-5-1"><span class="ac-num">1</span><span class="ac-name">¿En qué consiste y cómo se aplica?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-5-1"><div class="ac-body-inner"><div class="ac-text">
+        <p>El paradigma intermodal de preferencia de mirada sirve para evaluar si un bebé o un niño pequeño comprende lo que escucha en relación con lo que ve. Consiste en mostrarle dos imágenes o videos, uno al lado del otro, mientras se nombra solo uno de ellos, y medir cuánto tiempo mira cada uno. Se ha usado desde los 4 meses y medio de edad y, en los experimentos de comprensión del lenguaje, con niños de 18 meses a 3 años.</p>
+        <h5>¿Cómo se aplica?</h5>
+        <img class="ac-img" src="images/preferencia_de_mirada/rastreador ocular.jpg" alt="Aplicación del paradigma">
+        <ul>
+          <li>El bebé se sienta en el regazo de un adulto y ve dos imágenes o videos, uno al lado del otro, mientras se nombra uno de ellos (Barón Birchenall et al., 2014, p. 84).</li>
+          <li>Primero aparece un estímulo (un rostro o una luz centelleante) en el centro de la pantalla, para atraer la atención del bebé.</li>
+          <li>Luego hay una prueba silenciosa, para comprobar que las dos imágenes le llaman la atención por igual (p. 84).</li>
+          <li>Después se superpone el estímulo auditivo que corresponde a una de las imágenes, y se mide el tiempo que el bebé fija la mirada en cada una (p. 84).</li>
+          <li>Muchos experimentos tienen fases de identificación de personajes, aprendizaje, línea base y prueba (Mariscal et al., 2012, p. 281).</li>
+          <li>La línea base usa un mensaje neutro, como "Mira ahora", para comprobar que el niño no prefiere una imagen por sí sola (p. 281).</li>
+          <li>Las cámaras suelen estar ocultas y solo se ven las pantallas (Mariscal et al., 2012, p. 280). Se puede usar un rastreador ocular para registrar hacia dónde mira (Barón Birchenall et al., 2014, p. 85).</li>
+        </ul>
+        <blockquote><p>Variación para aprender palabras: primero hay ensayos de entrenamiento, en los que una sola imagen se acompaña de una etiqueta. Luego, en la prueba, aparecen dos imágenes y se dice una palabra. (Barón Birchenall et al., 2014, pp. 84-85)</p></blockquote>
+        <h5>Limitaciones</h5>
+        <ul>
+          <li>Puede pasar por alto lo que el niño sabe: si mira una imagen no siempre es porque reconoció la palabra; a veces descarta la imagen que no corresponde. También es difícil usarlo con conceptos que no se pueden mostrar en una imagen, por eso conviene combinarlo con otras técnicas.</li>
+          <li>Exige mucho del niño en muy poco tiempo: el experimento completo rara vez pasa de cuatro minutos, y la fase de prueba suele quedar al final, cuando el niño ya está perdiendo el interés.</li>
+          <li>Se pierden muchos participantes: si no pasan un mínimo de tiempo mirando las pantallas, se descartan, y por eso las muestras casi nunca superan los 40 niños.</li>
+          <li>Los efectos son pequeños y a veces no aparecen: hay intentos de replicar estudios que no encontraron ningún efecto.</li>
+          <li>La interpretación es limitada: solo detecta si el niño relaciona lo que oye con lo que ve.</li>
+        </ul>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-5-2"><span class="ac-num">2</span><span class="ac-name">Recurso audiovisual: método de habituación</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-5-2"><div class="ac-body-inner"><div class="ac-text">
+        <p>Video sobre el paradigma intermodal de preferencia de mirada con niños pequeños. Muestra cómo se prepara el material, cómo se presenta al niño y cómo se analiza después hacia dónde mira.</p>
+        <div class="vd-yt"><iframe src="https://www.youtube.com/embed/4S7xh3yJ7-s" title="Paradigma intermodal de preferencia de mirada" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <p>Este video muestra cómo se aplica el seguimiento ocular (eye-tracking) en bebés dentro del Infant Action Lab de la Universidad de Nueva York (NYU). Los bebés llevan puesto un rastreador ocular portátil, una cámara pequeña sujeta a la cabeza que registra hacia dónde dirigen la mirada mientras interactúan libremente con su madre y con objetos. Permite estudiar la atención visual del bebé en situaciones naturales, no solo frente a una pantalla. Ejemplo: cuándo mira el rostro de la madre, cuándo sigue el movimiento de sus manos o cómo usa la mirada para guiar el gateo o la marcha.</p>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-5-3"><span class="ac-num">3</span><span class="ac-name">¿Qué mide o qué permite estudiar?</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-5-3"><div class="ac-body-inner"><div class="ac-text">
+        <img class="ac-img" src="images/preferencia_de_mirada/rastreador ocular.jpg" alt="Rastreador ocular">
+        <p>Este paradigma permite evaluar la detección de la correspondencia entre un mensaje verbal y una de las imágenes (Mariscal et al., 2012, p. 280). También sirve para medir el conocimiento floreciente en fonología, semántica, sintaxis y morfología en niños que aún no hablan (Barón Birchenall et al., 2014, p. 84).</p>
+        <h5>Qué mide exactamente</h5>
+        <ul>
+          <li>El tiempo que el niño mira cada imagen: la medida más frecuente es la proporción de tiempo que dedica a la "pantalla correcta" (Mariscal et al., 2012, p. 284).</li>
+          <li>Cuando el niño mira más tiempo la pantalla correcta que la incorrecta, se asume que comprendió el mensaje (p. 280). Esa preferencia debe aparecer en la prueba y no en la línea base (p. 284). También pueden usarse el tiempo máximo de mirada fija y el número de cambios de pantalla (pp. 289-290).</li>
+        </ul>
+        <h5>Qué permite estudiar</h5>
+        <ul>
+          <li>La comprensión de palabras (Barón Birchenall et al., 2014, p. 85).</li>
+          <li>La comprensión de estructuras gramaticales, por ejemplo si distingue verbos transitivos e intransitivos (Mariscal et al., 2012, p. 281).</li>
+          <li>La relación entre lo que se ve y lo que se oye: los bebés de 18 a 20 semanas miran más el rostro que pronuncia la vocal que escuchan (Barón Birchenall et al., 2014, p. 85).</li>
+          <li>Hacia dónde dirigen la atención al escuchar hablar: si miran más la boca o los ojos de quien habla (p. 85).</li>
+        </ul>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-5-4"><span class="ac-num">4</span><span class="ac-name">Lectura en español e inglés</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-5-4"><div class="ac-body-inner"><div class="ac-text"><div class="rd-grid">
+        <div class="rd-card">
+          <h4>Lectura en español</h4>
+          <p>González Aguirre, O. A., Laguna Navarro, I., &amp; Alva Canto, E. A. (2020). Generalización de palabras en infantes hispanohablantes: El sesgo hacia la forma. <em>Acta de investigación psicológica, 10</em>(2), 5-16.</p>
+          <p>Compara la capacidad de dos grupos de infantes hispanohablantes de 24 meses para formar nuevas categorías a partir de la forma y del color, usando el paradigma intermodal. Los infantes formaron categorías a partir de la forma, pero no del color.</p>
+          <a class="tc-link" href="https://www.redalyc.org/journal/3589/358971691001/358971691001.pdf" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+        </div>
+        <div class="rd-card">
+          <h4>Lectura en inglés</h4>
+          <p>Golinkoff, R. M., Ma, W., Song, L., &amp; Hirsh-Pasek, K. (2013). Twenty-five years using the intermodal preferential looking paradigm to study language acquisition: What have we learned? <em>Perspectives on Psychological Science, 8</em>(3), 316-339.</p>
+          <p>Artículo de revisión sobre 25 años de uso del paradigma. Permite explorar el conocimiento en fonología, semántica, sintaxis y morfología en bebés que aún no hablan, y hoy se estudia además su posible valor clínico y diagnóstico.</p>
+          <a class="tc-link" href="https://www.psychologicalscience.org/journals/perspectives/1745691613484936/" target="_blank" rel="noopener">→ Ingresar a la fuente</a>
+        </div>
+      </div></div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-5-web"><span class="ac-num">5</span><span class="ac-name">Página web recomendada</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-5-web"><div class="ac-body-inner"><div class="ac-text">
+        <p><strong>Babylab de la Universidad de Plymouth (Reino Unido).</strong></p>
+        <p>Esta página es de un laboratorio que estudia cómo aprenden lenguaje los bebés. Explica la técnica con un ejemplo sencillo: se muestran la imagen de un perro y la de un gato mientras suena la frase "mira al perro", y se espera que desde los 12 meses el bebé mire más tiempo el objeto nombrado. Sirve para entender la idea del método con un caso concreto y en pocas líneas. También cuenta cómo son los estudios: duran entre 10 y 30 minutos. Además describe el procedimiento de preferencia de giro de cabeza.</p>
+        <a class="tc-link" href="https://www.psy.plymouth.ac.uk/babylab/Projects" target="_blank" rel="noopener">→ Visitar la página</a>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-5-5"><span class="ac-num">6</span><span class="ac-name">Actividad lúdica: empareja lo que oyes con lo que ves</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-5-5"><div class="ac-body-inner"><div class="ac-text">
+        <div class="qz" data-quiz="c5"></div>
+      </div></div></div>
+    </div>
+ 
+    <div class="ac-item">
+      <button type="button" class="ac-head" aria-expanded="false" aria-controls="ac-5-6"><span class="ac-num">7</span><span class="ac-name">Dato llamativo</span><span class="ac-icon" aria-hidden="true">+</span></button>
+      <div class="ac-body" id="ac-5-6"><div class="ac-body-inner"><div class="ac-text">
+        <img class="ac-img" src="images/preferencia_de_mirada/bebe observando.jpeg" alt="Bebé observando estímulos visuales">
+        <p>Entre los 4 y los 8 meses, al oír frases, los bebés miran cada vez más la boca de quien habla, tanto en su idioma como en uno extranjero. Hacia los 12 meses, solo con su idioma nativo vuelven a mirar más los ojos que la boca. Con el idioma extranjero, en cambio, los bebés de 12 meses no dirigen su atención a los ojos.</p>
+        <p>Los autores interpretan estos cambios así: mirar la boca podría ayudar al bebé a acceder a información audiovisual del habla, lo que le permitiría aprender las formas del lenguaje. Volver a mirar los ojos reflejaba que ya tiene más experiencia con su idioma nativo, y eso le permite prestar atención a señales sociales. Con un idioma que no conoce, el bebé seguiría necesitando la información de la boca.</p>
+        <p>Este hallazgo se logró con un rastreador ocular y es un ejemplo de lo que el método permite: saber no solo si el niño entiende, sino también cómo distribuye su atención mientras escucha hablar (Lewkowicz &amp; Hansen-Tift, 2012, citado en Barón Birchenall et al., 2014, p. 85).</p>
+      </div></div></div>
+    </div>
+ 
+  </div></div></div>
+</article>
+ 
+ 
+ 
+    </div>
+    <!-- end tc-grid -->
+ 
+</section>
 
 <!-- ================= FUENTES CONSULTADAS ================= -->
 
@@ -959,42 +1843,6 @@
 
         </div>
 
-        <!-- end s-content -->
-
-
-
-        <!-- ========================================================
-             PIE DE PÁGINA
-             Contiene información de derechos de autor y créditos
-             del diseño de la plantilla.
-             ======================================================== -->
-        <footer class="s-footer">
-
-            <div class="row">
-
-                <div class="column large-full">
-
-                    <div class="ss-copyright">
-
-                        <span>
-                            © Derechos de autor Typerite 2021
-                        </span>
-
-                        <span>
-                            Diseñado por
-                            <a href="#0">StyleShout</a>
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </footer>
-        <!-- Fin del pie de página -->
-
-
         <!-- ========================================================
              BOTÓN VOLVER ARRIBA
              Permite regresar rápidamente a la parte superior
@@ -1045,6 +1893,379 @@
 
     });
 
+})();
+</script>
+
+<script>
+(function () {
+ 
+    var grid = document.getElementById("tc-grid");
+    if (!grid) return;
+ 
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(".tc-card"));
+ 
+    function setBtn(card, abierta) {
+        var btn = card.querySelector(".tc-btn");
+        btn.setAttribute("aria-expanded", abierta ? "true" : "false");
+        btn.querySelector(".tc-btn-text").textContent = abierta ? "Ver menos" : "Ver más";
+    }
+ 
+    // Cierra todas las secciones desplegables de una tarjeta
+    function cerrarSecciones(card) {
+        card.querySelectorAll(".ac-item.open").forEach(function (item) {
+            item.classList.remove("open");
+            item.querySelector(".ac-head").setAttribute("aria-expanded", "false");
+        });
+    }
+ 
+    function abrir(card) {
+        grid.classList.add("hay-abierta");
+        card.classList.add("abierta");
+        setBtn(card, true);
+ 
+        cards.forEach(function (c) {
+            if (c === card) return;
+            c.classList.add("tc-oculta");
+            c._t = setTimeout(function () { c.hidden = true; }, 350);
+        });
+ 
+        setTimeout(function () {
+            card.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+    }
+ 
+    function cerrar(card) {
+        grid.classList.remove("hay-abierta");
+        card.classList.remove("abierta");
+        setBtn(card, false);
+        cerrarSecciones(card);
+ 
+        cards.forEach(function (c) {
+            if (c === card) return;
+            clearTimeout(c._t);
+            c.hidden = false;
+            void c.offsetWidth;
+            c.classList.remove("tc-oculta");
+        });
+    }
+ 
+    cards.forEach(function (card) {
+        card.querySelector(".tc-btn").addEventListener("click", function () {
+            if (card.classList.contains("abierta")) cerrar(card);
+            else abrir(card);
+        });
+    });
+ 
+    // Secciones: solo una abierta a la vez dentro de cada tarjeta
+    grid.addEventListener("click", function (e) {
+        var head = e.target.closest(".ac-head");
+        if (!head) return;
+ 
+        var item = head.parentNode;
+        var estabaAbierta = item.classList.contains("open");
+ 
+        cerrarSecciones(item.closest(".tc-card"));
+ 
+        if (!estabaAbierta) {
+            item.classList.add("open");
+            head.setAttribute("aria-expanded", "true");
+        }
+    });
+ 
+})();
+</script>
+ 
+ 
+<!-- =====================================================================
+  PASO 4: pega este <script> del crucigrama justo debajo del anterior
+  (es el mismo de tu página HASP, sin cambios)
+====================================================================== -->
+
+<script>
+(function () {
+    const WORDS = [
+        { w:"SUCCION",        r:0,  c:5,  d:"D", q:"Respuesta del bebé que se registra durante el procedimiento." },
+        { w:"CHUPETE",        r:1,  c:3,  d:"A", q:"Objeto que el bebé succiona durante el experimento." },
+        { w:"ESTIMULO",       r:1,  c:7,  d:"D", q:"Información presentada al participante durante el experimento." },
+        { w:"AUDITIVO",       r:2,  c:0,  d:"D", q:"Tipo de estímulo que se presenta mediante el altoparlante." },
+        { w:"HASP",           r:2,  c:2,  d:"D", q:"Sigla del procedimiento en inglés." },
+        { w:"NOVEDOSO",       r:3,  c:12, d:"D", q:"Estímulo diferente al presentado durante la familiarización." },
+        { w:"DISCRIMINACION", r:4,  c:0,  d:"A", q:"Capacidad del bebé para distinguir entre diferentes estímulos." },
+        { w:"BEBE",           r:6,  c:9,  d:"A", q:"Participante del procedimiento." },
+        { w:"PRESION",        r:8,  c:2,  d:"A", q:"Variable relacionada con el dispositivo conectado al chupete." },
+        { w:"HABITUACION",    r:10, c:3,  d:"A", q:"Disminución de la respuesta después de presentar repetidamente un estímulo." }
+    ];
+ 
+    const $ = id => document.getElementById(id);
+    const board = $("cx-board"), now = $("cx-now"), msg = $("cx-msg");
+    const key = (r, c) => r + "-" + c;
+    const cells = {};
+    let cur = { word: null, cell: null }, hintsUsed = 0;
+ 
+    WORDS.sort((a, b) => a.r - b.r || a.c - b.c);
+    let n = 0, last = "";
+    WORDS.forEach(w => { const k = key(w.r, w.c); if (k !== last) n++; last = k; w.n = n; });
+ 
+    WORDS.forEach((w, i) => {
+        w.keys = [];
+        for (let j = 0; j < w.w.length; j++) {
+            const r = w.r + (w.d === "D" ? j : 0), c = w.c + (w.d === "A" ? j : 0), k = key(r, c);
+            cells[k] = cells[k] || { r, c, ans: w.w[j], words: {}, num: 0 };
+            cells[k].words[w.d] = i;
+            if (j === 0) cells[k].num = w.n;
+            w.keys.push(k);
+        }
+    });
+ 
+    const rows = Math.max(...Object.values(cells).map(x => x.r)) + 1;
+    const cols = Math.max(...Object.values(cells).map(x => x.c)) + 1;
+    board.style.setProperty("--cols", cols);
+ 
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+        const k = key(r, c), cell = document.createElement("div");
+        cell.className = "cx-cell";
+        if (cells[k]) {
+            const inp = document.createElement("input");
+            inp.maxLength = 1; inp.autocomplete = "off"; inp.autocapitalize = "characters";
+            inp.setAttribute("aria-label", "Fila " + (r + 1) + ", columna " + (c + 1));
+            inp.dataset.k = k;
+            cell.appendChild(inp);
+            if (cells[k].num) { const s = document.createElement("span"); s.className = "cx-n"; s.textContent = cells[k].num; cell.appendChild(s); }
+            cells[k].input = inp; cells[k].el = cell;
+        }
+        board.appendChild(cell);
+    }
+ 
+    WORDS.forEach((w, i) => {
+        const li = document.createElement("li"), b = document.createElement("button");
+        b.type = "button"; b.className = "cx-clue"; b.id = "clue-" + i;
+        b.innerHTML = '<span class="num">' + w.n + '</span><span class="txt">' + w.q + ' <small>(' + w.w.length + ' letras)</small></span>';
+        b.addEventListener("click", () => { const k = w.keys[firstEmpty(i)]; selectWord(i, k); now.scrollIntoView({ block: "center", behavior: "smooth" }); });
+        li.appendChild(b);
+        $(w.d === "A" ? "cx-across" : "cx-down").appendChild(li);
+        w.btn = b;
+    });
+ 
+    const firstEmpty = i => { const ks = WORDS[i].keys; const j = ks.findIndex(k => !cells[k].input.value); return j < 0 ? 0 : j; };
+ 
+    function selectWord(i, k) {
+        cur.word = i; cur.cell = k;
+        Object.values(cells).forEach(c => c.el.classList.remove("in-word", "active"));
+        WORDS.forEach(w => w.btn.classList.remove("on"));
+        WORDS[i].keys.forEach(kk => cells[kk].el.classList.add("in-word"));
+        cells[k].el.classList.add("active");
+        WORDS[i].btn.classList.add("on");
+        now.classList.remove("idle");
+        now.innerHTML = "<b>" + WORDS[i].n + (WORDS[i].d === "A" ? " Horizontal" : " Vertical") + "</b><span>" + WORDS[i].q + "</span>";
+        cells[k].input.focus({ preventScroll: true });
+        cells[k].input.select();
+    }
+ 
+    function selectCell(k) {
+        const w = cells[k].words;
+        let i = cur.word;
+        if (k === cur.cell && w.A !== undefined && w.D !== undefined) {
+            i = WORDS[cur.word].d === "A" ? w.D : w.A;
+        } else if (i === null || !WORDS[i].keys.includes(k)) {
+            i = w.A !== undefined ? w.A : w.D;
+        }
+        selectWord(i, k);
+    }
+ 
+    function step(delta) {
+        const ks = WORDS[cur.word].keys, j = ks.indexOf(cur.cell) + delta;
+        if (j >= 0 && j < ks.length) selectWord(cur.word, ks[j]);
+    }
+ 
+    function jumpWord(delta) {
+        const i = (cur.word + delta + WORDS.length) % WORDS.length;
+        selectWord(i, WORDS[i].keys[firstEmpty(i)]);
+    }
+ 
+    Object.entries(cells).forEach(([k, c]) => {
+        c.input.addEventListener("mousedown", e => { e.preventDefault(); selectCell(k); });
+        c.input.addEventListener("focus", () => { if (cur.cell !== k) selectCell(k); });
+        c.input.addEventListener("input", () => {
+            c.input.value = c.input.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Za-z]/g, "").toUpperCase().slice(0, 1);
+            c.el.classList.remove("correct", "incorrect");
+            msg.textContent = ""; msg.classList.remove("win", "bad");
+            if (c.input.value) step(1);
+            refresh();
+        });
+        c.input.addEventListener("keydown", e => {
+            const move = { ArrowRight:[0,1], ArrowLeft:[0,-1], ArrowDown:[1,0], ArrowUp:[-1,0] }[e.key];
+            if (move) { e.preventDefault(); const t = cells[key(c.r + move[0], c.c + move[1])]; if (t) selectCell(key(t.r, t.c)); }
+            else if (e.key === "Backspace" && !c.input.value) { e.preventDefault(); step(-1); const p = cells[cur.cell]; p.input.value = ""; p.el.classList.remove("correct","incorrect"); refresh(); }
+            else if (e.key === "Tab") { e.preventDefault(); jumpWord(e.shiftKey ? -1 : 1); }
+        });
+    });
+ 
+    function refresh() {
+        const all = Object.values(cells), filled = all.filter(c => c.input.value).length;
+        $("cx-bar").style.width = (filled / all.length * 100) + "%";
+        $("cx-count").textContent = WORDS.filter(w => w.keys.every(k => cells[k].input.value === cells[k].ans)).length + " / " + WORDS.length + " palabras";
+        WORDS.forEach(w => w.btn.classList.toggle("done", w.keys.every(k => cells[k].input.value)));
+    }
+ 
+    function check() {
+        let ok = 0, filled = 0; const all = Object.values(cells);
+        all.forEach(c => {
+            c.el.classList.remove("correct", "incorrect");
+            if (!c.input.value) return;
+            filled++;
+            if (c.input.value === c.ans) { ok++; c.el.classList.add("correct"); } else c.el.classList.add("incorrect");
+        });
+        msg.classList.toggle("win", ok === all.length);
+        msg.classList.toggle("bad", ok !== all.length && filled > ok);
+        msg.textContent = ok === all.length ? "¡Excelente! Completaste todo el crucigrama."
+            : filled === 0 ? "Escribe algunas letras y vuelve a comprobar."
+            : (filled - ok) + " letra(s) incorrecta(s), marcadas en rojo. " + ok + " correctas de " + all.length + " casillas.";
+    }
+ 
+    function hint() {
+        if (cur.word === null) { msg.textContent = "Elige primero una casilla o una pista."; return; }
+        const k = WORDS[cur.word].keys.find(kk => cells[kk].input.value !== cells[kk].ans);
+        if (!k) { msg.textContent = "Esta palabra ya está completa."; return; }
+        cells[k].input.value = cells[k].ans;
+        cells[k].el.classList.remove("incorrect"); cells[k].el.classList.add("locked");
+        hintsUsed++; msg.textContent = "Pistas usadas: " + hintsUsed; msg.classList.remove("win");
+        refresh();
+    }
+ 
+    function reset() {
+        Object.values(cells).forEach(c => { c.input.value = ""; c.el.classList.remove("correct", "incorrect", "locked", "in-word", "active"); });
+        WORDS.forEach(w => w.btn.classList.remove("on"));
+        cur = { word: null, cell: null }; hintsUsed = 0;
+        now.classList.add("idle"); now.textContent = "Toca una casilla o una pista para empezar.";
+        msg.textContent = ""; msg.classList.remove("win");
+        refresh();
+    }
+ 
+    $("cx-check").addEventListener("click", check);
+    $("cx-hint").addEventListener("click", hint);
+    $("cx-reset").addEventListener("click", reset);
+    refresh();
+})();
+</script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
+<script>
+(function () {
+    var VF = ["Verdadero", "Falso"];
+ 
+    var QUIZ = {
+        c2: [
+            ["A un bebé se le muestra la misma imagen 5 veces seguidas. Su frecuencia cardíaca al inicio era de 130 lpm. Después de la quinta repetición baja a 110 lpm. ¿Qué está pasando?",
+             ["a) El bebé se aburrió y dejó de prestar atención", "b) El bebé se habituó al estímulo (dejó de ser novedoso)", "c) El bebé tiene un problema de salud"], 1,
+             "La disminución progresiva de la frecuencia cardíaca ante un estímulo repetido indica habituación.",
+             "La disminución progresiva de la frecuencia cardíaca ante un estímulo repetido es compatible con un proceso de habituación."],
+            ["Justo después, le muestran una imagen totalmente distinta. Su pulso sube de golpe a 128 lpm. ¿Qué fenómeno se está registrando?",
+             ["a) Deshabituación / respuesta de orientación", "b) Habituación", "c) Es un error de medición"], 0,
+             "El cambio ante un estímulo nuevo corresponde a una respuesta de orientación o deshabituación.",
+             "El cambio ante un estímulo nuevo corresponde a una respuesta de orientación o deshabituación."],
+            ["Si el pulso del bebé se mantuviera igual (sin bajar) durante las 5 repeticiones del primer estímulo, ¿qué podríamos concluir?",
+             ["a) Que ya se habituó rápidamente", "b) Que aún no se ha habituado al estímulo", "c) Que el estímulo no es real"], 1,
+             "Si la frecuencia no disminuye, no hay evidencia de habituación todavía.",
+             "Si la frecuencia no disminuye durante las repeticiones, no hay evidencia de que se haya producido habituación."]
+        ],
+        c3: [
+            ["El HPP puede usarse con recién nacidos.", VF, 1,
+             "El HPP se usa con bebés mayores de 4 meses, que ya localizan bien una fuente de sonido lateral.",
+             "El HPP no se utiliza con recién nacidos: requiere bebés mayores de 4 meses."],
+            ["Si el bebé escucha más tiempo un estímulo, se infiere que lo discrimina.", VF, 0,
+             "Escuchar significativamente más un estímulo se toma como evidencia de discriminación.",
+             "Una mayor duración de escucha hacia un estímulo puede interpretarse como evidencia de discriminación."],
+            ["La variable dependiente es el tiempo de giro hacia el lugar del sonido.", VF, 0,
+             "El tiempo de escucha o de giro hacia el sonido es la variable dependiente.",
+             "La variable dependiente corresponde al tiempo de escucha o de giro hacia el lugar del sonido."],
+            ["La madre escucha el mismo sonido que el bebé para poder guiarlo.", VF, 1,
+             "La madre escucha música con audífonos para no influir en la respuesta del bebé.",
+             "La madre no escucha el mismo sonido: usa audífonos para evitar influir en el bebé."],
+            ["En la fase de familiarización se presentan los estímulos de prueba.", VF, 1,
+             "En la familiarización se presenta el estímulo de familiarización; los de prueba vienen después.",
+             "En la familiarización se presenta el estímulo de familiarización; los estímulos de prueba se presentan después."]
+        ],
+        c4: [
+            ["Si el bebé quiere escuchar a su madre recitar el cuento que le leía durante el embarazo y la regla fija es que solo suena si hace pausas largas de succión, ¿qué conducta mostrará el recién nacido?",
+             ["A) Dejará de succionar por completo porque se cansa.", "B) Aumentará la frecuencia de pausas largas de succión para hacer sonar la voz materna.", "C) Succionará lo más rápido y seguido posible sin hacer pausas."], 1,
+             "El bebé ajusta su patrón de succión para conseguir el estímulo auditivo que prefiere.",
+             "Con el reforzamiento, el bebé ajusta su patrón de succión para conseguir el estímulo auditivo asociado: aumenta las pausas largas."]
+        ],
+        c5: [
+            ["1. ¿Para qué sirve la línea base en el paradigma intermodal de preferencia de mirada?",
+             ["Para enseñarle al niño las palabras nuevas.", "Para comprobar que el niño no prefiere una imagen por sí sola.", "Para medir cuánto dura el sonido."], 1,
+             "La línea base usa un mensaje neutro, como «¡Mira ahora!». Si el niño ya prefiere una imagen ahí, su preferencia en la prueba no se puede atribuir a comprensión (Mariscal et al., 2012, p. 281).",
+             "La línea base usa un mensaje neutro para comprobar que el niño no prefiere una imagen por sí sola (Mariscal et al., 2012, p. 281)."],
+            ["2. En la fase de prueba, un bebé mira más tiempo la imagen que coincide con la frase que escucha. ¿Cómo se interpreta?",
+             ["Que le gustan más los colores de esa imagen.", "Que relaciona lo que oyó con lo que vio, lo que se toma como comprensión.", "Que se aburrió de la otra imagen."], 1,
+             "Mayor tiempo de mirada a la pantalla correcta se toma como comprensión (Mariscal et al., 2012, p. 280).",
+             "Se asume que un mayor tiempo de mirada a la pantalla correcta implica comprensión lingüística (Mariscal et al., 2012, p. 280)."],
+            ["3. ¿Cuál es una limitación de este método?",
+             ["No se puede usar con niños que aún no hablan.", "Puede sobreestimar lo que el niño sabe, porque a veces elige la imagen por descarte.", "Solo funciona con adultos."], 1,
+             "El niño puede reconocer cuál imagen no corresponde y elegir la otra sin conocer la palabra (Barón Birchenall et al., 2014, p. 85).",
+             "El método sirve justamente para niños que aún no hablan; su limitación es que pueden elegir la imagen por descarte (Barón Birchenall et al., 2014, p. 85)."]
+        ]
+    };
+ 
+    function iniciar(el, qs) {
+        var i = 0, score = 0, respondida = false;
+ 
+        function pintar() {
+            var q = qs[i];
+            respondida = false;
+            el.innerHTML =
+                '<p class="qz-top">Pregunta ' + (i + 1) + ' de ' + qs.length + '</p>' +
+                '<p class="qz-q">' + q[0] + '</p>' +
+                '<div class="qz-opts">' + q[1].map(function (o, k) {
+                    return '<button type="button" class="qz-opt" data-k="' + k + '">' + o + '</button>';
+                }).join('') + '</div>' +
+                '<div class="qz-fb"></div>' +
+                '<button type="button" class="qz-next" data-a="next" hidden></button>';
+        }
+ 
+        function fin() {
+            el.innerHTML =
+                '<div class="qz-end"><p class="qz-q">Actividad completada</p>' +
+                '<p class="qz-score">Puntuación: ' + score + ' / ' + qs.length + '</p>' +
+                '<button type="button" class="qz-next" data-a="reset">Volver a intentar</button></div>';
+        }
+ 
+        el.addEventListener("click", function (e) {
+            var opt = e.target.closest(".qz-opt"), nx = e.target.closest(".qz-next");
+ 
+            if (opt && !respondida) {
+                respondida = true;
+                var q = qs[i], k = +opt.getAttribute("data-k"), ok = k === q[2];
+                el.querySelectorAll(".qz-opt").forEach(function (b, j) {
+                    b.disabled = true;
+                    if (j === q[2]) b.classList.add("ok");
+                    else if (j === k) b.classList.add("no");
+                });
+                if (ok) score++;
+                var fb = el.querySelector(".qz-fb");
+                fb.innerHTML = (ok ? "✓ <strong>Correcto.</strong> " : "✗ <strong>Incorrecto.</strong> ") + (ok ? q[3] : q[4]);
+                fb.classList.add("on");
+                var n = el.querySelector(".qz-next");
+                n.textContent = i === qs.length - 1 ? "Ver resultado →" : "Siguiente pregunta →";
+                n.hidden = false;
+            }
+ 
+            if (nx) {
+                if (nx.getAttribute("data-a") === "reset") { i = 0; score = 0; pintar(); }
+                else if (i < qs.length - 1) { i++; pintar(); }
+                else fin();
+            }
+        });
+ 
+        pintar();
+    }
+ 
+    document.querySelectorAll(".qz[data-quiz]").forEach(function (el) {
+        iniciar(el, QUIZ[el.getAttribute("data-quiz")]);
+    });
 })();
 </script>
 

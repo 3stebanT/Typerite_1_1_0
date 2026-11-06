@@ -39,7 +39,7 @@
     font-weight: 500;
     line-height: 1;
     white-space: nowrap;
-    color: #ffffff;
+    color: #211530;
 }
 
     .header__social {
@@ -259,6 +259,50 @@
     }
 
 }
+
+/* ========================================
+   ESTILOS DEL MENÚ LATERAL
+======================================== */
+
+/* Enlaces del menú */
+.header__nav li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Texto de los enlaces */
+.header__nav li a span:last-child {
+    flex: 1;
+}
+
+/* Iconos del menú */
+.icono-menu {
+    width: 19px;
+    height: 19px;
+    min-width: 19px;
+    color: #211530;
+    stroke-width: 2.5;
+    flex-shrink: 0;
+}
+
+/* Color al pasar el cursor */
+.header__nav li a:hover {
+    color: #211530;
+}
+
+/* Color de los iconos al pasar el cursor */
+.header__nav li a:hover .icono-menu {
+    color: #211530;
+}
+
+/* Enlace de la página actual */
+.header__nav li a.current {
+    color: #211530;
+    font-weight: 600;
+}
 </style>
 
 <body class="ss-bg-white">
@@ -301,64 +345,25 @@
 
                     <!-- Enlace a la página principal -->
                     <li class="current">
-                        <a href="index.html" title="">Inicio</a>
-                    </li>
+    <a href="index.html">
+        <i data-lucide="house" class="icono-menu"></i>
+        <span>Inicio</span>
+    </a>
+</li>
 
+<li class="current">
+    <a href="caso_tema_2.html">
+        <i data-lucide="user-round" class="icono-menu"></i>
+        <span>Desarrollo Moral y competencias ciudadanas</span>
+    </a>
+</li>
 
-                    
-
-
-                    <!-- ==================================================
-                         MENÚ DE PUBLICACIONES
-                         Contiene los diferentes tipos de artículos
-                         que puede mostrar el sitio.
-                         ================================================== -->
-                    <li class="has-children">
-
-                        <a href="#0" title="">Publicaciones</a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-                                <a href="metodo_de_succion.html" class="publicacion-link">
-                                    <span class="numero-publicacion">1.</span>
-                                    <span class="texto-publicacion">Procedimiento de succión de amplitud elevada</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="Mediciones_cardiacas.html" class="publicacion-link">
-                                    <span class="numero-publicacion">2.</span>
-                                    <span class="texto-publicacion">Mediciones del ritmo cardíaco</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="Preferencia_Giro_Cabeza.html" class="publicacion-link">
-                                    <span class="numero-publicacion">3.</span>
-                                    <span class="texto-publicacion">Procedimiento de preferencia de giro de cabeza</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="Procedimientos_Reforzamiento_Diferencia.html" class="publicacion-link">
-                                    <span class="numero-publicacion">4.</span>
-                                    <span class="texto-publicacion">Procedimientos basados en el reforzamiento diferencial</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="single-video.html" class="publicacion-link">
-                                    <span class="numero-publicacion">5.</span>
-                                    <span class="texto-publicacion">Paradigma intermodal de preferencia de mirada</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Enlace hacia la página "Nosotros" -->
-                    <li>
-                        <a href="page-about.html" title="">Nosotras</a>
-                    </li>
+<li class="current">
+    <a href="page-about.html">
+        <i data-lucide="users-round" class="icono-menu"></i>
+        <span>Nosotras</span>
+    </a>
+</li>
 
                 </ul>
                 <!-- Fin del menú de navegación -->
@@ -640,5 +645,9 @@
 
 })();
     </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
 
 </body>
